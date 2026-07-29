@@ -21,6 +21,16 @@ Pokemon.SCHEMA_VERSION = 1
 -- parece servir e **não é pegável**, então nenhum container aceita.
 Pokemon.PLACEHOLDER_BALL_ID = 43901
 
+-- Namespace dos MonsterTypes. O Canary registra como "<variant>|<nome>" e
+-- mantém o nome de exibição, o que evita colisão com monstro do Tibia de
+-- mesmo nome sem precisar tratar espécie por espécie.
+Pokemon.MONSTER_VARIANT = "pokemon"
+
+--- Chave do MonsterType de uma espécie.
+function Pokemon.monsterName(species)
+	return Pokemon.MONSTER_VARIANT .. "|" .. species
+end
+
 -- Campo, tipo e default num lugar só. Metade dos crashes medidos nas bases
 -- legadas é atributo ausente lido sem default, de forma inconsistente entre
 -- arquivos do mesmo projeto — `or 0` espalhado por quem chama é como se
