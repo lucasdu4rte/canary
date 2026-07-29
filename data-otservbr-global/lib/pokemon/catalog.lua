@@ -1,0 +1,9536 @@
+-- Gerado por tools/build-data.ts a partir de PokeAPI + wiki do PxG. NÃO editar à mão.
+
+PokemonSpecies = {
+  ["Bulbasaur"] = {
+    ["dex"] = 1,
+    ["name"] = "Bulbasaur",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 49,
+      ["def"] = 49,
+      ["spatk"] = 65,
+      ["spdef"] = 65,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Tackle",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 18,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bullet Seed",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Ivysaur"] = {
+    ["dex"] = 2,
+    ["name"] = "Ivysaur",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 62,
+      ["def"] = 63,
+      ["spatk"] = 80,
+      ["spdef"] = 80,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Tackle",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Sludge",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Bullet Seed",
+        ["cooldown"] = 35,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Giga Drain",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Venusaur"] = {
+    ["dex"] = 3,
+    ["name"] = "Venusaur",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 82,
+      ["def"] = 83,
+      ["spatk"] = 100,
+      ["spdef"] = 100,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Tackle",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sludge",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bullet Seed",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Charmander"] = {
+    ["dex"] = 4,
+    ["name"] = "Charmander",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 39,
+      ["atk"] = 52,
+      ["def"] = 43,
+      ["spatk"] = 60,
+      ["spdef"] = 50,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 12,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fire Fang",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fire Blast",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Charmeleon"] = {
+    ["dex"] = 5,
+    ["name"] = "Charmeleon",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 58,
+      ["atk"] = 64,
+      ["def"] = 58,
+      ["spatk"] = 80,
+      ["spdef"] = 65,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 18,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 25,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Fire Punch",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Flame Burst",
+        ["cooldown"] = 35,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Fire Blast",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Scary Face",
+        ["cooldown"] = 45,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Charizard"] = {
+    ["dex"] = 6,
+    ["name"] = "Charizard",
+    ["types"] = {
+      "fire",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 78,
+      ["atk"] = 84,
+      ["def"] = 78,
+      ["spatk"] = 109,
+      ["spdef"] = 85,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 12,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Fire Punch",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Flame Burst",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Fire Blast",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Air Slash",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ancient Fury",
+        ["cooldown"] = 80,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Squirtle"] = {
+    ["dex"] = 7,
+    ["name"] = "Squirtle",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 44,
+      ["atk"] = 48,
+      ["def"] = 65,
+      ["spatk"] = 50,
+      ["spdef"] = 64,
+      ["speed"] = 43,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bubble",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Wartortle"] = {
+    ["dex"] = 8,
+    ["name"] = "Wartortle",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 59,
+      ["atk"] = 63,
+      ["def"] = 80,
+      ["spatk"] = 65,
+      ["spdef"] = 80,
+      ["speed"] = 58,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Bubble",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Muddy Water",
+        ["cooldown"] = 35,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Blastoise"] = {
+    ["dex"] = 9,
+    ["name"] = "Blastoise",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 79,
+      ["atk"] = 83,
+      ["def"] = 100,
+      ["spatk"] = 85,
+      ["spdef"] = 105,
+      ["speed"] = 78,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Muddy Water",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Cannon",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Withdraw",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Muddy Water",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Cannon",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Withdraw",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Caterpie"] = {
+    ["dex"] = 10,
+    ["name"] = "Caterpie",
+    ["types"] = {
+      "bug",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 30,
+      ["def"] = 35,
+      ["spatk"] = 20,
+      ["spdef"] = 20,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "String Shot",
+        ["cooldown"] = 5,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Bug Bite",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Metapod"] = {
+    ["dex"] = 11,
+    ["name"] = "Metapod",
+    ["types"] = {
+      "bug",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 20,
+      ["def"] = 55,
+      ["spatk"] = 25,
+      ["spdef"] = 25,
+      ["speed"] = 30,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "String Shot",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bug Bite",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Butterfree"] = {
+    ["dex"] = 12,
+    ["name"] = "Butterfree",
+    ["types"] = {
+      "bug",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 45,
+      ["def"] = 50,
+      ["spatk"] = 90,
+      ["spdef"] = 80,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Silver Wind",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Air Slash",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Psybeam",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Air Cutter",
+        ["cooldown"] = 25,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Safeguard",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Weedle"] = {
+    ["dex"] = 13,
+    ["name"] = "Weedle",
+    ["types"] = {
+      "bug",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 35,
+      ["def"] = 30,
+      ["spatk"] = 20,
+      ["spdef"] = 20,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "String Shot",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Poison Sting",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Kakuna"] = {
+    ["dex"] = 14,
+    ["name"] = "Kakuna",
+    ["types"] = {
+      "bug",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 25,
+      ["def"] = 50,
+      ["spatk"] = 25,
+      ["spdef"] = 25,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "String Shot",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bug Bite",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Beedrill"] = {
+    ["dex"] = 15,
+    ["name"] = "Beedrill",
+    ["types"] = {
+      "bug",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 90,
+      ["def"] = 40,
+      ["spatk"] = 45,
+      ["spdef"] = 80,
+      ["speed"] = 75,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "String Shot",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Jab",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Sting",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Fury Cutter",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Pin Missile",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Toxic Spikes",
+        ["cooldown"] = 25,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Strafe",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Pidgey"] = {
+    ["dex"] = 16,
+    ["name"] = "Pidgey",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 45,
+      ["def"] = 40,
+      ["spatk"] = 35,
+      ["spdef"] = 35,
+      ["speed"] = 56,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 12,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 12,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Pidgeotto"] = {
+    ["dex"] = 17,
+    ["name"] = "Pidgeotto",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 63,
+      ["atk"] = 60,
+      ["def"] = 55,
+      ["spatk"] = 50,
+      ["spdef"] = 50,
+      ["speed"] = 71,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 18,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Gust",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Tornado",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Pidgeot"] = {
+    ["dex"] = 18,
+    ["name"] = "Pidgeot",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 83,
+      ["atk"] = 80,
+      ["def"] = 75,
+      ["spatk"] = 70,
+      ["spdef"] = 70,
+      ["speed"] = 101,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Feather Dance",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hurricane",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Rattata"] = {
+    ["dex"] = 19,
+    ["name"] = "Rattata",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 56,
+      ["def"] = 35,
+      ["spatk"] = 25,
+      ["spdef"] = 35,
+      ["speed"] = 72,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Super Fang",
+        ["cooldown"] = 45,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Raticate"] = {
+    ["dex"] = 20,
+    ["name"] = "Raticate",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 81,
+      ["def"] = 60,
+      ["spatk"] = 50,
+      ["spdef"] = 70,
+      ["speed"] = 97,
+    },
+    ["captureRate"] = 127,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Pursuit",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Super Fang",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Scary Face",
+        ["cooldown"] = 35,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Spearow"] = {
+    ["dex"] = 21,
+    ["name"] = "Spearow",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 60,
+      ["def"] = 30,
+      ["spatk"] = 31,
+      ["spdef"] = 31,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Fearow"] = {
+    ["dex"] = 22,
+    ["name"] = "Fearow",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 90,
+      ["def"] = 65,
+      ["spatk"] = 61,
+      ["spdef"] = 61,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 12,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 18,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Gust",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Air Cutter",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Aerial Ace",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Confide",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Ekans"] = {
+    ["dex"] = 23,
+    ["name"] = "Ekans",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 60,
+      ["def"] = 44,
+      ["spatk"] = 40,
+      ["spdef"] = 54,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Gunk Shot",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Fear",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Arbok"] = {
+    ["dex"] = 24,
+    ["name"] = "Arbok",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 95,
+      ["def"] = 69,
+      ["spatk"] = 65,
+      ["spdef"] = 79,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Gunk Shot",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Toxic",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Poison Tail",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Wrap",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Poison Jab",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Intimidate",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Pikachu"] = {
+    ["dex"] = 25,
+    ["name"] = "Pikachu",
+    ["types"] = {
+      "electric",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 55,
+      ["def"] = 40,
+      ["spatk"] = 50,
+      ["spdef"] = 50,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Electro Ball",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Thunder Punch",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Raichu"] = {
+    ["dex"] = 26,
+    ["name"] = "Raichu",
+    ["types"] = {
+      "electric",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 90,
+      ["def"] = 55,
+      ["spatk"] = 90,
+      ["spdef"] = 80,
+      ["speed"] = 110,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Volt Tackle",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunder Wrath",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Dishcarge",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Sandshrew"] = {
+    ["dex"] = 27,
+    ["name"] = "Sandshrew",
+    ["types"] = {
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 75,
+      ["def"] = 85,
+      ["spatk"] = 20,
+      ["spdef"] = 30,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 5,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Rollout",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bulldoze",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Sandslash"] = {
+    ["dex"] = 28,
+    ["name"] = "Sandslash",
+    ["types"] = {
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 75,
+      ["atk"] = 100,
+      ["def"] = 110,
+      ["spatk"] = 45,
+      ["spdef"] = 55,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 18,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Slashing Blow",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Rollout",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sandstorm",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Nidoranfe"] = {
+    ["dex"] = 29,
+    ["name"] = "Nidoranfe",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 47,
+      ["def"] = 52,
+      ["spatk"] = 40,
+      ["spdef"] = 40,
+      ["speed"] = 41,
+    },
+    ["captureRate"] = 235,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 8,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Sting",
+        ["cooldown"] = 12,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Nidorina"] = {
+    ["dex"] = 30,
+    ["name"] = "Nidorina",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 70,
+      ["atk"] = 62,
+      ["def"] = 67,
+      ["spatk"] = 55,
+      ["spdef"] = 55,
+      ["speed"] = 56,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Charm",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Jab",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Stomping Tantrum",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 45,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Dig",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Nidoqueen"] = {
+    ["dex"] = 31,
+    ["name"] = "Nidoqueen",
+    ["types"] = {
+      "poison",
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 92,
+      ["def"] = 87,
+      ["spatk"] = 75,
+      ["spdef"] = 85,
+      ["speed"] = 76,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 8,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sand Tomb",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Horn Burst",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ground Collapse",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bulldoze",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Earthquake",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Fissure",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Nidoranma"] = {
+    ["dex"] = 32,
+    ["name"] = "Nidoranma",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 46,
+      ["atk"] = 57,
+      ["def"] = 40,
+      ["spatk"] = 40,
+      ["spdef"] = 40,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 235,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 8,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Sting",
+        ["cooldown"] = 12,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Nidorino"] = {
+    ["dex"] = 33,
+    ["name"] = "Nidorino",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 61,
+      ["atk"] = 72,
+      ["def"] = 57,
+      ["spatk"] = 55,
+      ["spdef"] = 55,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 8,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Jab",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Toxic Spikes",
+        ["cooldown"] = 25,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Dig",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Cross Poison",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Nidoking"] = {
+    ["dex"] = 34,
+    ["name"] = "Nidoking",
+    ["types"] = {
+      "poison",
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 81,
+      ["atk"] = 102,
+      ["def"] = 77,
+      ["spatk"] = 85,
+      ["spdef"] = 75,
+      ["speed"] = 85,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 8,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Horn Burst",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Poison Jab",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Poison Tail",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sludge Bomb",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Clefairy"] = {
+    ["dex"] = 35,
+    ["name"] = "Clefairy",
+    ["types"] = {
+      "fairy",
+    },
+    ["baseStats"] = {
+      ["hp"] = 70,
+      ["atk"] = 45,
+      ["def"] = 48,
+      ["spatk"] = 60,
+      ["spdef"] = 65,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 150,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Dazzling Gleam",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Double Slap",
+        ["cooldown"] = 5,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Sing",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Heart Pound",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Metronome",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Protection",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Moonlight",
+        ["cooldown"] = 60,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Follow Me",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Clefable"] = {
+    ["dex"] = 36,
+    ["name"] = "Clefable",
+    ["types"] = {
+      "fairy",
+    },
+    ["baseStats"] = {
+      ["hp"] = 95,
+      ["atk"] = 70,
+      ["def"] = 73,
+      ["spatk"] = 95,
+      ["spdef"] = 90,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 25,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Dazzling Gleam",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Doubleslap",
+        ["cooldown"] = 5,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Multi-Slap",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Heart Pound",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Metronome",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Great Love",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Defense Curl",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Protect",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Doubleslap",
+        ["cooldown"] = 5,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Multi-Slap",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Heart Pound",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Metronome",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Great Love",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Defense Curl",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Protect",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Vulpix"] = {
+    ["dex"] = 37,
+    ["name"] = "Vulpix",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 38,
+      ["atk"] = 41,
+      ["def"] = 40,
+      ["spatk"] = 50,
+      ["spdef"] = 65,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Iron Tail",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fire Blast",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Ninetales"] = {
+    ["dex"] = 38,
+    ["name"] = "Ninetales",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 73,
+      ["atk"] = 76,
+      ["def"] = 75,
+      ["spatk"] = 81,
+      ["spdef"] = 100,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Iron Tail",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Flame Wheel",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Burning Jealousy",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Nasty Plot",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Jigglypuff"] = {
+    ["dex"] = 39,
+    ["name"] = "Jigglypuff",
+    ["types"] = {
+      "normal",
+      "fairy",
+    },
+    ["baseStats"] = {
+      ["hp"] = 115,
+      ["atk"] = 45,
+      ["def"] = 20,
+      ["spatk"] = 45,
+      ["spdef"] = 25,
+      ["speed"] = 20,
+    },
+    ["captureRate"] = 170,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Dazzling Gleam",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Play Rough",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Sing",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Disarming Voice",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Heart Pound",
+        ["cooldown"] = 35,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Soft-Boiled",
+        ["cooldown"] = 60,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Charm",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Wigglytuff"] = {
+    ["dex"] = 40,
+    ["name"] = "Wigglytuff",
+    ["types"] = {
+      "normal",
+      "fairy",
+    },
+    ["baseStats"] = {
+      ["hp"] = 140,
+      ["atk"] = 70,
+      ["def"] = 45,
+      ["spatk"] = 85,
+      ["spdef"] = 50,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 50,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Dazzling Gleam",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Play Rough",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Disarming Voice",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Heart Pound",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Heal Pulse",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Soft-Boiled",
+        ["cooldown"] = 100,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Defense Curl",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Zubat"] = {
+    ["dex"] = 41,
+    ["name"] = "Zubat",
+    ["types"] = {
+      "poison",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 45,
+      ["def"] = 35,
+      ["spatk"] = 30,
+      ["spdef"] = 40,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Leech Life",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Toxic",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Golbat"] = {
+    ["dex"] = 42,
+    ["name"] = "Golbat",
+    ["types"] = {
+      "poison",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 75,
+      ["atk"] = 80,
+      ["def"] = 70,
+      ["spatk"] = 65,
+      ["spdef"] = 75,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Leech Life",
+        ["cooldown"] = 8,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Poison Fang",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Toxic",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Gust",
+        ["cooldown"] = 25,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Air Cutter",
+        ["cooldown"] = 35,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Oddish"] = {
+    ["dex"] = 43,
+    ["name"] = "Oddish",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 50,
+      ["def"] = 55,
+      ["spatk"] = 75,
+      ["spdef"] = 65,
+      ["speed"] = 30,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Absorb",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 40,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Gloom"] = {
+    ["dex"] = 44,
+    ["name"] = "Gloom",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 65,
+      ["def"] = 70,
+      ["spatk"] = 85,
+      ["spdef"] = 75,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Absorb",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 8,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Sludge Bomb",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Gas",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Vileplume"] = {
+    ["dex"] = 45,
+    ["name"] = "Vileplume",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 75,
+      ["atk"] = 80,
+      ["def"] = 85,
+      ["spatk"] = 110,
+      ["spdef"] = 90,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Absorb",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 8,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sludge Bomb",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Poison Gas",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Petal Dance",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Paras"] = {
+    ["dex"] = 46,
+    ["name"] = "Paras",
+    ["types"] = {
+      "bug",
+      "grass",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 70,
+      ["def"] = 55,
+      ["spatk"] = 45,
+      ["spdef"] = 55,
+      ["speed"] = 25,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 8,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Poison Sting",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 45,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 60,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Parasect"] = {
+    ["dex"] = 47,
+    ["name"] = "Parasect",
+    ["types"] = {
+      "bug",
+      "grass",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 95,
+      ["def"] = 80,
+      ["spatk"] = 60,
+      ["spdef"] = 80,
+      ["speed"] = 30,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Absorb",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Leech Life",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bullet Seed",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Lunge",
+        ["cooldown"] = 18,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Fury Cutter",
+        ["cooldown"] = 25,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "X-Scissor",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 45,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Venonat"] = {
+    ["dex"] = 48,
+    ["name"] = "Venonat",
+    ["types"] = {
+      "bug",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 55,
+      ["def"] = 50,
+      ["spatk"] = 40,
+      ["spdef"] = 55,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Leech Life",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Silver Wind",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Venomoth"] = {
+    ["dex"] = 49,
+    ["name"] = "Venomoth",
+    ["types"] = {
+      "bug",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 70,
+      ["atk"] = 65,
+      ["def"] = 60,
+      ["spatk"] = 90,
+      ["spdef"] = 75,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Supersonic",
+        ["cooldown"] = 35,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Leech Life",
+        ["cooldown"] = 22,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Silver Wind",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Toxic",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 35,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Signal Beam",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sludge Bomb",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Quiver Dance",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Diglett"] = {
+    ["dex"] = 50,
+    ["name"] = "Diglett",
+    ["types"] = {
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 10,
+      ["atk"] = 55,
+      ["def"] = 25,
+      ["spatk"] = 35,
+      ["spdef"] = 45,
+      ["speed"] = 95,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 5,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Mud-Slap",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 45,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Dugtrio"] = {
+    ["dex"] = 51,
+    ["name"] = "Dugtrio",
+    ["types"] = {
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 100,
+      ["def"] = 50,
+      ["spatk"] = 50,
+      ["spdef"] = 70,
+      ["speed"] = 120,
+    },
+    ["captureRate"] = 50,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Mud-Slap",
+        ["cooldown"] = 25,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Dig",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Fissure",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Meowth"] = {
+    ["dex"] = 52,
+    ["name"] = "Meowth",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 45,
+      ["def"] = 35,
+      ["spatk"] = 40,
+      ["spdef"] = 40,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 8,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 12,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Night Slash",
+        ["cooldown"] = 22,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Pay Day",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Persian"] = {
+    ["dex"] = 53,
+    ["name"] = "Persian",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 70,
+      ["def"] = 60,
+      ["spatk"] = 65,
+      ["spdef"] = 65,
+      ["speed"] = 115,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 8,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 8,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 12,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Night Slash",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Pay Day",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Power Gem",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Torment",
+        ["cooldown"] = 60,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Fear",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Psyduck"] = {
+    ["dex"] = 54,
+    ["name"] = "Psyduck",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 52,
+      ["def"] = 48,
+      ["spatk"] = 65,
+      ["spdef"] = 50,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Stunning Confusion",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Golduck"] = {
+    ["dex"] = 55,
+    ["name"] = "Golduck",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 82,
+      ["def"] = 78,
+      ["spatk"] = 95,
+      ["spdef"] = 80,
+      ["speed"] = 85,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Fury Swipes",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubble",
+        ["cooldown"] = 12,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Surf",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Stunning Confusion",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Calm Mind",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Protect",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rain Dance",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Mankey"] = {
+    ["dex"] = 56,
+    ["name"] = "Mankey",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 80,
+      ["def"] = 35,
+      ["spatk"] = 35,
+      ["spdef"] = 45,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Triple Kick",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Karate Chop",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Cross Crop",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Primeape"] = {
+    ["dex"] = 57,
+    ["name"] = "Primeape",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 105,
+      ["def"] = 60,
+      ["spatk"] = 60,
+      ["spdef"] = 70,
+      ["speed"] = 95,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Low Kick",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Mega Kick",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Karate Chop",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Close Combat",
+        ["cooldown"] = 25,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Cross Crop",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Leap Strike",
+        ["cooldown"] = 22,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Growlithe"] = {
+    ["dex"] = 58,
+    ["name"] = "Growlithe",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 70,
+      ["def"] = 45,
+      ["spatk"] = 70,
+      ["spdef"] = 50,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Roar",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Fire Fang",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Heat Wave",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "War Dog",
+        ["cooldown"] = 55,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Arcanine"] = {
+    ["dex"] = 59,
+    ["name"] = "Arcanine",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 110,
+      ["def"] = 80,
+      ["spatk"] = 100,
+      ["spdef"] = 80,
+      ["speed"] = 95,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Will-O-Wisp",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Thunder Fang",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Extreme Speed",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Flare Blitz",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Burn Up",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hellfire Storm",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Intimidate",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Poliwag"] = {
+    ["dex"] = 60,
+    ["name"] = "Poliwag",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 50,
+      ["def"] = 40,
+      ["spatk"] = 40,
+      ["spdef"] = 40,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Doubleslap",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 30,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Poliwhirl"] = {
+    ["dex"] = 61,
+    ["name"] = "Poliwhirl",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 65,
+      ["def"] = 65,
+      ["spatk"] = 50,
+      ["spdef"] = 50,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Doubleslap",
+        ["cooldown"] = 8,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 18,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Brick Break",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Dynamic Punch",
+        ["cooldown"] = 45,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Poliwrath"] = {
+    ["dex"] = 62,
+    ["name"] = "Poliwrath",
+    ["types"] = {
+      "water",
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 95,
+      ["def"] = 95,
+      ["spatk"] = 70,
+      ["spdef"] = 90,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Mud-Slap",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Doubleslap",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Liquidation",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Brick Break",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Dynamic Punch",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Surf",
+        ["cooldown"] = 60,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 70,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rain Dance",
+        ["cooldown"] = 60,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Abra"] = {
+    ["dex"] = 63,
+    ["name"] = "Abra",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 25,
+      ["atk"] = 20,
+      ["def"] = 15,
+      ["spatk"] = 105,
+      ["spdef"] = 55,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 200,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 60,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Psy Pulse",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 35,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Calm Mind",
+        ["cooldown"] = 40,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Kadabra"] = {
+    ["dex"] = 64,
+    ["name"] = "Kadabra",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 35,
+      ["def"] = 30,
+      ["spatk"] = 120,
+      ["spdef"] = 70,
+      ["speed"] = 105,
+    },
+    ["captureRate"] = 100,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Psybeam",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Psywave",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Psy Pulse",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Psyusion",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Calm Mind",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Reflect",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 80,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Alakazam"] = {
+    ["dex"] = 65,
+    ["name"] = "Alakazam",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 50,
+      ["def"] = 45,
+      ["spatk"] = 135,
+      ["spdef"] = 95,
+      ["speed"] = 120,
+    },
+    ["captureRate"] = 50,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Psybeam",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psy Pulse",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psy Ball",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 180,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Machop"] = {
+    ["dex"] = 66,
+    ["name"] = "Machop",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 70,
+      ["atk"] = 80,
+      ["def"] = 50,
+      ["spatk"] = 35,
+      ["spdef"] = 35,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 180,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Triple Punch",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Karate Chop",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Low Kick",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Focus Blast",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Machoke"] = {
+    ["dex"] = 67,
+    ["name"] = "Machoke",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 100,
+      ["def"] = 70,
+      ["spatk"] = 50,
+      ["spdef"] = 60,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Triple Punch",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Karate Chop",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Low Kick",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Vital Throw",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Focus Blast",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Arm Thrust",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Machamp"] = {
+    ["dex"] = 68,
+    ["name"] = "Machamp",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 130,
+      ["def"] = 80,
+      ["spatk"] = 65,
+      ["spdef"] = 85,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Close Combat",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Revenge",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Bellsprout"] = {
+    ["dex"] = 69,
+    ["name"] = "Bellsprout",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 75,
+      ["def"] = 35,
+      ["spatk"] = 70,
+      ["spdef"] = 30,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Weepinbell"] = {
+    ["dex"] = 70,
+    ["name"] = "Weepinbell",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 90,
+      ["def"] = 50,
+      ["spatk"] = 85,
+      ["spdef"] = 45,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Magical Leaf",
+        ["cooldown"] = 25,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Giga Drain",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Leaf Storm",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Growth",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Victreebel"] = {
+    ["dex"] = 71,
+    ["name"] = "Victreebel",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 105,
+      ["def"] = 65,
+      ["spatk"] = 100,
+      ["spdef"] = 70,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Magical Leaf",
+        ["cooldown"] = 25,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Giga Drain",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Leaf Storm",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Leaf Tornado",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Growth",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Tentacool"] = {
+    ["dex"] = 72,
+    ["name"] = "Tentacool",
+    ["types"] = {
+      "water",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 40,
+      ["def"] = 35,
+      ["spatk"] = 50,
+      ["spdef"] = 100,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 35,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Wrap",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Jab",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Tentacruel"] = {
+    ["dex"] = 73,
+    ["name"] = "Tentacruel",
+    ["types"] = {
+      "water",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 70,
+      ["def"] = 65,
+      ["spatk"] = 80,
+      ["spdef"] = 120,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Wrap",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Venomous Sting",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Acid Armor",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 60,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Surf",
+        ["cooldown"] = 60,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Screech",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Screech",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Geodude"] = {
+    ["dex"] = 74,
+    ["name"] = "Geodude",
+    ["types"] = {
+      "rock",
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 80,
+      ["def"] = 100,
+      ["spatk"] = 30,
+      ["spdef"] = 30,
+      ["speed"] = 20,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Tackle",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Rock Slide",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 40,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Graveler"] = {
+    ["dex"] = 75,
+    ["name"] = "Graveler",
+    ["types"] = {
+      "rock",
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 95,
+      ["def"] = 115,
+      ["spatk"] = 45,
+      ["spdef"] = 45,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Rock Slide",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Stone Edge",
+        ["cooldown"] = 20,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 35,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Falling Rocks",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Selfdestruction",
+        ["cooldown"] = 280,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Golem"] = {
+    ["dex"] = 76,
+    ["name"] = "Golem",
+    ["types"] = {
+      "rock",
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 120,
+      ["def"] = 130,
+      ["spatk"] = 55,
+      ["spdef"] = 65,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Swagger",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Ponyta"] = {
+    ["dex"] = 77,
+    ["name"] = "Ponyta",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 85,
+      ["def"] = 55,
+      ["spatk"] = 65,
+      ["spdef"] = 65,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Stomp",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Rapidash"] = {
+    ["dex"] = 78,
+    ["name"] = "Rapidash",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 100,
+      ["def"] = 70,
+      ["spatk"] = 80,
+      ["spdef"] = 80,
+      ["speed"] = 105,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Smart Strike",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Flame Circle",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Flame Charge",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Fire Spin",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Tail Whip",
+        ["cooldown"] = 45,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Slowpoke"] = {
+    ["dex"] = 79,
+    ["name"] = "Slowpoke",
+    ["types"] = {
+      "water",
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 65,
+      ["def"] = 65,
+      ["spatk"] = 40,
+      ["spdef"] = 40,
+      ["speed"] = 15,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Iron Tail",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Slowbro"] = {
+    ["dex"] = 80,
+    ["name"] = "Slowbro",
+    ["types"] = {
+      "water",
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 95,
+      ["atk"] = 75,
+      ["def"] = 110,
+      ["spatk"] = 100,
+      ["spdef"] = 80,
+      ["speed"] = 30,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 25,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Surf",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Heal Pulse",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Slack Off",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Yawn",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Magnemite"] = {
+    ["dex"] = 81,
+    ["name"] = "Magnemite",
+    ["types"] = {
+      "electric",
+      "steel",
+    },
+    ["baseStats"] = {
+      ["hp"] = 25,
+      ["atk"] = 35,
+      ["def"] = 70,
+      ["spatk"] = 95,
+      ["spdef"] = 55,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Spark",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Electro Ball",
+        ["cooldown"] = 45,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Sonicboom",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Magneton"] = {
+    ["dex"] = 82,
+    ["name"] = "Magneton",
+    ["types"] = {
+      "electric",
+      "steel",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 60,
+      ["def"] = 95,
+      ["spatk"] = 120,
+      ["spdef"] = 70,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Iron Spiner",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Scrap Throw",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Tri-Attack",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Gyro Ball",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Magnet Pull",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Heavy Metal",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Gravity",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Farfetch'D"] = {
+    ["dex"] = 83,
+    ["name"] = "Farfetch'D",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 52,
+      ["atk"] = 90,
+      ["def"] = 55,
+      ["spatk"] = 58,
+      ["spdef"] = 62,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Stickmerang",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Stickslash",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Stick Throw",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Night Slash",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Air Slash",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Doduo"] = {
+    ["dex"] = 84,
+    ["name"] = "Doduo",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 85,
+      ["def"] = 45,
+      ["spatk"] = 35,
+      ["spdef"] = 35,
+      ["speed"] = 75,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 8,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Dodrio"] = {
+    ["dex"] = 85,
+    ["name"] = "Dodrio",
+    ["types"] = {
+      "normal",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 110,
+      ["def"] = 70,
+      ["spatk"] = 60,
+      ["spdef"] = 60,
+      ["speed"] = 110,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Pluck",
+        ["cooldown"] = 12,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Tri-Attack",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Roost",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Aerial Ace",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Early Bird",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Seel"] = {
+    ["dex"] = 86,
+    ["name"] = "Seel",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 45,
+      ["def"] = 55,
+      ["spatk"] = 45,
+      ["spdef"] = 70,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 12,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ice Shard",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Icy Wind",
+        ["cooldown"] = 25,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Aurora Beam",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Dewgong"] = {
+    ["dex"] = 87,
+    ["name"] = "Dewgong",
+    ["types"] = {
+      "water",
+      "ice",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 70,
+      ["def"] = 80,
+      ["spatk"] = 70,
+      ["spdef"] = 95,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Brine",
+        ["cooldown"] = 25,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Ice Shard",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Icy Wind",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Aurora Beam",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Blizzard",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Aqua Ring",
+        ["cooldown"] = 60,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Growl",
+        ["cooldown"] = 45,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Grimer"] = {
+    ["dex"] = 88,
+    ["name"] = "Grimer",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 80,
+      ["def"] = 50,
+      ["spatk"] = 40,
+      ["spdef"] = 50,
+      ["speed"] = 25,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Sludge",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Mud Bomb",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Bomb",
+        ["cooldown"] = 28,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Muk"] = {
+    ["dex"] = 89,
+    ["name"] = "Muk",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 105,
+      ["atk"] = 105,
+      ["def"] = 75,
+      ["spatk"] = 65,
+      ["spdef"] = 100,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sludge",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Toxic",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sludge Bomb",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Mortal Gas",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Shellder"] = {
+    ["dex"] = 90,
+    ["name"] = "Shellder",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 65,
+      ["def"] = 100,
+      ["spatk"] = 45,
+      ["spdef"] = 25,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Lick",
+        ["cooldown"] = 40,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 35,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Clamp",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Cloyster"] = {
+    ["dex"] = 91,
+    ["name"] = "Cloyster",
+    ["types"] = {
+      "water",
+      "ice",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 95,
+      ["def"] = 180,
+      ["spatk"] = 85,
+      ["spdef"] = 45,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Supersonic",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Icicle Spear",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Clamp",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Whirlpool",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Aurora Beam",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Blizzard",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Withdraw",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Gastly"] = {
+    ["dex"] = 92,
+    ["name"] = "Gastly",
+    ["types"] = {
+      "ghost",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 35,
+      ["def"] = 30,
+      ["spatk"] = 100,
+      ["spdef"] = 35,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Lick",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Night Shade",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 50,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Fear",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Haunter"] = {
+    ["dex"] = 93,
+    ["name"] = "Haunter",
+    ["types"] = {
+      "ghost",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 50,
+      ["def"] = 45,
+      ["spatk"] = 115,
+      ["spdef"] = 55,
+      ["speed"] = 95,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Lick",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 8,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Night Shade",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Shadow Storm",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Invisible",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Nightmare",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Fear",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Gengar"] = {
+    ["dex"] = 94,
+    ["name"] = "Gengar",
+    ["types"] = {
+      "ghost",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 65,
+      ["def"] = 60,
+      ["spatk"] = 130,
+      ["spdef"] = 75,
+      ["speed"] = 110,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 12,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Shadow Punch",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Astonish",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Nightmare",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Onix"] = {
+    ["dex"] = 95,
+    ["name"] = "Onix",
+    ["types"] = {
+      "rock",
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 45,
+      ["def"] = 160,
+      ["spatk"] = 30,
+      ["spdef"] = 45,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Iron Tail",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Rock Slide",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Falling Rocks",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Wide Guard",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Drowzee"] = {
+    ["dex"] = 96,
+    ["name"] = "Drowzee",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 48,
+      ["def"] = 45,
+      ["spatk"] = 43,
+      ["spdef"] = 90,
+      ["speed"] = 42,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Psywave",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Psybeam",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 25,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Dream Eater",
+        ["cooldown"] = 45,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 45,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Nasty Splot",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Hypno"] = {
+    ["dex"] = 97,
+    ["name"] = "Hypno",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 85,
+      ["atk"] = 73,
+      ["def"] = 70,
+      ["spatk"] = 73,
+      ["spdef"] = 115,
+      ["speed"] = 67,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Psy Pulse",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Psywave",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Psybeam",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 25,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Synchronoise",
+        ["cooldown"] = 35,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Dream Eater",
+        ["cooldown"] = 35,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 35,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Nasty Plot",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Miracle Eye",
+        ["cooldown"] = 15,
+      },
+    },
+  },
+  ["Krabby"] = {
+    ["dex"] = 98,
+    ["name"] = "Krabby",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 105,
+      ["def"] = 90,
+      ["spatk"] = 25,
+      ["spdef"] = 25,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 225,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bubble",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Crabhammer",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 35,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Kingler"] = {
+    ["dex"] = 99,
+    ["name"] = "Kingler",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 130,
+      ["def"] = 115,
+      ["spatk"] = 50,
+      ["spdef"] = 50,
+      ["speed"] = 75,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Bubble",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Guillotine",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Crabhammer",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Razor Shell",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Hyper Beam",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Swords Dance",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Voltorb"] = {
+    ["dex"] = 100,
+    ["name"] = "Voltorb",
+    ["types"] = {
+      "electric",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 30,
+      ["def"] = 50,
+      ["spatk"] = 55,
+      ["spdef"] = 55,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Spark",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Thunder Wave",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Rollout",
+        ["cooldown"] = 45,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Selfdestruction",
+        ["cooldown"] = 80,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Electrode"] = {
+    ["dex"] = 101,
+    ["name"] = "Electrode",
+    ["types"] = {
+      "electric",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 50,
+      ["def"] = 70,
+      ["spatk"] = 80,
+      ["spdef"] = 80,
+      ["speed"] = 150,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Charge",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Spark",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Rollout",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Electro Ball",
+        ["cooldown"] = 25,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Charge Beam",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Discharge",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Selfdestruction",
+        ["cooldown"] = 80,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Exeggcute"] = {
+    ["dex"] = 102,
+    ["name"] = "Exeggcute",
+    ["types"] = {
+      "grass",
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 40,
+      ["def"] = 80,
+      ["spatk"] = 60,
+      ["spdef"] = 45,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 90,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 40,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Egg Bomb",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Exeggutor"] = {
+    ["dex"] = 103,
+    ["name"] = "Exeggutor",
+    ["types"] = {
+      "grass",
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 95,
+      ["atk"] = 95,
+      ["def"] = 85,
+      ["spatk"] = 125,
+      ["spdef"] = 75,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Seed Bomb",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Egg Bomb",
+        ["cooldown"] = 8,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Leaf Blade",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psyshock",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Wood Hammer",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 45,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hypnosis",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Cubone"] = {
+    ["dex"] = 104,
+    ["name"] = "Cubone",
+    ["types"] = {
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 50,
+      ["def"] = 95,
+      ["spatk"] = 40,
+      ["spdef"] = 50,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 12,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bonemerang",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bone club",
+        ["cooldown"] = 12,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bone Rush",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Marowak"] = {
+    ["dex"] = 105,
+    ["name"] = "Marowak",
+    ["types"] = {
+      "ground",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 80,
+      ["def"] = 110,
+      ["spatk"] = 50,
+      ["spdef"] = 80,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 12,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bonemerang",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bone club",
+        ["cooldown"] = 12,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bone Rush",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 60,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bulldoze",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Hitmonlee"] = {
+    ["dex"] = 106,
+    ["name"] = "Hitmonlee",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 120,
+      ["def"] = 53,
+      ["spatk"] = 35,
+      ["spdef"] = 110,
+      ["speed"] = 87,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Triple Kick Lee",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Mega Kick",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Hi Jump Kick",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Furious Legs",
+        ["cooldown"] = 25,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Hitmonchan"] = {
+    ["dex"] = 107,
+    ["name"] = "Hitmonchan",
+    ["types"] = {
+      "fighting",
+    },
+    ["baseStats"] = {
+      ["hp"] = 50,
+      ["atk"] = 105,
+      ["def"] = 79,
+      ["spatk"] = 35,
+      ["spdef"] = 110,
+      ["speed"] = 76,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Triple Punch",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Mega Punch",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Focus Punch",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Ultimate Champion",
+        ["cooldown"] = 25,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Elemental Hands",
+        ["cooldown"] = 2,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Detect",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Revenge",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Lickitung"] = {
+    ["dex"] = 108,
+    ["name"] = "Lickitung",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 55,
+      ["def"] = 75,
+      ["spatk"] = 60,
+      ["spdef"] = 75,
+      ["speed"] = 30,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Lick",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Slam",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Body Slam",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Iron Tail",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Squishy Licking",
+        ["cooldown"] = 32,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Tongue Hook",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Belly Drum",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Protect",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Koffing"] = {
+    ["dex"] = 109,
+    ["name"] = "Koffing",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 65,
+      ["def"] = 95,
+      ["spatk"] = 60,
+      ["spdef"] = 45,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 190,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Mud Bomb",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Bomb",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Poison Gas",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Selfdestruction",
+        ["cooldown"] = 280,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Weezing"] = {
+    ["dex"] = 110,
+    ["name"] = "Weezing",
+    ["types"] = {
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 90,
+      ["def"] = 120,
+      ["spatk"] = 85,
+      ["spdef"] = 70,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Acid",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sludge",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Poison Gas",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Sludge Bomb",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Venoshock",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Mortal Gas",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Smog",
+        ["cooldown"] = 20,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Clear Smog",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Selfdestruction",
+        ["cooldown"] = 280,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Rhyhorn"] = {
+    ["dex"] = 111,
+    ["name"] = "Rhyhorn",
+    ["types"] = {
+      "ground",
+      "rock",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 85,
+      ["def"] = 95,
+      ["spatk"] = 30,
+      ["spdef"] = 30,
+      ["speed"] = 25,
+    },
+    ["captureRate"] = 120,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Stone Edge",
+        ["cooldown"] = 20,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Dig",
+        ["cooldown"] = 40,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Bulldoze",
+        ["cooldown"] = 45,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Drill Run",
+        ["cooldown"] = 35,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Rhydon"] = {
+    ["dex"] = 112,
+    ["name"] = "Rhydon",
+    ["types"] = {
+      "ground",
+      "rock",
+    },
+    ["baseStats"] = {
+      ["hp"] = 105,
+      ["atk"] = 130,
+      ["def"] = 120,
+      ["spatk"] = 45,
+      ["spdef"] = 45,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Horn Drill",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Horn Burst",
+        ["cooldown"] = 8,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Earth Power",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ground Collapse",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Chansey"] = {
+    ["dex"] = 113,
+    ["name"] = "Chansey",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 250,
+      ["atk"] = 5,
+      ["def"] = 5,
+      ["spatk"] = 35,
+      ["spdef"] = 105,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 30,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Double Slap",
+        ["cooldown"] = 5,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Egg Bomb",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Great Love",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Disarming Voice",
+        ["cooldown"] = 38,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Healing Wish",
+        ["cooldown"] = 60,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Emergency Call",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Protection",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Egg Rain",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Helping Hand",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Tangela"] = {
+    ["dex"] = 114,
+    ["name"] = "Tangela",
+    ["types"] = {
+      "grass",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 55,
+      ["def"] = 115,
+      ["spatk"] = 100,
+      ["spdef"] = 40,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Seed Bomb",
+        ["cooldown"] = 30,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 8,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Power Whip",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 50,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Stun Spore",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Kangaskhan"] = {
+    ["dex"] = 115,
+    ["name"] = "Kangaskhan",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 105,
+      ["atk"] = 95,
+      ["def"] = 80,
+      ["spatk"] = 40,
+      ["spdef"] = 80,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Dizzy Punch",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Mega Punch",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Crunch",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sucker Punch",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Comet Punch",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Epicenter",
+        ["cooldown"] = 70,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Horsea"] = {
+    ["dex"] = 116,
+    ["name"] = "Horsea",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 40,
+      ["def"] = 70,
+      ["spatk"] = 70,
+      ["spdef"] = 25,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 225,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 30,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Seadra"] = {
+    ["dex"] = 117,
+    ["name"] = "Seadra",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 65,
+      ["def"] = 95,
+      ["spatk"] = 95,
+      ["spdef"] = 45,
+      ["speed"] = 85,
+    },
+    ["captureRate"] = 75,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Smokescreen",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bubble",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 20,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 25,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Dragon Pulse",
+        ["cooldown"] = 45,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Hydro Cannon",
+        ["cooldown"] = 45,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Goldeen"] = {
+    ["dex"] = 118,
+    ["name"] = "Goldeen",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 67,
+      ["def"] = 60,
+      ["spatk"] = 35,
+      ["spdef"] = 50,
+      ["speed"] = 63,
+    },
+    ["captureRate"] = 225,
+    ["minPlayerLevel"] = 10,
+    ["moves"] = {
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 25,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 10,
+      },
+      {
+        ["name"] = "Horn Drill",
+        ["cooldown"] = 40,
+        ["level"] = 10,
+      },
+    },
+  },
+  ["Seaking"] = {
+    ["dex"] = 119,
+    ["name"] = "Seaking",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 92,
+      ["def"] = 65,
+      ["spatk"] = 65,
+      ["spdef"] = 80,
+      ["speed"] = 68,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 50,
+    ["moves"] = {
+      {
+        ["name"] = "Supersonic",
+        ["cooldown"] = 25,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 15,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Soak",
+        ["cooldown"] = 25,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Waterfall",
+        ["cooldown"] = 35,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Horn Drill",
+        ["cooldown"] = 40,
+        ["level"] = 50,
+      },
+      {
+        ["name"] = "Aqua Ring",
+        ["cooldown"] = 60,
+        ["level"] = 50,
+      },
+    },
+  },
+  ["Staryu"] = {
+    ["dex"] = 120,
+    ["name"] = "Staryu",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 45,
+      ["def"] = 55,
+      ["spatk"] = 70,
+      ["spdef"] = 55,
+      ["speed"] = 85,
+    },
+    ["captureRate"] = 225,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Psyshock",
+        ["cooldown"] = 30,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 60,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Starmie"] = {
+    ["dex"] = 121,
+    ["name"] = "Starmie",
+    ["types"] = {
+      "water",
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 75,
+      ["def"] = 85,
+      ["spatk"] = 100,
+      ["spdef"] = 85,
+      ["speed"] = 115,
+    },
+    ["captureRate"] = 60,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psy Ball",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rapid Spin",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psyshock",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 80,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 80,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psy Ball",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rapid Spin",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psyshock",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Mr.Mime"] = {
+    ["dex"] = 122,
+    ["name"] = "Mr.Mime",
+    ["types"] = {
+      "psychic",
+      "fairy",
+    },
+    ["baseStats"] = {
+      ["hp"] = 40,
+      ["atk"] = 45,
+      ["def"] = 65,
+      ["spatk"] = 100,
+      ["spdef"] = 120,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Play Rough",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Dazzling Gleam",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Synchronoise",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Mimic Wall",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Expanding Force",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Scyther"] = {
+    ["dex"] = 123,
+    ["name"] = "Scyther",
+    ["types"] = {
+      "bug",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 70,
+      ["atk"] = 110,
+      ["def"] = 80,
+      ["spatk"] = 55,
+      ["spdef"] = 80,
+      ["speed"] = 105,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "X-Scissor",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Team Slice",
+        ["cooldown"] = 5,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Quick Guard",
+        ["cooldown"] = 70,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Jynx"] = {
+    ["dex"] = 124,
+    ["name"] = "Jynx",
+    ["types"] = {
+      "ice",
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 50,
+      ["def"] = 35,
+      ["spatk"] = 115,
+      ["spdef"] = 95,
+      ["speed"] = 95,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Lovely Kiss",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Draining Kiss",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psywave",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psy Pulse",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Punch",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psychock",
+        ["cooldown"] = 45,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Mean Look",
+        ["cooldown"] = 80,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Electabuzz"] = {
+    ["dex"] = 125,
+    ["name"] = "Electabuzz",
+    ["types"] = {
+      "electric",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 83,
+      ["def"] = 57,
+      ["spatk"] = 95,
+      ["spdef"] = 85,
+      ["speed"] = 105,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Thunder Punch",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Thunder Wrath",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Electrify",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Discharge",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Magmar"] = {
+    ["dex"] = 126,
+    ["name"] = "Magmar",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 95,
+      ["def"] = 57,
+      ["spatk"] = 100,
+      ["spdef"] = 85,
+      ["speed"] = 93,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Fire Punch",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Flame Circle",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Lava Plume",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hellfire Storm",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Burning Jealousy",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Endure",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Pinsir"] = {
+    ["dex"] = 127,
+    ["name"] = "Pinsir",
+    ["types"] = {
+      "bug",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 125,
+      ["def"] = 100,
+      ["spatk"] = 55,
+      ["spdef"] = 70,
+      ["speed"] = 85,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Crunch",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Guillotine",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Bind",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Fury Cutter",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Focus Blast",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Revenge",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Brick Break",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Swords Dance",
+        ["cooldown"] = 60,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Tauros"] = {
+    ["dex"] = 128,
+    ["name"] = "Tauros",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 75,
+      ["atk"] = 100,
+      ["def"] = 95,
+      ["spatk"] = 40,
+      ["spdef"] = 70,
+      ["speed"] = 110,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 60,
+    ["moves"] = {
+      {
+        ["name"] = "Horn Attack",
+        ["cooldown"] = 10,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Take Down",
+        ["cooldown"] = 15,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Pursuit",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Thrash",
+        ["cooldown"] = 35,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Hyper Beam",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Giga Impact",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Rest",
+        ["cooldown"] = 60,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Scary Face",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+    },
+  },
+  ["Magikarp"] = {
+    ["dex"] = 129,
+    ["name"] = "Magikarp",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 20,
+      ["atk"] = 10,
+      ["def"] = 55,
+      ["spatk"] = 15,
+      ["spdef"] = 20,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 255,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Splash",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Gyarados"] = {
+    ["dex"] = 130,
+    ["name"] = "Gyarados",
+    ["types"] = {
+      "water",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 95,
+      ["atk"] = 125,
+      ["def"] = 79,
+      ["spatk"] = 60,
+      ["spdef"] = 100,
+      ["speed"] = 81,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Ice Fang",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Crunch",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Dragon Tail",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Dragon Breath",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hydro Cannon",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Lapras"] = {
+    ["dex"] = 131,
+    ["name"] = "Lapras",
+    ["types"] = {
+      "water",
+      "ice",
+    },
+    ["baseStats"] = {
+      ["hp"] = 130,
+      ["atk"] = 85,
+      ["def"] = 80,
+      ["spatk"] = 85,
+      ["spdef"] = 95,
+      ["speed"] = 60,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Body Slam",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Shards",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Powder Snow",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Frost Power",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Ditto"] = {
+    ["dex"] = 132,
+    ["name"] = "Ditto",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 48,
+      ["atk"] = 48,
+      ["def"] = 48,
+      ["spatk"] = 48,
+      ["spdef"] = 48,
+      ["speed"] = 48,
+    },
+    ["captureRate"] = 35,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {},
+  },
+  ["Eevee"] = {
+    ["dex"] = 133,
+    ["name"] = "Eevee",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 55,
+      ["atk"] = 55,
+      ["def"] = 50,
+      ["spatk"] = 45,
+      ["spdef"] = 65,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Sand Attack",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Iron Tail",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Great Love",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Vaporeon"] = {
+    ["dex"] = 134,
+    ["name"] = "Vaporeon",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 130,
+      ["atk"] = 65,
+      ["def"] = 60,
+      ["spatk"] = 110,
+      ["spdef"] = 95,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Tackle",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bubble Beam",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Water Pulse",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Jolteon"] = {
+    ["dex"] = 135,
+    ["name"] = "Jolteon",
+    ["types"] = {
+      "electric",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 65,
+      ["def"] = 60,
+      ["spatk"] = 110,
+      ["spdef"] = 95,
+      ["speed"] = 130,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Charge",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Light Screen",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Pin Missile",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Copycat",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Thunder",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Discharge",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Baton Pass",
+        ["cooldown"] = 60,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Flareon"] = {
+    ["dex"] = 136,
+    ["name"] = "Flareon",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 130,
+      ["def"] = 60,
+      ["spatk"] = 95,
+      ["spdef"] = 110,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Quick Attack",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Incinerate",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Blaze Kick",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Flame Circle",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Lava Plume",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Burning Jealousy",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hellfire Storm",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Porygon"] = {
+    ["dex"] = 137,
+    ["name"] = "Porygon",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 65,
+      ["atk"] = 60,
+      ["def"] = 70,
+      ["spatk"] = 85,
+      ["spdef"] = 75,
+      ["speed"] = 40,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 40,
+    ["moves"] = {
+      {
+        ["name"] = "Cyber Wave",
+        ["cooldown"] = 28,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Cyber Pulse",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Zap Cannon",
+        ["cooldown"] = 25,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Tri-Attack",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 30,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Cyber World",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 15,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 40,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Conversion 2",
+        ["cooldown"] = 10,
+        ["level"] = 40,
+      },
+    },
+  },
+  ["Omanyte"] = {
+    ["dex"] = 138,
+    ["name"] = "Omanyte",
+    ["types"] = {
+      "rock",
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 35,
+      ["atk"] = 40,
+      ["def"] = 100,
+      ["spatk"] = 90,
+      ["spdef"] = 55,
+      ["speed"] = 35,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Rock Blast",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Brine",
+        ["cooldown"] = 20,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Omastar"] = {
+    ["dex"] = 139,
+    ["name"] = "Omastar",
+    ["types"] = {
+      "rock",
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 70,
+      ["atk"] = 60,
+      ["def"] = 125,
+      ["spatk"] = 115,
+      ["spdef"] = 70,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rock Slide",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rollout",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Kabuto"] = {
+    ["dex"] = 140,
+    ["name"] = "Kabuto",
+    ["types"] = {
+      "rock",
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 30,
+      ["atk"] = 80,
+      ["def"] = 90,
+      ["spatk"] = 55,
+      ["spdef"] = 45,
+      ["speed"] = 55,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 20,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Slash",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Stone Edge",
+        ["cooldown"] = 15,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 10,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Liquidation",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 20,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 35,
+        ["level"] = 20,
+      },
+    },
+  },
+  ["Kabutops"] = {
+    ["dex"] = 141,
+    ["name"] = "Kabutops",
+    ["types"] = {
+      "rock",
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 60,
+      ["atk"] = 115,
+      ["def"] = 105,
+      ["spatk"] = 65,
+      ["spdef"] = 70,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Ancient Absorb",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Leech Life",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Aqua Jet",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Mud Shot",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "X-Scissor",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Liquidation",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Aerodactyl"] = {
+    ["dex"] = 142,
+    ["name"] = "Aerodactyl",
+    ["types"] = {
+      "rock",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 80,
+      ["atk"] = 105,
+      ["def"] = 65,
+      ["spatk"] = 60,
+      ["spdef"] = 75,
+      ["speed"] = 130,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Roar",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Super Sonic",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Snorlax"] = {
+    ["dex"] = 143,
+    ["name"] = "Snorlax",
+    ["types"] = {
+      "normal",
+    },
+    ["baseStats"] = {
+      ["hp"] = 160,
+      ["atk"] = 110,
+      ["def"] = 65,
+      ["spatk"] = 65,
+      ["spdef"] = 110,
+      ["speed"] = 30,
+    },
+    ["captureRate"] = 25,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Lick",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Bite",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Crunch",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Punch",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Body Slam",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Giga Impact",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hyper Beam",
+        ["cooldown"] = 45,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Crusher Stomp",
+        ["cooldown"] = 60,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Rest",
+        ["cooldown"] = 80,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Articuno"] = {
+    ["dex"] = 144,
+    ["name"] = "Articuno",
+    ["types"] = {
+      "ice",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 85,
+      ["def"] = 100,
+      ["spatk"] = 95,
+      ["spdef"] = 125,
+      ["speed"] = 85,
+    },
+    ["captureRate"] = 3,
+    ["minPlayerLevel"] = 300,
+    ["moves"] = {
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Ice Shard",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Ice Beam",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 30,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Frost Breath",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Air Cutter",
+        ["cooldown"] = 15,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Pluck",
+        ["cooldown"] = 20,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Powder Snow",
+        ["cooldown"] = 20,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Aerial Ace",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Aurora Beam",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Blizzard",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Iceshock",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Frost Tornado",
+        ["cooldown"] = 60,
+        ["level"] = 300,
+      },
+    },
+  },
+  ["Zapdos"] = {
+    ["dex"] = 145,
+    ["name"] = "Zapdos",
+    ["types"] = {
+      "electric",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 90,
+      ["def"] = 85,
+      ["spatk"] = 125,
+      ["spdef"] = 90,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 3,
+    ["minPlayerLevel"] = 300,
+    ["moves"] = {
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Thunder Shock",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 30,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Thunder Wave",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 15,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Charge Beam",
+        ["cooldown"] = 20,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Electro Ball",
+        ["cooldown"] = 20,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Aerial Ace",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Thunder",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Electric Storm",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Electro Field",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Lightning Hell",
+        ["cooldown"] = 60,
+        ["level"] = 300,
+      },
+    },
+  },
+  ["Moltres"] = {
+    ["dex"] = 146,
+    ["name"] = "Moltres",
+    ["types"] = {
+      "fire",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 90,
+      ["atk"] = 100,
+      ["def"] = 90,
+      ["spatk"] = 125,
+      ["spdef"] = 85,
+      ["speed"] = 90,
+    },
+    ["captureRate"] = 3,
+    ["minPlayerLevel"] = 300,
+    ["moves"] = {
+      {
+        ["name"] = "Peck",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 10,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Drill Peck",
+        ["cooldown"] = 15,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 30,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Air Slash",
+        ["cooldown"] = 15,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Eruption",
+        ["cooldown"] = 30,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Aerial Ace",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Fire Blast",
+        ["cooldown"] = 35,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Blast Burn",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Magma Storm",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Inferno",
+        ["cooldown"] = 40,
+        ["level"] = 300,
+      },
+      {
+        ["name"] = "Hell Fire",
+        ["cooldown"] = 60,
+        ["level"] = 300,
+      },
+    },
+  },
+  ["Dratini"] = {
+    ["dex"] = 147,
+    ["name"] = "Dratini",
+    ["types"] = {
+      "dragon",
+    },
+    ["baseStats"] = {
+      ["hp"] = 41,
+      ["atk"] = 64,
+      ["def"] = 45,
+      ["spatk"] = 50,
+      ["spdef"] = 50,
+      ["speed"] = 50,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 30,
+    ["moves"] = {
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Thunder Wave",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Slam",
+        ["cooldown"] = 15,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Twister",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Hyper Beam",
+        ["cooldown"] = 50,
+        ["level"] = 30,
+      },
+      {
+        ["name"] = "Dragon Breath",
+        ["cooldown"] = 30,
+        ["level"] = 30,
+      },
+    },
+  },
+  ["Dragonair"] = {
+    ["dex"] = 148,
+    ["name"] = "Dragonair",
+    ["types"] = {
+      "dragon",
+    },
+    ["baseStats"] = {
+      ["hp"] = 61,
+      ["atk"] = 84,
+      ["def"] = 65,
+      ["spatk"] = 70,
+      ["spdef"] = 70,
+      ["speed"] = 70,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 80,
+    ["moves"] = {
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Scale Shot",
+        ["cooldown"] = 25,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Dragon Tail",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Wrap",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Aqua Tail",
+        ["cooldown"] = 10,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Dragon Blast",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Twister",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Draco Meteor",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rain Dance",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+    },
+  },
+  ["Dragonite"] = {
+    ["dex"] = 149,
+    ["name"] = "Dragonite",
+    ["types"] = {
+      "dragon",
+      "flying",
+    },
+    ["baseStats"] = {
+      ["hp"] = 91,
+      ["atk"] = 134,
+      ["def"] = 95,
+      ["spatk"] = 100,
+      ["spdef"] = 100,
+      ["speed"] = 80,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 100,
+    ["moves"] = {
+      {
+        ["name"] = "Dragon Claw",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Slam",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Dragon Tail",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Twister",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Draco Meteor",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Inner Focus",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+    },
+  },
+  ["Mewtwo"] = {
+    ["dex"] = 150,
+    ["name"] = "Mewtwo",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 106,
+      ["atk"] = 110,
+      ["def"] = 90,
+      ["spatk"] = 154,
+      ["spdef"] = 90,
+      ["speed"] = 130,
+    },
+    ["captureRate"] = 3,
+    ["minPlayerLevel"] = 500,
+    ["moves"] = {
+      {
+        ["name"] = "Swift",
+        ["cooldown"] = 5,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 5,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Psybeam",
+        ["cooldown"] = 5,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Psywave",
+        ["cooldown"] = 5,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Confusion",
+        ["cooldown"] = 5,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 20,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Psystrike",
+        ["cooldown"] = 30,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Recover",
+        ["cooldown"] = 60,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Barrier",
+        ["cooldown"] = 30,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Fear",
+        ["cooldown"] = 10,
+        ["level"] = 500,
+      },
+      {
+        ["name"] = "Reflect",
+        ["cooldown"] = 10,
+        ["level"] = 500,
+      },
+    },
+  },
+  ["Mew"] = {
+    ["dex"] = 151,
+    ["name"] = "Mew",
+    ["types"] = {
+      "psychic",
+    },
+    ["baseStats"] = {
+      ["hp"] = 100,
+      ["atk"] = 100,
+      ["def"] = 100,
+      ["spatk"] = 100,
+      ["spdef"] = 100,
+      ["speed"] = 100,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 200,
+    ["moves"] = {
+      {
+        ["name"] = "Shadow Ball",
+        ["cooldown"] = 5,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Brine",
+        ["cooldown"] = 5,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 5,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Thunderbolt",
+        ["cooldown"] = 5,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Psychic",
+        ["cooldown"] = 20,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Instant Teleportation",
+        ["cooldown"] = 10,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Hydro Cannon",
+        ["cooldown"] = 35,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 35,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 35,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Metronome",
+        ["cooldown"] = 35,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Barrier",
+        ["cooldown"] = 30,
+        ["level"] = 200,
+      },
+      {
+        ["name"] = "Reflect",
+        ["cooldown"] = 10,
+        ["level"] = 200,
+      },
+    },
+  },
+  ["Baby Bulbasaur"] = {
+    ["name"] = "Baby Bulbasaur",
+    ["types"] = {
+      "grass",
+      "poison",
+    },
+    ["baseStats"] = {
+      ["hp"] = 45,
+      ["atk"] = 49,
+      ["def"] = 49,
+      ["spatk"] = 65,
+      ["spdef"] = 65,
+      ["speed"] = 45,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Tackle",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Razor Leaf",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Vine Whip",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Poison Powder",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Baby Charmander"] = {
+    ["name"] = "Baby Charmander",
+    ["types"] = {
+      "fire",
+    },
+    ["baseStats"] = {
+      ["hp"] = 39,
+      ["atk"] = 52,
+      ["def"] = 43,
+      ["spatk"] = 60,
+      ["spdef"] = 50,
+      ["speed"] = 65,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Scratch",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Ember",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Flamethrower",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Fire Ball",
+        ["cooldown"] = 25,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Rage",
+        ["cooldown"] = 30,
+        ["level"] = 1,
+      },
+    },
+  },
+  ["Baby Squirtle"] = {
+    ["name"] = "Baby Squirtle",
+    ["types"] = {
+      "water",
+    },
+    ["baseStats"] = {
+      ["hp"] = 44,
+      ["atk"] = 48,
+      ["def"] = 65,
+      ["spatk"] = 50,
+      ["spdef"] = 64,
+      ["speed"] = 43,
+    },
+    ["captureRate"] = 45,
+    ["minPlayerLevel"] = 1,
+    ["moves"] = {
+      {
+        ["name"] = "Headbutt",
+        ["cooldown"] = 15,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Bubbles",
+        ["cooldown"] = 10,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Water Gun",
+        ["cooldown"] = 20,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Water Ball",
+        ["cooldown"] = 25,
+        ["level"] = 1,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 30,
+        ["level"] = 1,
+      },
+    },
+  },
+}
+
+PokemonEvolutions = {
+  ["Bulbasaur"] = {
+    {
+      ["to"] = "Ivysaur",
+      ["stones"] = {
+        {
+          ["stone"] = "Leaf Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Ivysaur"] = {
+    {
+      ["to"] = "Venusaur",
+      ["stones"] = {
+        {
+          ["stone"] = "Leaf Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Charmander"] = {
+    {
+      ["to"] = "Charmeleon",
+      ["stones"] = {
+        {
+          ["stone"] = "Fire Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Charmeleon"] = {
+    {
+      ["to"] = "Charizard",
+      ["stones"] = {
+        {
+          ["stone"] = "Fire Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Feather Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Squirtle"] = {
+    {
+      ["to"] = "Wartortle",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Wartortle"] = {
+    {
+      ["to"] = "Blastoise",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Caterpie"] = {
+    {
+      ["to"] = "Metapod",
+      ["stones"] = {
+        {
+          ["stone"] = "Cocoon Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Metapod"] = {
+    {
+      ["to"] = "Butterfree",
+      ["stones"] = {
+        {
+          ["stone"] = "Cocoon Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Weedle"] = {
+    {
+      ["to"] = "Kakuna",
+      ["stones"] = {
+        {
+          ["stone"] = "Cocoon Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Kakuna"] = {
+    {
+      ["to"] = "Beedrill",
+      ["stones"] = {
+        {
+          ["stone"] = "Cocoon Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Pidgey"] = {
+    {
+      ["to"] = "Pidgeotto",
+      ["stones"] = {
+        {
+          ["stone"] = "Feather Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Pidgeotto"] = {
+    {
+      ["to"] = "Pidgeot",
+      ["stones"] = {
+        {
+          ["stone"] = "Feather Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Rattata"] = {
+    {
+      ["to"] = "Raticate",
+      ["stones"] = {
+        {
+          ["stone"] = "Heart Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Spearow"] = {
+    {
+      ["to"] = "Fearow",
+      ["stones"] = {
+        {
+          ["stone"] = "Feather Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Ekans"] = {
+    {
+      ["to"] = "Arbok",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Pikachu"] = {
+    {
+      ["to"] = "Raichu",
+      ["stones"] = {
+        {
+          ["stone"] = "Thunder Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Sandshrew"] = {
+    {
+      ["to"] = "Sandslash",
+      ["stones"] = {
+        {
+          ["stone"] = "Earth Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Nidorina"] = {
+    {
+      ["to"] = "Nidoqueen",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Earth Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Nidorino"] = {
+    {
+      ["to"] = "Nidoking",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Earth Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Clefairy"] = {
+    {
+      ["to"] = "Clefable",
+      ["stones"] = {
+        {
+          ["stone"] = "Heart Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Vulpix"] = {
+    {
+      ["to"] = "Ninetales",
+      ["stones"] = {
+        {
+          ["stone"] = "Fire Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Jigglypuff"] = {
+    {
+      ["to"] = "Wigglytuff",
+      ["stones"] = {
+        {
+          ["stone"] = "Heart Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Zubat"] = {
+    {
+      ["to"] = "Golbat",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Oddish"] = {
+    {
+      ["to"] = "Gloom",
+      ["stones"] = {
+        {
+          ["stone"] = "Leaf Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Gloom"] = {
+    {
+      ["to"] = "Vileplume",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Paras"] = {
+    {
+      ["to"] = "Parasect",
+      ["stones"] = {
+        {
+          ["stone"] = "Cocoon Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Venonat"] = {
+    {
+      ["to"] = "Venomoth",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Cocoon Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Diglett"] = {
+    {
+      ["to"] = "Dugtrio",
+      ["stones"] = {
+        {
+          ["stone"] = "Earth Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Meowth"] = {
+    {
+      ["to"] = "Persian",
+      ["stones"] = {
+        {
+          ["stone"] = "Heart Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Psyduck"] = {
+    {
+      ["to"] = "Golduck",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Enigma Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Mankey"] = {
+    {
+      ["to"] = "Primeape",
+      ["stones"] = {
+        {
+          ["stone"] = "Punch Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Growlithe"] = {
+    {
+      ["to"] = "Arcanine",
+      ["stones"] = {
+        {
+          ["stone"] = "Crystal Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Fire Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Poliwag"] = {
+    {
+      ["to"] = "Poliwhirl",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Poliwhirl"] = {
+    {
+      ["to"] = "Poliwrath",
+      ["stones"] = {
+        {
+          ["stone"] = "Punch Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Abra"] = {
+    {
+      ["to"] = "Kadabra",
+      ["stones"] = {
+        {
+          ["stone"] = "Enigma Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Kadabra"] = {
+    {
+      ["to"] = "Alakazam",
+      ["stones"] = {
+        {
+          ["stone"] = "Enigma Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Machop"] = {
+    {
+      ["to"] = "Machoke",
+      ["stones"] = {
+        {
+          ["stone"] = "Punch Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Machoke"] = {
+    {
+      ["to"] = "Machamp",
+      ["stones"] = {
+        {
+          ["stone"] = "Punch Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Bellsprout"] = {
+    {
+      ["to"] = "Weepinbell",
+      ["stones"] = {
+        {
+          ["stone"] = "Leaf Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Weepinbell"] = {
+    {
+      ["to"] = "Victreebel",
+      ["stones"] = {
+        {
+          ["stone"] = "Leaf Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Tentacool"] = {
+    {
+      ["to"] = "Tentacruel",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Geodude"] = {
+    {
+      ["to"] = "Graveler",
+      ["stones"] = {
+        {
+          ["stone"] = "Rock Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Graveler"] = {
+    {
+      ["to"] = "Golem",
+      ["stones"] = {
+        {
+          ["stone"] = "Rock Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Ponyta"] = {
+    {
+      ["to"] = "Rapidash",
+      ["stones"] = {
+        {
+          ["stone"] = "Fire Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Slowpoke"] = {
+    {
+      ["to"] = "Slowbro",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Magnemite"] = {
+    {
+      ["to"] = "Magneton",
+      ["stones"] = {
+        {
+          ["stone"] = "Thunder Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Doduo"] = {
+    {
+      ["to"] = "Dodrio",
+      ["stones"] = {
+        {
+          ["stone"] = "Feather Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Seel"] = {
+    {
+      ["to"] = "Dewgong",
+      ["stones"] = {
+        {
+          ["stone"] = "Ice Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Grimer"] = {
+    {
+      ["to"] = "Muk",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Shellder"] = {
+    {
+      ["to"] = "Cloyster",
+      ["stones"] = {
+        {
+          ["stone"] = "Ice Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Gastly"] = {
+    {
+      ["to"] = "Haunter",
+      ["stones"] = {
+        {
+          ["stone"] = "Darkness Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Haunter"] = {
+    {
+      ["to"] = "Gengar",
+      ["stones"] = {
+        {
+          ["stone"] = "Darkness Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Drowzee"] = {
+    {
+      ["to"] = "Hypno",
+      ["stones"] = {
+        {
+          ["stone"] = "Enigma Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Krabby"] = {
+    {
+      ["to"] = "Kingler",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Voltorb"] = {
+    {
+      ["to"] = "Electrode",
+      ["stones"] = {
+        {
+          ["stone"] = "Thunder Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Exeggcute"] = {
+    {
+      ["to"] = "Exeggutor",
+      ["stones"] = {
+        {
+          ["stone"] = "Leaf Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+    {
+      ["to"] = "Exeggutor",
+      ["stones"] = {
+        {
+          ["stone"] = "Enigma Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Cubone"] = {
+    {
+      ["to"] = "Marowak",
+      ["stones"] = {
+        {
+          ["stone"] = "Earth Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Koffing"] = {
+    {
+      ["to"] = "Weezing",
+      ["stones"] = {
+        {
+          ["stone"] = "Venom Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Rhyhorn"] = {
+    {
+      ["to"] = "Rhydon",
+      ["stones"] = {
+        {
+          ["stone"] = "Rock Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Earth Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Horsea"] = {
+    {
+      ["to"] = "Seadra",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Goldeen"] = {
+    {
+      ["to"] = "Seaking",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Staryu"] = {
+    {
+      ["to"] = "Starmie",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Magikarp"] = {
+    {
+      ["to"] = "Gyarados",
+      ["stones"] = {
+        {
+          ["stone"] = "Crystal Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Eevee"] = {
+    {
+      ["to"] = "Vaporeon",
+      ["stones"] = {
+        {
+          ["stone"] = "Water Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+    {
+      ["to"] = "Jolteon",
+      ["stones"] = {
+        {
+          ["stone"] = "Thunder Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+    {
+      ["to"] = "Flareon",
+      ["stones"] = {
+        {
+          ["stone"] = "Fire Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+  ["Omanyte"] = {
+    {
+      ["to"] = "Omastar",
+      ["stones"] = {
+        {
+          ["stone"] = "Rock Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Crystal Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Kabuto"] = {
+    {
+      ["to"] = "Kabutops",
+      ["stones"] = {
+        {
+          ["stone"] = "Rock Stone",
+          ["qty"] = 1,
+        },
+        {
+          ["stone"] = "Crystal Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Dratini"] = {
+    {
+      ["to"] = "Dragonair",
+      ["stones"] = {
+        {
+          ["stone"] = "Crystal Stone",
+          ["qty"] = 1,
+        },
+      },
+    },
+  },
+  ["Dragonair"] = {
+    {
+      ["to"] = "Dragonite",
+      ["stones"] = {
+        {
+          ["stone"] = "Crystal Stone",
+          ["qty"] = 2,
+        },
+      },
+    },
+  },
+}
+
+PokemonTypes = {
+  ["normal"] = {
+    ["superEffective"] = {},
+    ["notVeryEffective"] = {
+      "rock",
+      "steel",
+    },
+    ["immune"] = {
+      "ghost",
+    },
+  },
+  ["fighting"] = {
+    ["superEffective"] = {
+      "normal",
+      "rock",
+      "steel",
+      "ice",
+      "dark",
+    },
+    ["notVeryEffective"] = {
+      "flying",
+      "poison",
+      "bug",
+      "psychic",
+      "fairy",
+    },
+    ["immune"] = {
+      "ghost",
+    },
+  },
+  ["flying"] = {
+    ["superEffective"] = {
+      "fighting",
+      "bug",
+      "grass",
+    },
+    ["notVeryEffective"] = {
+      "rock",
+      "steel",
+      "electric",
+    },
+    ["immune"] = {},
+  },
+  ["poison"] = {
+    ["superEffective"] = {
+      "grass",
+      "fairy",
+    },
+    ["notVeryEffective"] = {
+      "poison",
+      "ground",
+      "rock",
+      "ghost",
+    },
+    ["immune"] = {
+      "steel",
+    },
+  },
+  ["ground"] = {
+    ["superEffective"] = {
+      "poison",
+      "rock",
+      "steel",
+      "fire",
+      "electric",
+    },
+    ["notVeryEffective"] = {
+      "bug",
+      "grass",
+    },
+    ["immune"] = {
+      "flying",
+    },
+  },
+  ["rock"] = {
+    ["superEffective"] = {
+      "flying",
+      "bug",
+      "fire",
+      "ice",
+    },
+    ["notVeryEffective"] = {
+      "fighting",
+      "ground",
+      "steel",
+    },
+    ["immune"] = {},
+  },
+  ["bug"] = {
+    ["superEffective"] = {
+      "grass",
+      "psychic",
+      "dark",
+    },
+    ["notVeryEffective"] = {
+      "fighting",
+      "flying",
+      "poison",
+      "ghost",
+      "steel",
+      "fire",
+      "fairy",
+    },
+    ["immune"] = {},
+  },
+  ["ghost"] = {
+    ["superEffective"] = {
+      "ghost",
+      "psychic",
+    },
+    ["notVeryEffective"] = {
+      "dark",
+    },
+    ["immune"] = {
+      "normal",
+    },
+  },
+  ["steel"] = {
+    ["superEffective"] = {
+      "rock",
+      "ice",
+      "fairy",
+    },
+    ["notVeryEffective"] = {
+      "steel",
+      "fire",
+      "water",
+      "electric",
+    },
+    ["immune"] = {},
+  },
+  ["fire"] = {
+    ["superEffective"] = {
+      "bug",
+      "steel",
+      "grass",
+      "ice",
+    },
+    ["notVeryEffective"] = {
+      "rock",
+      "fire",
+      "water",
+      "dragon",
+    },
+    ["immune"] = {},
+  },
+  ["water"] = {
+    ["superEffective"] = {
+      "ground",
+      "rock",
+      "fire",
+    },
+    ["notVeryEffective"] = {
+      "water",
+      "grass",
+      "dragon",
+    },
+    ["immune"] = {},
+  },
+  ["grass"] = {
+    ["superEffective"] = {
+      "ground",
+      "rock",
+      "water",
+    },
+    ["notVeryEffective"] = {
+      "flying",
+      "poison",
+      "bug",
+      "steel",
+      "fire",
+      "grass",
+      "dragon",
+    },
+    ["immune"] = {},
+  },
+  ["electric"] = {
+    ["superEffective"] = {
+      "flying",
+      "water",
+    },
+    ["notVeryEffective"] = {
+      "grass",
+      "electric",
+      "dragon",
+    },
+    ["immune"] = {
+      "ground",
+    },
+  },
+  ["psychic"] = {
+    ["superEffective"] = {
+      "fighting",
+      "poison",
+    },
+    ["notVeryEffective"] = {
+      "steel",
+      "psychic",
+    },
+    ["immune"] = {
+      "dark",
+    },
+  },
+  ["ice"] = {
+    ["superEffective"] = {
+      "flying",
+      "ground",
+      "grass",
+      "dragon",
+    },
+    ["notVeryEffective"] = {
+      "steel",
+      "fire",
+      "water",
+      "ice",
+    },
+    ["immune"] = {},
+  },
+  ["dragon"] = {
+    ["superEffective"] = {
+      "dragon",
+    },
+    ["notVeryEffective"] = {
+      "steel",
+    },
+    ["immune"] = {
+      "fairy",
+    },
+  },
+  ["dark"] = {
+    ["superEffective"] = {
+      "ghost",
+      "psychic",
+    },
+    ["notVeryEffective"] = {
+      "fighting",
+      "dark",
+      "fairy",
+    },
+    ["immune"] = {},
+  },
+  ["fairy"] = {
+    ["superEffective"] = {
+      "fighting",
+      "dragon",
+      "dark",
+    },
+    ["notVeryEffective"] = {
+      "poison",
+      "steel",
+      "fire",
+    },
+    ["immune"] = {},
+  },
+}
+
