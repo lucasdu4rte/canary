@@ -33,26 +33,38 @@ local function trainerName(guid)
 end
 
 --- Monta a descrição a partir do item, sempre na hora.
--- Nada é gravado: HP máximo depende do level do portador, então texto
--- congelado mente no primeiro level up.
+--
+-- ⚠️ **Não começa com "You see"**: quem prefixa isso é o `on_look.lua` do
+-- datapack (`return "You see " .. descriptionText`). Incluir aqui produz
+-- "You see You see Charizard." — foi o que aconteceu na primeira versão.
+--
+-- HP ficou de fora de propósito: número de vida no look não ajuda a decidir
+-- nada, e o valor útil (quem é o dono) fica enterrado no meio.
 function Pokemon.describe(mon)
-	local linhas = { string.format("You see %s.", mon.species) }
+	local linhas = { mon.species .. "." }
 
 	if mon.fainted then
 		linhas[#linhas + 1] = "It is fainted."
 	end
 
-	if mon.hp then
-		-- Com portador: números absolutos fazem sentido.
-		linhas[#linhas + 1] = string.format("HP: %d / %d", mon.hp, mon.stats.hp)
+	if mon.holder then
+		-- Dono atual é simplesmente quem está com o item — no modelo de
+		-- item-guarda-tudo não existe coluna de dono para divergir disso.
+		linhas[#linhas + 1] = string.format("It belongs to %s.", mon.holder:getName())
+
+		-- Só vale a pena dizer o treinador original quando ele **não** é o
+		-- dono atual: aí a frase conta uma história (mudou de mão). Repetir o
+		-- mesmo nome duas vezes é ruído.
+		if mon.holder:getGuid() ~= mon.ot then
+			linhas[#linhas + 1] = string.format("Originally caught by %s.", trainerName(mon.ot))
+		end
 	else
-		-- Sem portador (chão, depot): HP absoluto seria um número inventado,
-		-- porque não há level de quem o carregue. Fração é honesta.
-		linhas[#linhas + 1] = string.format("HP: %d%%", math.floor(mon.hpRatio * 100 + 0.5))
+		-- Sem portador (chão, depot): não há dono a apontar, então o único
+		-- nome honesto é o do treinador original.
+		linhas[#linhas + 1] = string.format("Originally caught by %s.", trainerName(mon.ot))
 	end
 
-	linhas[#linhas + 1] = string.format("Original trainer: %s.", trainerName(mon.ot))
-	return table.concat(linhas, "\n")
+	return table.concat(linhas, " ")
 end
 
 function Item.getDescription(self, distance)

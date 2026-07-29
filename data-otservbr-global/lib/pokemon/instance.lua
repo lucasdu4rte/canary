@@ -72,7 +72,7 @@ end
 -- jogador. Quem atravessa para o Player é `getParent`.
 local MAX_DEPTH = 8 -- container dentro de container; oito é folgado
 
-local function holderLevel(item)
+local function holderOf(item)
 	local node = item
 	for _ = 1, MAX_DEPTH do
 		local parent = node.getParent and node:getParent() or nil
@@ -80,7 +80,7 @@ local function holderLevel(item)
 			return nil
 		end
 		if parent.isPlayer and parent:isPlayer() then
-			return parent:getLevel()
+			return parent
 		end
 		node = parent
 	end
@@ -128,10 +128,11 @@ function Pokemon.read(item)
 	-- Stats só existem em relação a um treinador. Sem portador — ball no chão,
 	-- no depot — devolvemos a fração e mais nada: HP absoluto sem dono é um
 	-- número inventado.
-	local level = holderLevel(item)
-	if level then
-		out.holderLevel = level
-		out.stats = Pokemon.calcStats(species, level)
+	local holder = holderOf(item)
+	if holder then
+		out.holder = holder
+		out.holderLevel = holder:getLevel()
+		out.stats = Pokemon.calcStats(species, out.holderLevel)
 		out.hp = math.floor(out.stats.hp * out.hpRatio)
 	end
 
