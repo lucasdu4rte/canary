@@ -16,10 +16,25 @@ Pokemon = Pokemon or {}
 Pokemon.SCHEMA_VERSION = 1
 
 -- Placeholder até a trilha de arte entregar os 308 ids por espécie.
--- 43901 "toy ball": tem a flag `take` no appearances e não é stackable, que
--- são os dois requisitos. Escolher por nome não basta — 10340 "heavy ball"
--- parece servir e **não é pegável**, então nenhum container aceita.
-Pokemon.PLACEHOLDER_BALL_ID = 43901
+--
+-- 23488 "surprise cube": usa e algo sai de dentro, que é o papel da ball.
+-- O sprite continua errado — sprite certo é a Task 4. O que importa aqui são
+-- quatro requisitos, e cada um derrubou um candidato:
+--   take = true        -> sem isto nenhum container aceita  (matou 10340)
+--   usable = true      -> é o que faz aparecer "Use"
+--   multiuse = false   -> com ele o cliente só oferece "Use with ..."
+--   sem script no id   -> id já reivindicado faz um dos dois Actions ser
+--                         **rejeitado em silêncio**, e o item responde
+--                         "cannot use this object"
+--
+-- ⚠️ Achar um id livre é mais difícil do que parece, por dois motivos que me
+-- custaram três tentativas:
+--   1. `:id(a, b)` no Canary é **intervalo**, não dois ids  (matou 19065)
+--   2. scripts também reivindicam por **tabela**, sem `:id()` nenhum — o
+--      `decay_to.lua` tem `[37111] = 37112`             (matou 37111)
+-- Contando as duas coisas, 28.428 ids do datapack estão ocupados. Sobram 224
+-- que são take+usable sem multiuse, e **nenhum deles parece uma bola**.
+Pokemon.PLACEHOLDER_BALL_ID = 23488
 
 -- Namespace dos MonsterTypes. O Canary registra como "<variant>|<nome>" e
 -- mantém o nome de exibição, o que evita colisão com monstro do Tibia de

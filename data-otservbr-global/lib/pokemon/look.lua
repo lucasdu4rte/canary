@@ -41,7 +41,11 @@ end
 -- HP ficou de fora de propósito: número de vida no look não ajuda a decidir
 -- nada, e o valor útil (quem é o dono) fica enterrado no meio.
 function Pokemon.describe(mon)
-	local linhas = { mon.species .. "." }
+	-- "a pokeball" é fixo enquanto só existe um tipo de ball. Quando a Fase 5
+	-- trouxer great/super/ultra, isto vira o nome do tipo — e é por isso que a
+	-- frase já separa o recipiente do conteúdo em vez de dizer "You see
+	-- Charizard": a ball é o item, o Pokémon é o que está dentro.
+	local linhas = { "a pokeball. It contains " .. mon.species .. "." }
 
 	if mon.fainted then
 		linhas[#linhas + 1] = "It is fainted."
