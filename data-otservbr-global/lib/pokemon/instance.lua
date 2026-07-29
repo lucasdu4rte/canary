@@ -135,7 +135,7 @@ end
 function Pokemon.create(player, speciesName, ballItemId, destino)
 	local species = PokemonSpecies[speciesName]
 	if not species then
-		return nil, "espécie desconhecida: " .. tostring(speciesName)
+		return nil, "unknown species: " .. tostring(speciesName)
 	end
 
 	local id = ballItemId or Pokemon.PLACEHOLDER_BALL_ID
@@ -150,7 +150,7 @@ function Pokemon.create(player, speciesName, ballItemId, destino)
 		item = player:addItem(id, 1, false)
 	end
 	if not item or item == false then
-		return nil, "sem espaço"
+		return nil, "no room to carry it"
 	end
 
 	local uid = newUid()

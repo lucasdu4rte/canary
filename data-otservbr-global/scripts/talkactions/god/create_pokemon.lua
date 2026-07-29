@@ -43,7 +43,7 @@ function createPokemon.onSay(player, words, param)
 
 	local mon = Pokemon.read(item)
 	player:sendTextMessage(MESSAGE_ADMINISTRATOR, string.format(
-		"Created %s (uid %.0f) — HP %d/%d at your level %d.",
+		"Created %s (uid %.0f) - HP %d/%d at your level %d.",
 		mon.species, mon.uid, mon.hp, mon.stats.hp, mon.holderLevel))
 	player:getPosition():sendMagicEffect(CONST_ME_MAGIC_GREEN)
 	return true
