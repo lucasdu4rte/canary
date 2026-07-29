@@ -18,3 +18,5 @@ dofile(DATA_DIRECTORY .. "/lib/pokemon/catalog.lua")
 
 -- Pokemon libraries (order matters: everything below consumes the catalogue)
 dofile(DATA_DIRECTORY .. "/lib/pokemon/stats.lua")
+dofile(DATA_DIRECTORY .. "/lib/pokemon/instance.lua")
+dofile(DATA_DIRECTORY .. "/lib/pokemon/look.lua")
