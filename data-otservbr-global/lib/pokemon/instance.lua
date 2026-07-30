@@ -183,7 +183,9 @@ function Pokemon.create(player, speciesName, ballItemId, destination)
 		return nil, "unknown species: " .. tostring(speciesName)
 	end
 
-	local id = ballItemId or Pokemon.PLACEHOLDER_BALL_ID
+	-- Born with the species' own sprite. The placeholder is the fallback for
+	-- the two species the artwork does not cover, not the normal case.
+	local id = ballItemId or Pokemon.visualId(speciesName, "alive") or Pokemon.PLACEHOLDER_BALL_ID
 
 	local item
 	if destination then
@@ -216,6 +218,31 @@ function Pokemon.create(player, speciesName, ballItemId, destination)
 	return item
 end
 
+--- Every attribute, as a plain table.
+--
+-- Exists for `syncVisual`, which changes the item's id and then puts the
+-- attributes back. It lives here rather than there because the field list
+-- lives here: a snapshot that reads a different set of keys than `read` does
+-- is a Pokemon that loses whatever was added last.
+function Pokemon.snapshot(item)
+	local out = {}
+	for _, field in ipairs(FIELDS) do
+		out[field.key] = item:getCustomAttribute(field.key)
+	end
+	return out
+end
+
+--- Put a snapshot back, skipping absent keys so a default is not frozen in.
+function Pokemon.restore(item, snapshot)
+	for _, field in ipairs(FIELDS) do
+		local value = snapshot[field.key]
+		if value ~= nil then
+			item:setCustomAttribute(field.key, value)
+		end
+	end
+	return item
+end
+
 --- Recall: store the health fraction the pokemon came back with.
 function Pokemon.recordReturn(item, hpRatio)
 	assert(hpRatio >= 0.0 and hpRatio <= 1.0, "hpRatio out of 0..1: " .. tostring(hpRatio))
@@ -225,15 +252,19 @@ end
 
 --- Faint. `fainted` and a zero ratio always travel together, which is why they
 -- live inside one operation rather than in the goodwill of the caller.
+--
+-- @return the item, **possibly a different object**: the sprite changes with
+--         the state, and `transform` can replace rather than mutate. Callers
+--         must use the return value.
 function Pokemon.recordFaint(item)
 	item:setCustomAttribute("pokemon_fainted", true)
 	item:setCustomAttribute("pokemon_hp_ratio", 0.0)
-	return item
+	return Pokemon.syncVisual(item)
 end
 
---- Full heal.
+--- Full heal. Same return contract as `recordFaint`.
 function Pokemon.revive(item)
 	item:setCustomAttribute("pokemon_fainted", false)
 	item:setCustomAttribute("pokemon_hp_ratio", 1.0)
-	return item
+	return Pokemon.syncVisual(item)
 end

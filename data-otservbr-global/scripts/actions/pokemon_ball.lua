@@ -32,5 +32,16 @@ function ball.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	return true
 end
 
+-- Every minted id, plus the placeholder the two species without art keep.
+--
+-- Enumerated one by one because `Action:id(...)` is a **list**, not a range:
+-- `luaActionItemId` walks its arguments and `emplace_back`s each
+-- (`action_functions.cpp`). The "in range from id: X, to id: Y" in the
+-- duplicate warning is only the first and last entry of that vector, which
+-- reads like a range and is not one.
+for _, entry in pairs(PokemonVisual or {}) do
+	ball:id(entry.alive)
+	ball:id(entry.fainted)
+end
 ball:id(Pokemon.PLACEHOLDER_BALL_ID)
 ball:register()
