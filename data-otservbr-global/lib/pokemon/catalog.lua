@@ -170,8 +170,33 @@ PokemonSpecies = {
         ["level"] = 80,
       },
       {
+        ["name"] = "Leech Seed",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Bullet Seed",
         ["cooldown"] = 35,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Solar Beam",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Giga Drain",
+        ["cooldown"] = 30,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Petal Blizzard",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sleep Powder",
+        ["cooldown"] = 40,
         ["level"] = 80,
       },
       {
@@ -353,6 +378,16 @@ PokemonSpecies = {
         ["level"] = 80,
       },
       {
+        ["name"] = "Magma Storm",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sunny Day",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Ancient Fury",
         ["cooldown"] = 80,
         ["level"] = 80,
@@ -496,52 +531,7 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Bubbles",
-        ["cooldown"] = 15,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Water Gun",
-        ["cooldown"] = 20,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Water Ball",
-        ["cooldown"] = 25,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Water Pulse",
-        ["cooldown"] = 30,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Muddy Water",
-        ["cooldown"] = 50,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Hydro Cannon",
-        ["cooldown"] = 50,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Withdraw",
-        ["cooldown"] = 40,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Hydro Pump",
-        ["cooldown"] = 50,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Harden",
-        ["cooldown"] = 50,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Headbutt",
-        ["cooldown"] = 20,
+        ["cooldown"] = 8,
         ["level"] = 80,
       },
       {
@@ -983,13 +973,28 @@ PokemonSpecies = {
         ["level"] = 80,
       },
       {
+        ["name"] = "Whirlwind",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Wing Attack",
         ["cooldown"] = 25,
         ["level"] = 80,
       },
       {
+        ["name"] = "Tornado",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Hurricane",
         ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Air Slash",
+        ["cooldown"] = 40,
         ["level"] = 80,
       },
       {
@@ -1313,6 +1318,11 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["moves"] = {
       {
+        ["name"] = "Charm",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
         ["name"] = "Quick Attack",
         ["cooldown"] = 10,
         ["level"] = 60,
@@ -1335,6 +1345,16 @@ PokemonSpecies = {
       {
         ["name"] = "Thunder Punch",
         ["cooldown"] = 30,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Thunder",
+        ["cooldown"] = 50,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Electric Storm",
+        ["cooldown"] = 50,
         ["level"] = 60,
       },
       {
@@ -1389,6 +1409,16 @@ PokemonSpecies = {
       {
         ["name"] = "Dishcarge",
         ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Electric Storm",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Shockwave",
+        ["cooldown"] = 60,
         ["level"] = 80,
       },
     },
@@ -1465,6 +1495,11 @@ PokemonSpecies = {
         ["level"] = 60,
       },
       {
+        ["name"] = "Dig",
+        ["cooldown"] = 18,
+        ["level"] = 60,
+      },
+      {
         ["name"] = "Rollout",
         ["cooldown"] = 40,
         ["level"] = 60,
@@ -1472,6 +1507,16 @@ PokemonSpecies = {
       {
         ["name"] = "Earth Power",
         ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Earthquake",
+        ["cooldown"] = 40,
+        ["level"] = 60,
+      },
+      {
+        ["name"] = "Fissure",
+        ["cooldown"] = 50,
         ["level"] = 60,
       },
       {
@@ -1786,6 +1831,16 @@ PokemonSpecies = {
         ["level"] = 80,
       },
       {
+        ["name"] = "Toxic",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Venoshock",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Sludge Bomb",
         ["cooldown"] = 50,
         ["level"] = 80,
@@ -1875,42 +1930,7 @@ PokemonSpecies = {
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
-        ["cooldown"] = 15,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Doubleslap",
-        ["cooldown"] = 5,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Multi-Slap",
-        ["cooldown"] = 25,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Heart Pound",
-        ["cooldown"] = 30,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Metronome",
-        ["cooldown"] = 50,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Great Love",
-        ["cooldown"] = 40,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Defense Curl",
-        ["cooldown"] = 40,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Protect",
-        ["cooldown"] = 40,
+        ["cooldown"] = 8,
         ["level"] = 80,
       },
       {
@@ -2047,6 +2067,16 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Hellfire Storm",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Inferno",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Burning Jealousy",
         ["cooldown"] = 40,
         ["level"] = 100,
@@ -2139,6 +2169,11 @@ PokemonSpecies = {
       {
         ["name"] = "Play Rough",
         ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Sing",
+        ["cooldown"] = 60,
         ["level"] = 80,
       },
       {
@@ -2781,6 +2816,11 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Fissure",
+        ["cooldown"] = 50,
+        ["level"] = 40,
+      },
+      {
+        ["name"] = "Earthquake",
         ["cooldown"] = 50,
         ["level"] = 40,
       },
@@ -3552,6 +3592,26 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Psychic",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Kinesis",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Psychokinesis",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Calm Mind",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Recover",
         ["cooldown"] = 180,
         ["level"] = 100,
@@ -3674,12 +3734,42 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["moves"] = {
       {
+        ["name"] = "Triple Punch",
+        ["cooldown"] = 15,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Karate Chop",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Low Kick",
+        ["cooldown"] = 20,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Close Combat",
         ["cooldown"] = 40,
         ["level"] = 80,
       },
       {
         ["name"] = "Revenge",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Brick Break",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Superpower",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Agility",
         ["cooldown"] = 50,
         ["level"] = 80,
       },
@@ -3925,7 +4015,7 @@ PokemonSpecies = {
     ["moves"] = {
       {
         ["name"] = "Wrap",
-        ["cooldown"] = 25,
+        ["cooldown"] = 30,
         ["level"] = 80,
       },
       {
@@ -3935,7 +4025,7 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Bubble Beam",
-        ["cooldown"] = 25,
+        ["cooldown"] = 12,
         ["level"] = 80,
       },
       {
@@ -3950,42 +4040,22 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Venomous Sting",
-        ["cooldown"] = 20,
+        ["cooldown"] = 30,
         ["level"] = 80,
       },
       {
         ["name"] = "Acid Armor",
-        ["cooldown"] = 40,
+        ["cooldown"] = 180,
         ["level"] = 80,
       },
       {
         ["name"] = "Hydro Pump",
-        ["cooldown"] = 60,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Surf",
-        ["cooldown"] = 60,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Screech",
         ["cooldown"] = 50,
         ["level"] = 80,
       },
       {
-        ["name"] = "Bubbles",
-        ["cooldown"] = 10,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Water Pulse",
-        ["cooldown"] = 25,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Water Ball",
-        ["cooldown"] = 25,
+        ["name"] = "Surf",
+        ["cooldown"] = 50,
         ["level"] = 80,
       },
       {
@@ -4197,6 +4267,11 @@ PokemonSpecies = {
         ["level"] = 80,
       },
       {
+        ["name"] = "Flare Blitz",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Fire Spin",
         ["cooldown"] = 50,
         ["level"] = 80,
@@ -4204,6 +4279,16 @@ PokemonSpecies = {
       {
         ["name"] = "Tail Whip",
         ["cooldown"] = 45,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Confide",
+        ["cooldown"] = 45,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Protect",
+        ["cooldown"] = 50,
         ["level"] = 80,
       },
     },
@@ -4818,6 +4903,21 @@ PokemonSpecies = {
         ["cooldown"] = 50,
         ["level"] = 80,
       },
+      {
+        ["name"] = "Swamp Mist",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Poison Touch",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
     },
   },
   ["Shellder"] = {
@@ -5053,6 +5153,11 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["moves"] = {
       {
+        ["name"] = "Creepy Lick",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Shadow Ball",
         ["cooldown"] = 12,
         ["level"] = 100,
@@ -5068,6 +5173,11 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Shadow Storm",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Nightmare",
         ["cooldown"] = 40,
         ["level"] = 100,
@@ -5075,6 +5185,11 @@ PokemonSpecies = {
       {
         ["name"] = "Hypnosis",
         ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Shadow Claw",
+        ["cooldown"] = 50,
         ["level"] = 100,
       },
     },
@@ -5566,6 +5681,11 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Leaf Storm",
+        ["cooldown"] = 60,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Hypnosis",
         ["cooldown"] = 50,
         ["level"] = 100,
@@ -6045,6 +6165,21 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Ground Collapse",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bulldoze",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Fissure",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Scary Face",
         ["cooldown"] = 40,
         ["level"] = 80,
       },
@@ -6552,47 +6687,12 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Hydro Pump",
-        ["cooldown"] = 80,
+        ["cooldown"] = 70,
         ["level"] = 80,
       },
       {
         ["name"] = "Recover",
-        ["cooldown"] = 80,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Swift",
-        ["cooldown"] = 10,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Psy Ball",
-        ["cooldown"] = 10,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Bubble Beam",
-        ["cooldown"] = 25,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Thunderbolt",
-        ["cooldown"] = 20,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Psychic",
-        ["cooldown"] = 30,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Rapid Spin",
-        ["cooldown"] = 40,
-        ["level"] = 80,
-      },
-      {
-        ["name"] = "Psyshock",
-        ["cooldown"] = 50,
+        ["cooldown"] = 120,
         ["level"] = 80,
       },
     },
@@ -6641,6 +6741,11 @@ PokemonSpecies = {
         ["level"] = 80,
       },
       {
+        ["name"] = "Psyusion",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
         ["name"] = "Mimic Wall",
         ["cooldown"] = 20,
         ["level"] = 80,
@@ -6681,8 +6786,38 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 20,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Fury Cutter",
+        ["cooldown"] = 25,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Shredder Team",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Air Slash",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Agility",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Team Slice",
         ["cooldown"] = 5,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Swords Dance",
+        ["cooldown"] = 50,
         ["level"] = 100,
       },
       {
@@ -6751,6 +6886,16 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Blizzard",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Heart Stamp",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Mean Look",
         ["cooldown"] = 80,
         ["level"] = 100,
@@ -6807,6 +6952,16 @@ PokemonSpecies = {
       {
         ["name"] = "Discharge",
         ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Mamaragan",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Vital Spirit",
+        ["cooldown"] = 40,
         ["level"] = 100,
       },
     },
@@ -7061,6 +7216,11 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Splash",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Dragon Breath",
         ["cooldown"] = 35,
         ["level"] = 100,
@@ -7068,6 +7228,16 @@ PokemonSpecies = {
       {
         ["name"] = "Hydro Cannon",
         ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Surf",
+        ["cooldown"] = 50,
         ["level"] = 100,
       },
     },
@@ -7112,6 +7282,21 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Frost Power",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Storm",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Blizzard",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Sing",
         ["cooldown"] = 40,
         ["level"] = 100,
       },
@@ -7223,6 +7408,21 @@ PokemonSpecies = {
       },
       {
         ["name"] = "Water Pulse",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Surf",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Hydro Pump",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Bouncy Bubble",
         ["cooldown"] = 40,
         ["level"] = 80,
       },
@@ -7513,6 +7713,26 @@ PokemonSpecies = {
         ["cooldown"] = 40,
         ["level"] = 80,
       },
+      {
+        ["name"] = "Falling Rocks",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rock Wrecker",
+        ["cooldown"] = 50,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Rain Dance",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
+      {
+        ["name"] = "Harden",
+        ["cooldown"] = 40,
+        ["level"] = 80,
+      },
     },
   },
   ["Kabuto"] = {
@@ -7661,6 +7881,46 @@ PokemonSpecies = {
       {
         ["name"] = "Super Sonic",
         ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Rock Throw",
+        ["cooldown"] = 8,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Rock Slide",
+        ["cooldown"] = 10,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Stone Edge",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ice Fang",
+        ["cooldown"] = 30,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Wing Attack",
+        ["cooldown"] = 35,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Ancient Power",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Falling Rocks",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Hyper Beam",
+        ["cooldown"] = 50,
         ["level"] = 100,
       },
     },
@@ -8131,6 +8391,11 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["moves"] = {
       {
+        ["name"] = "Scale Shot",
+        ["cooldown"] = 15,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Dragon Claw",
         ["cooldown"] = 15,
         ["level"] = 100,
@@ -8146,12 +8411,22 @@ PokemonSpecies = {
         ["level"] = 100,
       },
       {
+        ["name"] = "Dragon Flight",
+        ["cooldown"] = 40,
+        ["level"] = 100,
+      },
+      {
         ["name"] = "Twister",
         ["cooldown"] = 30,
         ["level"] = 100,
       },
       {
         ["name"] = "Draco Meteor",
+        ["cooldown"] = 50,
+        ["level"] = 100,
+      },
+      {
+        ["name"] = "Outrage",
         ["cooldown"] = 50,
         ["level"] = 100,
       },
