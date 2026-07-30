@@ -16,12 +16,12 @@ Pokemon = Pokemon or {}
 -- inventories and there is no database to run a migration against.
 Pokemon.SCHEMA_VERSION = 1
 
--- Placeholder until the art track delivers the 308 ids, one per species and
--- state.
+-- Fallback for the species the artwork does not cover. Every other species is
+-- born on its own minted id -- see `visual.lua`.
 --
 -- 23488 "surprise cube": you use it and something comes out, which is at least
--- the right idea. The sprite is still wrong -- that is Task 4's job. What
--- matters here are four requirements, and each one killed a candidate:
+-- the right idea. What matters are four requirements, and each one killed a
+-- candidate:
 --   take = true         -> without it no container accepts it  (killed 10340)
 --   usable = true       -> this is what makes "Use" appear
 --   multiuse = false    -> with it the client only offers "Use with ..."
@@ -29,13 +29,16 @@ Pokemon.SCHEMA_VERSION = 1
 --                          **rejected silently**, and the item answers
 --                          "cannot use this object"
 --
--- Finding a free id is harder than it looks, for two reasons that cost three
--- attempts:
---   1. `:id(a, b)` in Canary is a **range**, not two ids       (killed 19065)
---   2. scripts also claim ids through **tables**, with no `:id()` at all --
---      `decay_to.lua` has `[37111] = 37112`                    (killed 37111)
--- Counting both, 28,428 datapack ids are taken. Of the 224 that are take and
--- usable without multiuse, **none of them look like a ball**.
+-- Scripts claim ids through **tables** as well, with no `:id()` at all --
+-- `decay_to.lua` has `[37111] = 37112`, which killed 37111. Counting those,
+-- 28,428 datapack ids are taken, and of the 224 that are take and usable
+-- without multiuse, **none of them look like a ball**.
+--
+-- NOTE: this comment used to claim `:id(a, b)` was a range and that it killed
+-- 19065. It is not: `luaActionItemId` walks its arguments and `emplace_back`s
+-- each one, so it is a plain list. The misreading came from the duplicate
+-- warning, which prints `"in range from id: X, to id: Y"` while X and Y are
+-- only the first and last entry of that vector (`actions.cpp:51-59`).
 Pokemon.PLACEHOLDER_BALL_ID = 23488
 
 -- Namespace for the MonsterTypes. Canary registers them as "<variant>|<name>"
