@@ -29,8 +29,29 @@ end
 
 onDeathEvent:register()
 
--- Both are registered at login, which is how Canary binds a creaturescript to
--- a player.
+-- The pokemon itself died: mark the ball fainted.
+--
+-- Registered on the MonsterType rather than on each creature after the summon,
+-- so a pokemon that reaches the map by any other route still faints properly.
+--
+-- Without this the ball keeps the health it had before the fight: the session
+-- entry vanishes on its own when `getActive` finds the creature removed, and
+-- nothing ever writes to the item. Faint would exist only as an API nobody
+-- calls.
+local onFaintEvent = CreatureEvent("PokemonFaint")
+
+function onFaintEvent.onDeath(creature, corpse, killer, mostDamageKiller, unjustified, mostDamageUnjustified)
+	local master = creature:getMaster()
+	if master and master:isPlayer() then
+		Pokemon.faint(master)
+	end
+	return true
+end
+
+onFaintEvent:register()
+
+-- Both player events are registered at login, which is how Canary binds a
+-- creaturescript to a player.
 local onLoginEvent = CreatureEvent("PokemonOnLogin")
 
 function onLoginEvent.onLogin(player)

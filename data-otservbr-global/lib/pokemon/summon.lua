@@ -103,7 +103,17 @@ function Pokemon.recall(player)
 	return true
 end
 
---- Fainting: force the recall and mark the item.
+--- Fainting: drop the session and mark the item.
+--
+-- Two callers with opposite needs, which is why the removal is conditional
+-- rather than unconditional:
+--   * the pokemon died -- the engine is already disposing of it, and calling
+--     `remove()` from inside its own `onDeath` is asking for trouble
+--   * something forced the faint while it was still standing -- then this is
+--     the one that has to take it off the map
+--
+-- Zero health is what tells the two apart, and it is the truth of the
+-- situation rather than a flag a caller could get wrong.
 function Pokemon.faint(player)
 	local entry = Pokemon.getActive(player)
 	if not entry then
@@ -112,8 +122,9 @@ function Pokemon.faint(player)
 	local item = entry.item
 	active[player:getId()] = nil
 
-	if entry.creature and not entry.creature:isRemoved() then
-		entry.creature:remove()
+	local creature = entry.creature
+	if creature and not creature:isRemoved() and creature:getHealth() > 0 then
+		creature:remove()
 	end
 	if item then
 		Pokemon.recordFaint(item)

@@ -66,6 +66,10 @@ function registrar.onStartup()
 				canWalkOnPoison = true,
 			}
 
+			-- Death has to reach the ball. Declared on the type so every
+			-- instance carries it, whatever created the creature.
+			m.events = { "PokemonFaint" }
+
 			m.voices = { interval = 5000, chance = 0 }
 			m.loot = {}
 			m.attacks = {}
