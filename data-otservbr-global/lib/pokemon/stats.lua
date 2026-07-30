@@ -17,6 +17,13 @@ local function effectiveLevel(playerLevel)
 	return math.floor(playerLevel * LEVEL_SCALE)
 end
 
+--- The level the damage formula uses. Exposed because phase 4 needs it and
+--- LEVEL_SCALE must stay in one place: a second copy is a balance constant that
+--- drifts without anyone editing it twice on purpose.
+function Pokemon.effectiveLevel(playerLevel)
+	return effectiveLevel(playerLevel)
+end
+
 --- Stats for a pokemon in the hands of a trainer of the given level.
 -- @param species entry from PokemonSpecies (the table, not the name)
 -- @param playerLevel level of the current owner
