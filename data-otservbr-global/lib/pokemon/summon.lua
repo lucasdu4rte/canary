@@ -16,9 +16,14 @@ Pokemon = Pokemon or {}
 -- [playerId] = { creature = <Monster>, item = <Item> }
 local active = {}
 
--- How far from the trainer a pokemon comes out. One tile puts it shoulder to
--- shoulder, which reads as if it were stuck to them; two leaves a gap.
-local SUMMON_DISTANCE = 2
+-- How far from the trainer a pokemon comes out, best first. Two tiles leaves a
+-- gap; one puts it shoulder to shoulder, which reads as if it were stuck to
+-- them but still beats the last resort of coming out *inside* the trainer.
+--
+-- The second entry earns its place when a trainer is surrounded: cornered by
+-- wild pokemon the ring at two tiles can be full while a neighbouring tile is
+-- free, and standing next to someone looks far better than overlapping them.
+local SUMMON_DISTANCES = { 2, 1 }
 
 -- Offsets in the order `Direction_t` declares them, so a direction indexes
 -- straight into this.
@@ -51,7 +56,8 @@ end
 --- Where to put a pokemon that its trainer is sending out.
 --
 -- Two tiles away, starting with the direction the trainer is facing so it
--- appears in front of them, and walking round the compass from there.
+-- appears in front of them, and walking round the compass from there. If that
+-- whole ring is taken it tries one tile out before giving up.
 --
 -- Sight is checked as well as footing: two tiles out can be on the far side of
 -- a wall, and a pokemon materialising in the next room is worse than one
@@ -72,12 +78,16 @@ local function spotFor(player)
 		end
 	end
 
-	for _, direction in ipairs(order) do
-		local step = STEP[direction]
-		if step then
-			local candidate = Position(origin.x + step.x * SUMMON_DISTANCE, origin.y + step.y * SUMMON_DISTANCE, origin.z)
-			if standable(candidate) and origin:isSightClear(candidate, true) then
-				return candidate
+	-- Distance is the outer loop: a free tile two away is preferred over every
+	-- tile one away, whichever direction each happens to be in.
+	for _, distance in ipairs(SUMMON_DISTANCES) do
+		for _, direction in ipairs(order) do
+			local step = STEP[direction]
+			if step then
+				local candidate = Position(origin.x + step.x * distance, origin.y + step.y * distance, origin.z)
+				if standable(candidate) and origin:isSightClear(candidate, true) then
+					return candidate
+				end
 			end
 		end
 	end
