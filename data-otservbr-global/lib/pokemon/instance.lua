@@ -133,6 +133,20 @@ function Pokemon.read(item)
 		return nil
 	end
 
+	-- `required` was declared on the fields above and never enforced, which
+	-- meant a ball missing `pokemon_ot` read back fine and then took the look
+	-- down inside `nameCache[nil]`. Checking here keeps the failure in the one
+	-- place that knows the schema, instead of in whichever caller happens to
+	-- touch the missing field first.
+	for _, field in ipairs(FIELDS) do
+		if field.required and raw[field.key] == nil then
+			logger.error(string.format(
+				"[Pokemon.read] item is missing the required '%s' -- species=%s uid=%s",
+				field.key, tostring(speciesName), tostring(raw.pokemon_uid)))
+			return nil
+		end
+	end
+
 	local out = {
 		item = item,
 		v = raw.pokemon_v,
