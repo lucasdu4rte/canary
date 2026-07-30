@@ -16,6 +16,75 @@ Pokemon = Pokemon or {}
 -- [playerId] = { creature = <Monster>, item = <Item> }
 local active = {}
 
+-- How far from the trainer a pokemon comes out. One tile puts it shoulder to
+-- shoulder, which reads as if it were stuck to them; two leaves a gap.
+local SUMMON_DISTANCE = 2
+
+-- Offsets in the order `Direction_t` declares them, so a direction indexes
+-- straight into this.
+local STEP = {
+	[DIRECTION_NORTH] = { x = 0, y = -1 },
+	[DIRECTION_EAST] = { x = 1, y = 0 },
+	[DIRECTION_SOUTH] = { x = 0, y = 1 },
+	[DIRECTION_WEST] = { x = -1, y = 0 },
+	[DIRECTION_SOUTHWEST] = { x = -1, y = 1 },
+	[DIRECTION_SOUTHEAST] = { x = 1, y = 1 },
+	[DIRECTION_NORTHWEST] = { x = -1, y = -1 },
+	[DIRECTION_NORTHEAST] = { x = 1, y = -1 },
+}
+
+--- Can a pokemon stand here?
+--
+-- Checked before the creature exists, so it cannot use `queryAdd` -- these are
+-- the conditions that would make `placeCreature` refuse, asked of the tile
+-- directly.
+local function standable(pos)
+	local tile = Tile(pos)
+	return tile ~= nil
+		and tile:getGround() ~= nil
+		and not tile:hasProperty(CONST_PROP_BLOCKSOLID)
+		and not tile:hasFlag(TILESTATE_FLOORCHANGE)
+		and not tile:hasFlag(TILESTATE_TELEPORT)
+		and tile:getCreatureCount() == 0
+end
+
+--- Where to put a pokemon that its trainer is sending out.
+--
+-- Two tiles away, starting with the direction the trainer is facing so it
+-- appears in front of them, and walking round the compass from there.
+--
+-- Sight is checked as well as footing: two tiles out can be on the far side of
+-- a wall, and a pokemon materialising in the next room is worse than one
+-- standing close.
+--
+-- @return a free position, or the trainer's own when every side is blocked --
+--         in which case it comes out on top of them rather than not at all.
+local function spotFor(player)
+	local origin = player:getPosition()
+	local facing = player:getDirection()
+
+	-- Facing first, then everything else. `pairs` would do neither in a
+	-- predictable order, and "wherever the table felt like" is not a rule.
+	local order = { facing }
+	for direction in pairs(STEP) do
+		if direction ~= facing then
+			order[#order + 1] = direction
+		end
+	end
+
+	for _, direction in ipairs(order) do
+		local step = STEP[direction]
+		if step then
+			local candidate = Position(origin.x + step.x * SUMMON_DISTANCE, origin.y + step.y * SUMMON_DISTANCE, origin.z)
+			if standable(candidate) and origin:isSightClear(candidate, true) then
+				return candidate
+			end
+		end
+	end
+
+	return origin
+end
+
 --- The pokemon this player currently has out of its ball, if any.
 function Pokemon.getActive(player)
 	local entry = active[player:getId()]
@@ -80,7 +149,7 @@ function Pokemon.summon(player, item)
 	-- afterwards: the C++ applies it **before** placing, so the creature
 	-- exists as a summon from the first moment.
 	local creature = Game.createMonster(
-		Pokemon.monsterName(mon.species), player:getPosition(), true, true, player)
+		Pokemon.monsterName(mon.species), spotFor(player), true, true, player)
 	if not creature then
 		return nil, string.format("There is no room for %s here.", mon.species)
 	end
