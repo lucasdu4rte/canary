@@ -1,13 +1,14 @@
--- Stats de combate, derivados na hora de espécie + level do dono.
+-- Combat stats, derived on demand from species plus the owner's level.
 --
--- Nada aqui é persistido. É decisão de desenho, não economia: stat gravado
--- envelhece quando a fórmula muda, e um ajuste de balance deixaria todos os
--- Pokémon existentes com números velhos e nenhum aviso.
+-- Nothing here is persisted. That is a design decision rather than thrift: a
+-- stored stat goes stale the moment the formula moves, so a balance tweak
+-- would leave every existing pokemon carrying old numbers with nothing to
+-- signal it.
 
 Pokemon = Pokemon or {}
 
--- "Porcentagem do level do player" — a constante mais sensível do jogo.
--- Mexer aqui move o poder de todo Pokémon do servidor de uma vez.
+-- "Percentage of the player's level" -- the most sensitive constant in the
+-- game. Changing it moves the power of every pokemon on the server at once.
 local LEVEL_SCALE = 1.0
 
 local SCALED_STATS = { "atk", "def", "spatk", "spdef", "speed" }
@@ -16,26 +17,26 @@ local function effectiveLevel(playerLevel)
 	return math.floor(playerLevel * LEVEL_SCALE)
 end
 
---- Stats de um Pokémon na mão de um treinador daquele level.
--- @param species tabela do PokemonSpecies (não o nome)
--- @param playerLevel level do dono atual
+--- Stats for a pokemon in the hands of a trainer of the given level.
+-- @param species entry from PokemonSpecies (the table, not the name)
+-- @param playerLevel level of the current owner
 -- @return { hp, atk, def, spatk, spdef, speed }
 function Pokemon.calcStats(species, playerLevel)
-	local lvl = effectiveLevel(playerLevel)
+	local level = effectiveLevel(playerLevel)
 	local base = species.baseStats
 
-	-- HP tem fórmula própria: em geração nenhuma ele recebeu o modificador
-	-- que os outros cinco recebiam.
-	local out = { hp = math.floor(2 * base.hp * lvl / 100) + lvl + 10 }
+	-- HP has its own formula: no generation ever applied to it the modifier
+	-- the other five stats took.
+	local out = { hp = math.floor(2 * base.hp * level / 100) + level + 10 }
 
 	for _, stat in ipairs(SCALED_STATS) do
-		out[stat] = math.floor(2 * base[stat] * lvl / 100) + 5
+		out[stat] = math.floor(2 * base[stat] * level / 100) + 5
 	end
 
 	return out
 end
 
---- Exposto para quem precisa registrar com que escala um teste rodou.
+--- Exposed so tests can record which scale they ran at.
 function Pokemon.levelScale()
 	return LEVEL_SCALE
 end

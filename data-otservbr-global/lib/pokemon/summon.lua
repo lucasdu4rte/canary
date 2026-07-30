@@ -1,36 +1,37 @@
--- Summon e recall.
+-- Sending a pokemon out and calling it back.
 --
--- O vínculo entre o jogador, a criatura e a ball é **estado de sessão**, não
--- persistido. Isso é escolha, e ela paga: crash do servidor não deixa órfão,
--- porque não existe nada gravado dizendo "está summonado". Sobe limpo, todos
--- na ball — sem a normalização de boot que os desenhos anteriores exigiam.
+-- The link between player, creature and ball is **session state**, not
+-- persisted. That is a choice, and it pays: a server crash leaves no orphan,
+-- because nothing on disk ever claims a pokemon is out. It comes back up
+-- clean, everyone in their ball -- without the boot-time normalisation the
+-- earlier designs needed.
 --
--- Em troca, o HP só é gravado no item em três momentos: recolher, desmaiar e
--- logout. Dano **não** persiste durante o combate. O pior resultado de um
--- crash é o jogador ganhar vida de volta, e isso é barato demais para
--- justificar escrita a cada tick.
+-- In exchange, HP only reaches the item at three moments: recall, faint and
+-- logout. Damage does **not** persist mid-combat. The worst outcome of a
+-- crash is the player getting health back, which is far too cheap to justify
+-- a write per tick.
 
 Pokemon = Pokemon or {}
 
 -- [playerId] = { creature = <Monster>, item = <Item> }
-local ativos = {}
+local active = {}
 
---- O Pokémon que este jogador tem fora da ball, se houver.
+--- The pokemon this player currently has out of its ball, if any.
 function Pokemon.getActive(player)
-	local reg = ativos[player:getId()]
-	if not reg then
+	local entry = active[player:getId()]
+	if not entry then
 		return nil
 	end
-	-- A criatura pode ter morrido ou sumido sem passar por recall.
-	if not reg.creature or reg.creature:isRemoved() then
-		ativos[player:getId()] = nil
+	-- The creature may have died or vanished without going through recall.
+	if not entry.creature or entry.creature:isRemoved() then
+		active[player:getId()] = nil
 		return nil
 	end
-	return reg
+	return entry
 end
 
---- Solta o Pokémon da ball.
--- @return criatura, ou nil + motivo
+--- Send the pokemon out of its ball.
+-- @return the creature, or nil plus a reason
 function Pokemon.summon(player, item)
 	local mon = Pokemon.read(item)
 	if not mon then
@@ -45,51 +46,53 @@ function Pokemon.summon(player, item)
 		return nil, "You already have a pokemon out."
 	end
 
-	-- O portão de progressão do jogo: capturar acima do seu level é legítimo,
-	-- usar não é. A checagem é do servidor, sempre.
-	local exigido = mon.speciesData.minPlayerLevel
-	if exigido and player:getLevel() < exigido then
+	-- The game's progression gate: catching above your level is legitimate,
+	-- using it is not. The check belongs to the server, always.
+	local required = mon.speciesData.minPlayerLevel
+	if required and player:getLevel() < required then
 		return nil, string.format("%s requires level %d; you are level %d.",
-			mon.species, exigido, player:getLevel())
+			mon.species, required, player:getLevel())
 	end
 
-	-- extended + force: `placeCreature` recusa em protection zone e em tile
-	-- ocupado quando `force` é falso, e foi isso que fez o summon responder
-	-- "could not send out" dentro do templo. Soltar o Pokémon é ação pedida
-	-- pelo jogador — não pode falhar por causa do piso.
+	-- extended + force: `placeCreature` refuses a protection zone and an
+	-- occupied tile when `force` is false, and that is what made summoning
+	-- answer "could not send out" inside a temple. Sending a pokemon out is
+	-- something the player asked for -- it should not fail because of the
+	-- floor.
 	--
-	-- O master vai no 5º parâmetro em vez de `setMaster` depois: o C++ o aplica
-	-- **antes** de posicionar, então a criatura já nasce como summon.
+	-- The master goes in the fifth argument rather than a `setMaster` call
+	-- afterwards: the C++ applies it **before** placing, so the creature
+	-- exists as a summon from the first moment.
 	local creature = Game.createMonster(
 		Pokemon.monsterName(mon.species), player:getPosition(), true, true, player)
 	if not creature then
 		return nil, string.format("Could not send out %s.", mon.species)
 	end
 
-	-- O HP da criatura reflete a fração guardada no item, escalada pelo level
-	-- de quem a está soltando agora.
+	-- The creature's health mirrors the fraction stored on the item, scaled by
+	-- the level of whoever is sending it out now.
 	local maxHp = mon.stats and mon.stats.hp or mon.speciesData.baseStats.hp
 	creature:setMaxHealth(maxHp)
 	creature:addHealth(maxHp - creature:getHealth())
-	local atual = math.max(1, math.floor(maxHp * mon.hpRatio))
-	creature:addHealth(atual - creature:getHealth())
+	local current = math.max(1, math.floor(maxHp * mon.hpRatio))
+	creature:addHealth(current - creature:getHealth())
 
-	ativos[player:getId()] = { creature = creature, item = item }
+	active[player:getId()] = { creature = creature, item = item }
 	return creature
 end
 
---- Guarda o Pokémon de volta, gravando a vida com que ele voltou.
--- @return true se havia algo para recolher
+--- Put the pokemon back, storing the health it returned with.
+-- @return true if there was anything to recall
 function Pokemon.recall(player)
-	local reg = Pokemon.getActive(player)
-	if not reg then
+	local entry = Pokemon.getActive(player)
+	if not entry then
 		return false
 	end
 
-	local creature, item = reg.creature, reg.item
-	ativos[player:getId()] = nil
+	local creature, item = entry.creature, entry.item
+	active[player:getId()] = nil
 
-	-- Único ponto de escrita do estado de combate, junto com recordFaint.
+	-- The only write point for combat state, together with recordFaint.
 	if item then
 		local maxHp = creature:getMaxHealth()
 		local ratio = maxHp > 0 and (creature:getHealth() / maxHp) or 0
@@ -100,17 +103,17 @@ function Pokemon.recall(player)
 	return true
 end
 
---- Desmaio: força o recall e marca o item.
+--- Fainting: force the recall and mark the item.
 function Pokemon.faint(player)
-	local reg = Pokemon.getActive(player)
-	if not reg then
+	local entry = Pokemon.getActive(player)
+	if not entry then
 		return false
 	end
-	local item = reg.item
-	ativos[player:getId()] = nil
+	local item = entry.item
+	active[player:getId()] = nil
 
-	if reg.creature and not reg.creature:isRemoved() then
-		reg.creature:remove()
+	if entry.creature and not entry.creature:isRemoved() then
+		entry.creature:remove()
 	end
 	if item then
 		Pokemon.recordFaint(item)
@@ -118,12 +121,12 @@ function Pokemon.faint(player)
 	return true
 end
 
---- Usado pela proteção do treinador: o jogador tem Pokémon em campo?
+--- Used by the trainer protection: does this player have a pokemon in play?
 function Pokemon.hasActive(player)
 	return Pokemon.getActive(player) ~= nil
 end
 
---- Limpa o registro de um jogador que saiu.
+--- Drop the entry for a player who left.
 function Pokemon.clearSession(player)
-	ativos[player:getId()] = nil
+	active[player:getId()] = nil
 end

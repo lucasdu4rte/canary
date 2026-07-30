@@ -1,24 +1,25 @@
--- Descrição da ball ocupada.
+-- Description of an occupied ball.
 --
--- Sobrescreve `Item.getDescription` em vez de registrar outro `playerOnLook`.
--- O motivo é que o C++ não manda texto nenhum no look: quem monta e envia é
--- `data/scripts/eventcallbacks/player/on_look.lua`, chamando
--- `inspectedThing:getDescription(distance)`. Registrar um segundo callback
--- mandaria uma **segunda** mensagem em vez de substituir a primeira.
+-- Overrides `Item.getDescription` instead of registering another
+-- `playerOnLook`. The reason is that the C++ sends no text on look: the one
+-- who builds and sends it is `data/scripts/eventcallbacks/player/on_look.lua`,
+-- calling `inspectedThing:getDescription(distance)`. Registering a second
+-- callback would send a **second** message rather than replace the first.
 --
--- Que dá para sobrescrever método registrado no C++ foi testado em 2026-07-29.
+-- That a C++-registered method can be overridden was tested on 2026-07-29.
 
 Pokemon = Pokemon or {}
 
 local originalGetDescription = Item.getDescription
 
--- O C++ tem `Game::getPlayerNameByGUID` com cache próprio, mas ele **não está
--- exposto ao Lua**. A única via daqui é `Game.getOfflinePlayer`, que carrega o
--- jogador inteiro do banco — caro demais para rodar a cada look, ainda mais
--- porque query síncrona trava o game loop inteiro, não só quem olhou.
+-- The C++ has `Game::getPlayerNameByGUID` with a cache of its own, but it is
+-- **not exposed to Lua**. The only route from here is `Game.getOfflinePlayer`,
+-- which loads the whole player from the database -- far too expensive to run
+-- on every look, all the more so because a synchronous query stalls the entire
+-- game loop, not just the player who looked.
 --
--- Daí o memo: uma ida ao banco por treinador, por boot. Nome que mudou depois
--- fica velho até o próximo restart, e isso é cosmético.
+-- Hence the memo: one database trip per trainer, per boot. A name changed
+-- afterwards stays stale until the next restart, and that is cosmetic.
 local nameCache = {}
 
 local function trainerName(guid)
@@ -26,53 +27,54 @@ local function trainerName(guid)
 	if cached then
 		return cached
 	end
-	local p = Game.getOfflinePlayer(guid)
-	local nome = (p and p:getName()) or ("#" .. tostring(guid))
-	nameCache[guid] = nome
-	return nome
+	local player = Game.getOfflinePlayer(guid)
+	local name = (player and player:getName()) or ("#" .. tostring(guid))
+	nameCache[guid] = name
+	return name
 end
 
---- Monta a descrição a partir do item, sempre na hora.
+--- Build the description from the item, always on the spot.
 --
--- ⚠️ **Não começa com "You see"**: quem prefixa isso é o `on_look.lua` do
--- datapack (`return "You see " .. descriptionText`). Incluir aqui produz
--- "You see You see Charizard." — foi o que aconteceu na primeira versão.
+-- NOTE: **Does not start with "You see"**: the datapack's `on_look.lua` prefixes
+-- that before sending (`return "You see " .. descriptionText`). Including it
+-- here produces "You see You see Charizard." -- which is what the first
+-- version did.
 --
--- HP ficou de fora de propósito: número de vida no look não ajuda a decidir
--- nada, e o valor útil (quem é o dono) fica enterrado no meio.
+-- HP is deliberately left out: a health figure in a look does not help decide
+-- anything, and it buried the line that does.
 function Pokemon.describe(mon)
-	-- "a pokeball" é fixo enquanto só existe um tipo de ball. Quando a Fase 5
-	-- trouxer great/super/ultra, é aqui que entra o nome do tipo — e é por
-	-- isso que a frase nomeia o recipiente antes do conteúdo em vez de dizer
-	-- "You see Charizard": a ball é o item, o Pokémon é o que vai dentro.
-	local conteudo = mon.fainted and ("a fainted " .. mon.species) or mon.species
-	local frase = "a pokeball with " .. conteudo
+	-- "a pokeball" is fixed while only one ball type exists. When phase 5
+	-- brings great and ultra, the type name goes here -- which is why the
+	-- sentence names the container before its contents instead of saying "You
+	-- see Charizard". The ball is the item; the pokemon is what goes inside.
+	local contents = mon.fainted and ("a fainted " .. mon.species) or mon.species
+	local sentence = "a pokeball with " .. contents
 
 	if mon.holder then
-		-- Dono atual é simplesmente quem está com o item — no modelo de
-		-- item-guarda-tudo não existe coluna de dono para divergir disso.
-		frase = frase .. string.format(", belonging to %s.", mon.holder:getName())
+		-- The current owner is simply whoever carries the item -- in this
+		-- model there is no owner column that could disagree.
+		sentence = sentence .. string.format(", belonging to %s.", mon.holder:getName())
 
-		-- Só vale dizer o treinador original quando ele **não** é o dono
-		-- atual: aí a frase conta uma história (mudou de mão). Repetir o mesmo
-		-- nome duas vezes é ruído.
+		-- The original trainer is only worth naming when it is **not** the
+		-- current holder: that is when the line tells a story (it changed
+		-- hands). Repeating the same name twice is noise.
 		if mon.holder:getGuid() ~= mon.ot then
-			frase = frase .. string.format(" Originally caught by %s.", trainerName(mon.ot))
+			sentence = sentence .. string.format(" Originally caught by %s.", trainerName(mon.ot))
 		end
 	else
-		-- Sem portador (chão, depot): não há dono a apontar, então o único
-		-- nome honesto é o do treinador original.
-		frase = frase .. string.format(", originally caught by %s.", trainerName(mon.ot))
+		-- With no holder -- ground, depot -- there is no owner to point at, so
+		-- the only honest name is the original trainer's.
+		sentence = sentence .. string.format(", originally caught by %s.", trainerName(mon.ot))
 	end
 
-	return frase
+	return sentence
 end
 
 function Item.getDescription(self, distance)
 	local mon = Pokemon.read(self)
 	if not mon then
-		-- Delegar é obrigatório, não cortesia: sem isto **todo** item do jogo
-		-- perde a descrição.
+		-- Delegating is mandatory, not a courtesy: without it **every** item
+		-- in the game loses its description.
 		return originalGetDescription(self, distance)
 	end
 	return Pokemon.describe(mon)

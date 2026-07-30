@@ -1,41 +1,43 @@
--- Registra um MonsterType por espécie do catálogo, no boot.
+-- Registers one MonsterType per catalogue species, at boot.
 --
--- Sem isto, `Game.createMonster("Bulbasaur", pos)` falha: o datapack do
--- otservbr só traz monstro de Tibia. Gerar daqui em vez de commitar 154
--- arquivos é a mesma escolha do `catalog.lua` — a lista de espécies tem um
--- dono só, e é a Fase 2.
+-- Without this, `Game.createMonster("Bulbasaur", pos)` fails: the otservbr
+-- datapack only ships Tibia monsters. Generating from here rather than
+-- committing 154 files is the same choice as `catalog.lua` -- the species list
+-- has exactly one owner, and it is phase 2.
 --
--- ⚠️ **Estatísticas de combate aqui são placeholder.** Quem manda no dano é
--- `Pokemon.calcStats`, do lado do item, e a Fase 4 é que vai ligar os dois.
--- O que esta task precisa do monstro é existir, ter nome e seguir o dono.
+-- NOTE: **Combat numbers here are placeholders.** Damage is governed by
+-- `Pokemon.calcStats` on the item side, and phase 4 is what will wire the two
+-- together. What this task needs from a monster is to exist, carry the right
+-- name and follow its owner.
 --
--- O `lookType` também é placeholder: os outfits reais da Roxy só valem depois
--- da conversão para o formato 15.x (trilha de arte).
+-- The `lookType` is a placeholder too: the real Roxy outfits are only valid
+-- once converted to the 15.x format (art track).
 
-local PLACEHOLDER_LOOKTYPE = 226 -- azure frog; some quando a arte entrar
+local PLACEHOLDER_LOOKTYPE = 226 -- azure frog; goes away when the art lands
 
 local registrar = GlobalEvent("Pokemon MonsterTypes")
 
 function registrar.onStartup()
-	local total, falhas = 0, 0
+	local total, failed = 0, 0
 
-	for nome, especie in pairs(PokemonSpecies) do
-		-- Variant "pokemon": registra sob a chave "pokemon|<nome>" e mantém o
-		-- nome de exibição limpo. Sem isto, qualquer espécie homônima de um
-		-- monstro do Tibia derruba o registro — hoje é só Haunter, mas são
-		-- 1.655 monstros no datapack e o upstream adiciona mais.
-		local mType = Game.createMonsterType(nome, Pokemon.MONSTER_VARIANT)
+	for name, species in pairs(PokemonSpecies) do
+		-- Variant "pokemon": registers under the key "pokemon|<name>" and
+		-- keeps the display name clean. Without it, any species sharing a name
+		-- with a Tibia monster brings the registration down -- today that is
+		-- only Haunter, but the datapack carries 1,655 monsters and upstream
+		-- keeps adding.
+		local mType = Game.createMonsterType(name, Pokemon.MONSTER_VARIANT)
 		if not mType then
-			falhas = falhas + 1
+			failed = failed + 1
 		else
 			local m = {}
-			m.description = "a " .. nome:lower()
+			m.description = "a " .. name:lower()
 			m.experience = 0
 			m.outfit = { lookType = PLACEHOLDER_LOOKTYPE, lookAddons = 0, lookMount = 0 }
 
-			-- HP aqui é só o teto do desenho; o valor real por dono vem de
-			-- Pokemon.calcStats no momento do summon.
-			local base = especie.baseStats
+			-- HP here is only the design ceiling; the real per-owner value
+			-- comes from Pokemon.calcStats at the moment of the summon.
+			local base = species.baseStats
 			m.health = base.hp
 			m.maxHealth = base.hp
 			m.race = "blood"
@@ -47,9 +49,9 @@ function registrar.onStartup()
 			m.strategiesTarget = { nearest = 100 }
 
 			m.flags = {
-				summonable = false, -- só o nosso código summona
+				summonable = false, -- only our own code sends these out
 				attackable = true,
-				hostile = false, -- não ataca jogador por conta própria
+				hostile = false, -- does not attack players on its own
 				convinceable = false,
 				pushable = false,
 				rewardBoss = false,
@@ -76,8 +78,8 @@ function registrar.onStartup()
 		end
 	end
 
-	logger.info(string.format("[pokemon] %d MonsterTypes registrados%s",
-		total, falhas > 0 and (" (" .. falhas .. " falharam)") or ""))
+	logger.info(string.format("[pokemon] %d MonsterTypes registered%s",
+		total, failed > 0 and (" (" .. failed .. " failed)") or ""))
 	return true
 end
 

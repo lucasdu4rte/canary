@@ -7,17 +7,18 @@ function Creature:onTargetCombat(target)
 		return RETURNVALUE_YOUMAYNOTATTACKTHISCREATURE
 	end
 
-	-- Proteção do treinador: enquanto ele tem Pokémon em campo, a briga é do
-	-- Pokémon. É a mesma forma da regra acima, virada do outro lado — lá o
-	-- dono não ataca o próprio summon; aqui ninguém ataca o dono.
+	-- Trainer protection: while a player has a pokemon in play, the fight
+	-- belongs to the pokemon. Same shape as the rule above, turned the other
+	-- way round -- there the owner cannot attack their own summon; here nobody
+	-- can attack the owner.
 	--
-	-- Fica no legado (`Creature:onTargetCombat`) e não no EventCallback novo
-	-- porque só o legado lê o retorno como número: dá para devolver o motivo
-	-- exato, e o jogador vê "you may not attack this creature" em vez de um
-	-- "sorry, not possible" genérico.
+	-- It lives on the legacy `Creature:onTargetCombat` rather than the newer
+	-- EventCallback because only the legacy path reads the return as a number:
+	-- the refusal can carry its real reason, so the player sees "you may not
+	-- attack this player" instead of a generic "sorry, not possible".
 	if target:isPlayer() and Pokemon and Pokemon.hasActive and Pokemon.hasActive(target) then
-		-- O próprio Pokémon dele não é barrado por isto: um summon atacando o
-		-- dono já caiu na regra acima.
+		-- Their own pokemon is not blocked by this: a summon attacking its
+		-- owner already fell into the rule above.
 		if self ~= target then
 			return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER
 		end

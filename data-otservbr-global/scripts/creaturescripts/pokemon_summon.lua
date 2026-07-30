@@ -1,40 +1,44 @@
--- Ciclo de vida do Pokémon summonado: logout, morte do dono e morte do próprio.
+-- Lifecycle of a pokemon that is out: logout, owner death, and its own death.
 --
--- Estes são os pontos em que o HP tem que ir para o item. Fora deles, dano não
--- persiste — decisão fechada na spec.
+-- These are the moments HP has to reach the item. Outside them damage does not
+-- persist -- a decision settled in the spec.
 
--- Logout: recolhe. Nada pode ficar em campo sem dono online, e o recall já
--- grava a vida com que ele voltou.
-local aoSair = CreatureEvent("PokemonOnLogout")
+-- Logout: recall. Nothing may stay in play with no owner online, and the
+-- recall already stores the health it came back with.
+local onLogoutEvent = CreatureEvent("PokemonOnLogout")
 
-function aoSair.onLogout(player)
+function onLogoutEvent.onLogout(player)
 	Pokemon.recall(player)
 	Pokemon.clearSession(player)
 	return true
 end
 
-aoSair:register()
+onLogoutEvent:register()
 
--- Dono morreu: o Pokémon não fica órfão em campo.
-local aoMorrer = CreatureEvent("PokemonOnPlayerDeath")
+-- Owner died: the pokemon is not left orphaned in play.
+--
+-- Note the capital D. With `ondeath`, revscriptsys cannot map the name, falls
+-- through to `rawset` on the userdata and **the whole file fails to load** --
+-- not just this one event.
+local onDeathEvent = CreatureEvent("PokemonOnPlayerDeath")
 
-function aoMorrer.onDeath(player)
+function onDeathEvent.onDeath(player)
 	Pokemon.recall(player)
 	return true
 end
 
-aoMorrer:register()
+onDeathEvent:register()
 
--- Registro dos dois no login, que é como o Canary liga creaturescript a
--- jogador.
-local aoEntrar = CreatureEvent("PokemonOnLogin")
+-- Both are registered at login, which is how Canary binds a creaturescript to
+-- a player.
+local onLoginEvent = CreatureEvent("PokemonOnLogin")
 
-function aoEntrar.onLogin(player)
+function onLoginEvent.onLogin(player)
 	player:registerEvent("PokemonOnLogout")
 	player:registerEvent("PokemonOnPlayerDeath")
-	-- Sessão nova: nada em campo. Cinto de segurança caso o id seja reusado.
+	-- Fresh session: nothing in play. A safety belt in case the id is reused.
 	Pokemon.clearSession(player)
 	return true
 end
 
-aoEntrar:register()
+onLoginEvent:register()

@@ -1,43 +1,43 @@
--- /create-pokemon <espécie>
+-- /create-pokemon <species>
 --
--- A captura só chega na Fase 5. Sem isto, nada nesta fase chama
--- `Pokemon.create` e o gate G3 fica sem sujeito.
+-- Capture only arrives in phase 5. Without this, nothing in this phase calls
+-- `Pokemon.create` and the G3 gate has no subject.
 --
--- Genérico por desenho: a espécie é argumento, validada contra o catálogo.
--- Um comando serve as 154 — nada de script por espécie nem lista paralela
--- para manter em dia.
+-- Generic by design: the species is an argument, validated against the
+-- catalogue. One command serves all 154 -- no script per species, no parallel
+-- list to keep in sync.
 
 local createPokemon = TalkAction("/create-pokemon")
 
 function createPokemon.onSay(player, words, param)
 	logCommand(player, words, param)
 
-	local especie = param:trim()
-	if especie == "" then
+	local input = param:trim()
+	if input == "" then
 		player:sendCancelMessage("Usage: /create-pokemon <species>")
 		return true
 	end
 
-	-- Aceita "bulbasaur" e "BULBASAUR" resolvendo para a chave do catálogo,
-	-- que é capitalizada. Digitar o nome exato de 154 espécies com a caixa
-	-- certa não é um teste de habilidade que valha a pena aplicar.
-	local chave = nil
-	local alvo = especie:lower()
-	for nome in pairs(PokemonSpecies) do
-		if nome:lower() == alvo then
-			chave = nome
+	-- Accepts "bulbasaur" and "BULBASAUR" by resolving to the catalogue key,
+	-- which is capitalised. Typing 154 species names with exact casing is not
+	-- a skill test worth running.
+	local key = nil
+	local wanted = input:lower()
+	for name in pairs(PokemonSpecies) do
+		if name:lower() == wanted then
+			key = name
 			break
 		end
 	end
 
-	if not chave then
-		player:sendCancelMessage(string.format("There is no pokemon named '%s'.", especie))
+	if not key then
+		player:sendCancelMessage(string.format("There is no pokemon named '%s'.", input))
 		return true
 	end
 
-	local item, erro = Pokemon.create(player, chave)
+	local item, reason = Pokemon.create(player, key)
 	if not item then
-		player:sendCancelMessage(string.format("Could not create %s: %s", chave, erro or "unknown"))
+		player:sendCancelMessage(string.format("Could not create %s: %s", key, reason or "unknown"))
 		return true
 	end
 
