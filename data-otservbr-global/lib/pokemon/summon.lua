@@ -71,11 +71,19 @@ function Pokemon.summon(player, item)
 
 	-- The creature's health mirrors the fraction stored on the item, scaled by
 	-- the level of whoever is sending it out now.
+	--
+	-- `setHealth`, not `addHealth`. `addHealth` builds a CombatDamage and runs
+	-- it through `Game::combatChangeHealth`, which announces itself -- sending
+	-- a pokemon out printed "A bulbasaur was healed for 915 hitpoints" at the
+	-- owner, which is a lie about something that never happened. `setHealth`
+	-- writes the field and refreshes the bar, and says nothing.
+	--
+	-- Order matters: `setHealth` clamps to `healthMax`, so the maximum has to
+	-- be raised first or a pokemon comes out capped at the placeholder value
+	-- from its MonsterType.
 	local maxHp = mon.stats and mon.stats.hp or mon.speciesData.baseStats.hp
 	creature:setMaxHealth(maxHp)
-	creature:addHealth(maxHp - creature:getHealth())
-	local current = math.max(1, math.floor(maxHp * mon.hpRatio))
-	creature:addHealth(current - creature:getHealth())
+	creature:setHealth(math.max(1, math.floor(maxHp * mon.hpRatio)))
 
 	-- The ball is empty now, and it has to look empty. `syncVisual` can hand
 	-- back a different object, so the session keeps what it returns rather
