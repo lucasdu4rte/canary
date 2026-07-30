@@ -150,6 +150,43 @@ function Pokemon.hasActive(player)
 	return Pokemon.getActive(player) ~= nil
 end
 
+--- Does this item, or anything inside it, hold the pokemon that is out?
+--
+-- The question every rule about a pokemon in play ends up asking: it cannot be
+-- traded, and it cannot be moved. Both need to see through a bag, because
+-- offering or dropping the backpack the ball sits in reaches the same place by
+-- a longer road.
+--
+-- Compares `pokemon_uid` rather than the item reference. The uid is the
+-- identity this phase already maintains, and it survives the object being
+-- replaced underneath us -- which matters here, because sending a pokemon out
+-- runs `transform` and `transform` can hand back a different object.
+function Pokemon.holdsActive(player, item)
+	if not item then
+		return false
+	end
+
+	local entry = Pokemon.getActive(player)
+	local mon = entry and entry.item and Pokemon.read(entry.item)
+	if not mon then
+		return false
+	end
+
+	if item:getCustomAttribute("pokemon_uid") == mon.uid then
+		return true
+	end
+	if not item:isContainer() then
+		return false
+	end
+	-- `getItems(true)` is recursive, so a bag inside a bag is covered.
+	for _, inner in ipairs(item:getItems(true) or {}) do
+		if inner:getCustomAttribute("pokemon_uid") == mon.uid then
+			return true
+		end
+	end
+	return false
+end
+
 --- Drop the entry for a player who left.
 function Pokemon.clearSession(player)
 	active[player:getId()] = nil

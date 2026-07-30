@@ -16,41 +16,8 @@
 -- Guarded at both ends on purpose: refusing only the offer would let a player
 -- offer the ball and *then* send the pokemon out.
 
-local function activeUid(player)
-	local entry = Pokemon.getActive(player)
-	if not entry or not entry.item then
-		return nil
-	end
-	local mon = Pokemon.read(entry.item)
-	return mon and mon.uid or nil
-end
-
---- Does this item, or anything inside it, hold the pokemon that is out?
---
--- Compares `pokemon_uid` rather than the item reference: the uid is the
--- identity this phase already maintains, and it survives the object being
--- replaced underneath us, which a reference does not.
-local function carriesActive(item, uid)
-	if not item or not uid then
-		return false
-	end
-	if item:getCustomAttribute("pokemon_uid") == uid then
-		return true
-	end
-	if not item:isContainer() then
-		return false
-	end
-	-- `getItems(true)` is recursive, so a bag inside a bag is covered.
-	for _, inner in ipairs(item:getItems(true) or {}) do
-		if inner:getCustomAttribute("pokemon_uid") == uid then
-			return true
-		end
-	end
-	return false
-end
-
-local function refuse(player, item, uid)
-	if not carriesActive(item, uid) then
+local function refuse(player, item)
+	if not Pokemon.holdsActive(player, item) then
 		return false
 	end
 	player:sendTextMessage(MESSAGE_TRADE, "Put your pokemon back in its ball before trading it.")
@@ -60,7 +27,7 @@ end
 local onRequest = EventCallback("PlayerOnTradeRequestPokemonGuard")
 
 function onRequest.playerOnTradeRequest(player, target, item)
-	return not refuse(player, item, activeUid(player))
+	return not refuse(player, item)
 end
 
 onRequest:register()
@@ -70,8 +37,8 @@ local onAccept = EventCallback("PlayerOnTradeAcceptPokemonGuard")
 function onAccept.playerOnTradeAccept(player, target, item, targetItem)
 	-- Both sides, because either player may have sent a pokemon out between
 	-- offering and accepting.
-	local mine = refuse(player, item, activeUid(player))
-	local theirs = refuse(target, targetItem, activeUid(target))
+	local mine = refuse(player, item)
+	local theirs = refuse(target, targetItem)
 	return not (mine or theirs)
 end
 

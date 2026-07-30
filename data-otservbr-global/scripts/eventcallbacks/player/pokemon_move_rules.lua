@@ -1,13 +1,25 @@
--- Dropping a pokemon on the ground asks first.
+-- What a pokemon's ball may and may not do when it is moved. Two rules, and
+-- they live in one file because they share a hook and their order matters:
+-- refusing the move has to come first, or the player is asked to confirm a
+-- drop that was never going to happen.
 --
--- The ground is the one place a pokemon is lost for good: anyone standing
--- there can take it, and the server clean removes what is left lying around.
--- That is the designed behaviour and there is deliberately no clean hook --
--- which is exactly why getting there has to be a decision and not a slip of
--- the mouse.
+-- **1. The ball of a pokemon that is out cannot be moved at all.** Put it away
+-- first. The same rule the trade guard applies, for the same reason -- while
+-- a pokemon is standing on the map, the session holds its ball, and letting
+-- that ball travel means it can end up on the floor, in a depot or in someone
+-- else's bag while its owner is still fighting with it. The lock covers the
+-- whole inventory rather than only the exits: "your pokemon is out, its ball
+-- is locked" is a rule a player can hold in their head, and a list of
+-- permitted destinations is not.
 --
--- House floor is exempt. It is storage, the clean does not touch it, and
--- asking there would fire on every furniture rearrangement.
+-- **2. Dropping a pokemon on the ground asks first.** The ground is the one
+-- place a pokemon is lost for good: anyone standing there can take it, and the
+-- server clean removes what is left lying around. That is the designed
+-- behaviour and there is deliberately no clean hook -- which is exactly why
+-- getting there has to be a decision and not a slip of the mouse.
+--
+-- House floor is exempt from rule 2. It is storage, the clean does not touch
+-- it, and asking there would fire on every furniture rearrangement.
 
 local PROMPT_TITLE = "Drop pokemon"
 
@@ -113,11 +125,19 @@ local function dropConfirmed(player, item, uid, toPosition)
 		player:getName(), player:getGuid()))
 end
 
-local callback = EventCallback("PlayerOnMoveItemPokemonDropConfirm")
+local callback = EventCallback("PlayerOnMoveItemPokemonRules")
 
 function callback.playerOnMoveItem(player, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
-	-- Inventory and container windows both address themselves as 0xFFFF
-	-- (game.cpp:2227); a map position is anything else.
+	-- Rule 1, and first: it applies wherever the item was headed, so it is
+	-- decided before anything looks at the destination. Sees through a bag,
+	-- because moving the backpack the ball sits in moves the ball.
+	if Pokemon.holdsActive(player, item) then
+		player:sendCancelMessage("Put your pokemon back in its ball before moving it.")
+		return false
+	end
+
+	-- Rule 2 from here down. Inventory and container windows both address
+	-- themselves as 0xFFFF (game.cpp:2227); a map position is anything else.
 	if toPosition.x == CONTAINER_POSITION then
 		return true
 	end
