@@ -29,6 +29,45 @@ end
 
 onDeathEvent:register()
 
+-- A pokemon that reaches the edge of what its trainer can see comes back to
+-- them, rather than walking out of view and being followed by nothing.
+--
+-- The engine already teleports a familiar to its master, but only past 15
+-- tiles or a floor apart (`creature.cpp:472`) -- which is well outside the
+-- screen, so the pokemon would spend that whole stretch invisible. This fires
+-- first and the engine's rule never gets the chance.
+--
+-- The trigger is the **second to last** visible tile, so it happens while the
+-- pokemon is still on screen: the client shows 8 tiles either side and 6 above
+-- and below (`map_const.hpp:12-13`), and one in from that is 7 and 5. Waiting
+-- for the very edge would make it blink out and reappear.
+local VIEW_X = 8 - 1
+local VIEW_Y = 6 - 1
+
+local onThinkEvent = CreatureEvent("PokemonFollowTrainer")
+
+function onThinkEvent.onThink(creature, interval)
+	local master = creature:getMaster()
+	if not master or not master:isPlayer() then
+		return true
+	end
+
+	local here, there = creature:getPosition(), master:getPosition()
+	if here.z == there.z
+		and math.abs(here.x - there.x) < VIEW_X
+		and math.abs(here.y - there.y) < VIEW_Y then
+		return true
+	end
+
+	-- pushMovement: land beside the trainer rather than inside them, and let
+	-- the engine find the free tile.
+	creature:teleportTo(there, true)
+	creature:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+	return true
+end
+
+onThinkEvent:register()
+
 -- The pokemon itself died: mark the ball fainted.
 --
 -- Registered on the MonsterType rather than on each creature after the summon,

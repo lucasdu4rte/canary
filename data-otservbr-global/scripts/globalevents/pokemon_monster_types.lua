@@ -49,6 +49,29 @@ function registrar.onStartup()
 			m.strategiesTarget = { nearest = 100 }
 
 			m.flags = {
+				-- Tibia's "familiar" is much closer to a pokemon than its
+				-- generic summon is, and the engine hands over five behaviours
+				-- at once (`tile.cpp:664`, `creature.cpp:472-490`, `:1015`,
+				-- `player.cpp:1419`, `:1463`, `game.cpp:4898`):
+				--
+				--   * it may walk into a protection zone -- but only while its
+				--     trainer is not attacking anything, so it can follow you
+				--     into a depot and cannot camp there mid-fight
+				--   * it cannot start attacking while standing in one
+				--   * more than 15 tiles away or a floor apart it **teleports
+				--     to its trainer** instead of being despawned at 30, which
+				--     is what a plain summon does. A pokemon should not vanish
+				--     for falling behind
+				--   * players walk through it, so it never body-blocks
+				--   * its trainer can use runes and potions on it
+				--
+				-- ⚠️ One thing it also enables: `Creature:onChangeOutfit` in
+				-- `data/events/scripts/creature.lua` overwrites a familiar's
+				-- outfit with `player:getFamiliarLooktype()` when that is not
+				-- zero. It is zero for everyone here because we do not use
+				-- Tibia's familiar system -- but if that ever changes, it would
+				-- silently repaint every pokemon.
+				familiar = true,
 				summonable = false, -- only our own code sends these out
 				attackable = true,
 				hostile = false, -- does not attack players on its own
@@ -66,9 +89,10 @@ function registrar.onStartup()
 				canWalkOnPoison = true,
 			}
 
-			-- Death has to reach the ball. Declared on the type so every
-			-- instance carries it, whatever created the creature.
-			m.events = { "PokemonFaint" }
+			-- Declared on the type so every instance carries them, whatever
+			-- created the creature: death has to reach the ball, and a pokemon
+			-- must not wander off screen.
+			m.events = { "PokemonFaint", "PokemonFollowTrainer" }
 
 			m.voices = { interval = 5000, chance = 0 }
 			m.loot = {}
