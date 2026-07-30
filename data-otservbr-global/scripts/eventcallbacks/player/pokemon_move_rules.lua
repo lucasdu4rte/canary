@@ -131,8 +131,9 @@ function callback.playerOnMoveItem(player, item, count, fromPosition, toPosition
 	-- Rule 1, and first: it applies wherever the item was headed, so it is
 	-- decided before anything looks at the destination. Sees through a bag,
 	-- because moving the backpack the ball sits in moves the ball.
-	if Pokemon.holdsActive(player, item) then
-		player:sendCancelMessage("Put your pokemon back in its ball before moving it.")
+	local out = Pokemon.holdsActive(player, item)
+	if out then
+		player:sendCancelMessage(string.format("%s is at your side. Call it back before moving its ball.", out.species))
 		return false
 	end
 

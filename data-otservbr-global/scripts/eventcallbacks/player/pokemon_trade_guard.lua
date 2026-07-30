@@ -17,10 +17,12 @@
 -- offer the ball and *then* send the pokemon out.
 
 local function refuse(player, item)
-	if not Pokemon.holdsActive(player, item) then
+	local out = Pokemon.holdsActive(player, item)
+	if not out then
 		return false
 	end
-	player:sendTextMessage(MESSAGE_TRADE, "Put your pokemon back in its ball before trading it.")
+	player:sendTextMessage(MESSAGE_TRADE, string.format(
+		"%s is at your side. Call it back before trading its ball.", out.species))
 	return true
 end
 

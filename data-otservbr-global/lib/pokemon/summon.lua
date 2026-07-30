@@ -49,22 +49,24 @@ function Pokemon.summon(player, item)
 	-- The check lives here rather than in the Action so that phase 5's capture,
 	-- and anything else that ever sends a pokemon out, inherits it.
 	if not mon.holder or mon.holder:getId() ~= player:getId() then
-		return nil, "You have to be carrying that pokemon to send it out."
+		return nil, "You can only choose a pokemon you are carrying."
 	end
 
 	if mon.fainted then
-		return nil, string.format("%s is fainted and cannot be sent out.", mon.species)
+		return nil, string.format("%s is unable to battle.", mon.species)
 	end
 
-	if Pokemon.getActive(player) then
-		return nil, "You already have a pokemon out."
+	local out = Pokemon.getActive(player)
+	local outMon = out and Pokemon.read(out.item)
+	if out then
+		return nil, string.format("%s is already at your side.", outMon and outMon.species or "A pokemon")
 	end
 
 	-- The game's progression gate: catching above your level is legitimate,
 	-- using it is not. The check belongs to the server, always.
 	local required = mon.speciesData.minPlayerLevel
 	if required and player:getLevel() < required then
-		return nil, string.format("%s requires level %d; you are level %d.",
+		return nil, string.format("%s will not obey a trainer below level %d. You are level %d.",
 			mon.species, required, player:getLevel())
 	end
 
@@ -80,7 +82,7 @@ function Pokemon.summon(player, item)
 	local creature = Game.createMonster(
 		Pokemon.monsterName(mon.species), player:getPosition(), true, true, player)
 	if not creature then
-		return nil, string.format("Could not send out %s.", mon.species)
+		return nil, string.format("There is no room for %s here.", mon.species)
 	end
 
 	-- The creature's health mirrors the fraction stored on the item, scaled by
@@ -175,30 +177,34 @@ end
 -- identity this phase already maintains, and it survives the object being
 -- replaced underneath us -- which matters here, because sending a pokemon out
 -- runs `transform` and `transform` can hand back a different object.
+--
+-- @return the pokemon that is out, or nil. Returning it rather than a boolean
+--         is what lets the refusals name it: "Charizard is at your side" says
+--         more than "your pokemon is out", and costs nothing here.
 function Pokemon.holdsActive(player, item)
 	if not item then
-		return false
+		return nil
 	end
 
 	local entry = Pokemon.getActive(player)
 	local mon = entry and entry.item and Pokemon.read(entry.item)
 	if not mon then
-		return false
+		return nil
 	end
 
 	if item:getCustomAttribute("pokemon_uid") == mon.uid then
-		return true
+		return mon
 	end
 	if not item:isContainer() then
-		return false
+		return nil
 	end
 	-- `getItems(true)` is recursive, so a bag inside a bag is covered.
 	for _, inner in ipairs(item:getItems(true) or {}) do
 		if inner:getCustomAttribute("pokemon_uid") == mon.uid then
-			return true
+			return mon
 		end
 	end
-	return false
+	return nil
 end
 
 --- Drop the entry for a player who left.

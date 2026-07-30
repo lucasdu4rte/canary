@@ -24,7 +24,7 @@ function ball.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local active = entry and Pokemon.read(entry.item)
 	if active and active.uid == mon.uid then
 		Pokemon.recall(player)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("%s comes back.", mon.species))
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("%s, come back!", mon.species))
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
 	end
@@ -35,7 +35,7 @@ function ball.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return true
 	end
 
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Go, %s!", mon.species))
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("%s, I choose you!", mon.species))
 	creature:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	return true
 end
