@@ -29,8 +29,14 @@ end
 
 onDeathEvent:register()
 
--- A pokemon that reaches the edge of what its trainer can see comes back to
--- them, rather than walking out of view and being followed by nothing.
+-- Where a pokemon stands relative to its trainer, at both ends.
+--
+-- Too far, it comes back. Too close, it gives them room. One event owns the
+-- whole question, and it is the one the engine already runs every think.
+--
+-- The far end: a pokemon that reaches the edge of what its trainer can see
+-- comes back to them, rather than walking out of view and being followed by
+-- nothing.
 --
 -- The engine already teleports a familiar to its master, but only past 15
 -- tiles or a floor apart (`creature.cpp:472`) -- which is well outside the
@@ -56,6 +62,9 @@ function onThinkEvent.onThink(creature, interval)
 	if here.z == there.z
 		and math.abs(here.x - there.x) < VIEW_X
 		and math.abs(here.y - there.y) < VIEW_Y then
+		-- The near end. Cheap, and it declines on its own unless the pokemon is
+		-- standing right next to an idle trainer.
+		Pokemon.keepDistance(creature, master)
 		return true
 	end
 

@@ -16,14 +16,27 @@ Pokemon = Pokemon or {}
 -- [playerId] = { creature = <Monster>, item = <Item> }
 local active = {}
 
--- How far from the trainer a pokemon comes out, best first. Two tiles leaves a
--- gap; one puts it shoulder to shoulder, which reads as if it were stuck to
--- them but still beats the last resort of coming out *inside* the trainer.
+-- How far from the trainer a pokemon comes out, best first. **Next to them**,
+-- so it reads as coming out of the ball at their side rather than materialising
+-- across the room. It moves out to `REST_DISTANCE` on its own -- see
+-- `Pokemon.keepDistance`.
 --
 -- The second entry earns its place when a trainer is surrounded: cornered by
--- wild pokemon the ring at two tiles can be full while a neighbouring tile is
--- free, and standing next to someone looks far better than overlapping them.
-local SUMMON_DISTANCES = { 2, 1 }
+-- wild pokemon the whole adjacent ring can be taken while a tile one further
+-- out is free, and either beats the last resort of coming out *inside* them.
+local SUMMON_DISTANCES = { 1, 2 }
+
+-- How far from its trainer a pokemon settles when nothing else is going on.
+--
+-- The engine allows anywhere from 1 to 2: `Monster::getPathSearchParams`
+-- (`src/creatures/monsters/monster.cpp:3833`) overrides `targetDistance` with
+-- `maxTargetDist = 2` for a summon following its own master. So it never pulls
+-- a pokemon back in from two tiles -- it just never pushes it out either, which
+-- is why standing beside the trainer is a resting state and not a passing one.
+--
+-- That is what makes the nudge below cheap: it only ever pushes outwards, the
+-- engine never undoes it, and the two settle instead of fighting.
+local REST_DISTANCE = 2
 
 -- Offsets in the order `Direction_t` declares them, so a direction indexes
 -- straight into this.
@@ -37,6 +50,21 @@ local STEP = {
 	[DIRECTION_NORTHWEST] = { x = -1, y = -1 },
 	[DIRECTION_NORTHEAST] = { x = 1, y = -1 },
 }
+
+-- STEP read backwards, built once: an offset back to the direction that walks
+-- it. `DIRECTION_FOR[x][y]`, with x and y in -1..1 and never both zero.
+local DIRECTION_FOR = {}
+for direction, step in pairs(STEP) do
+	DIRECTION_FOR[step.x] = DIRECTION_FOR[step.x] or {}
+	DIRECTION_FOR[step.x][step.y] = direction
+end
+
+local function sign(n)
+	if n > 0 then
+		return 1
+	end
+	return n < 0 and -1 or 0
+end
 
 --- Can a pokemon stand here?
 --
@@ -55,9 +83,9 @@ end
 
 --- Where to put a pokemon that its trainer is sending out.
 --
--- Two tiles away, starting with the direction the trainer is facing so it
+-- Right beside them, starting with the direction the trainer is facing so it
 -- appears in front of them, and walking round the compass from there. If that
--- whole ring is taken it tries one tile out before giving up.
+-- whole ring is taken it tries one tile further out before giving up.
 --
 -- Sight is checked as well as footing: two tiles out can be on the far side of
 -- a wall, and a pokemon materialising in the next room is worse than one
@@ -93,6 +121,56 @@ local function spotFor(player)
 	end
 
 	return origin
+end
+
+--- Give the trainer room: step outwards when standing right next to them.
+--
+-- A pokemon comes out of its ball at the trainer's side and then moves off to
+-- `REST_DISTANCE`. The engine will not do this by itself -- one tile is already
+-- inside the band it accepts (see `REST_DISTANCE`), so left alone the pokemon
+-- stays shoulder to shoulder until the trainer walks.
+--
+-- Called from `PokemonFollowTrainer`, which already owns where a pokemon stands
+-- relative to its trainer -- it handles too far, this handles too close. Running
+-- on that event rather than on a timer of its own is what keeps this free: it
+-- only fires for a live creature that has a master, so there is no removed
+-- creature to guard against and no event to cancel on recall. The cost is that
+-- the step out lands up to one think (`EVENT_CREATURE_THINK_INTERVAL`, 1s) after
+-- the summon, which is a beat, not a delay.
+--
+-- **Not while either of them is fighting.** In combat `Monster::updateSummonTarget`
+-- points the pokemon at the enemy instead of its master, and pulling it backwards
+-- there would drag it out of melee. Phase 4 owns that; this steps aside for it.
+--
+-- @return true if a step was taken
+function Pokemon.keepDistance(creature, master)
+	if creature:getTarget() or master:getTarget() then
+		return false
+	end
+
+	local here, there = creature:getPosition(), master:getPosition()
+	if here.z ~= there.z then
+		return false
+	end
+
+	-- Zero is the summon's last resort, standing on the trainer: there is no
+	-- outwards to step to, and the direction would be undefined. Left alone --
+	-- the trainer taking one step is enough to sort it out.
+	local distance = math.max(math.abs(here.x - there.x), math.abs(here.y - there.y))
+	if distance == 0 or distance >= REST_DISTANCE then
+		return false
+	end
+
+	local dx, dy = sign(here.x - there.x), sign(here.y - there.y)
+
+	-- Straight on outwards, along whichever of the eight directions it is
+	-- already standing in. A diagonal neighbour steps diagonally.
+	if not standable(Position(here.x + dx, here.y + dy, here.z)) then
+		return false -- boxed in; standing close is the honest outcome
+	end
+
+	creature:move(DIRECTION_FOR[dx][dy])
+	return true
 end
 
 --- The pokemon this player currently has out of its ball, if any.
