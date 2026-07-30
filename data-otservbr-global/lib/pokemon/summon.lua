@@ -53,12 +53,18 @@ function Pokemon.summon(player, item)
 			mon.species, exigido, player:getLevel())
 	end
 
-	local creature = Game.createMonster(Pokemon.monsterName(mon.species), player:getPosition(), false, false)
+	-- extended + force: `placeCreature` recusa em protection zone e em tile
+	-- ocupado quando `force` é falso, e foi isso que fez o summon responder
+	-- "could not send out" dentro do templo. Soltar o Pokémon é ação pedida
+	-- pelo jogador — não pode falhar por causa do piso.
+	--
+	-- O master vai no 5º parâmetro em vez de `setMaster` depois: o C++ o aplica
+	-- **antes** de posicionar, então a criatura já nasce como summon.
+	local creature = Game.createMonster(
+		Pokemon.monsterName(mon.species), player:getPosition(), true, true, player)
 	if not creature then
 		return nil, string.format("Could not send out %s.", mon.species)
 	end
-
-	creature:setMaster(player)
 
 	-- O HP da criatura reflete a fração guardada no item, escalada pelo level
 	-- de quem a está soltando agora.

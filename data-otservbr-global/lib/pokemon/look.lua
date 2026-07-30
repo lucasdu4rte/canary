@@ -42,33 +42,30 @@ end
 -- nada, e o valor útil (quem é o dono) fica enterrado no meio.
 function Pokemon.describe(mon)
 	-- "a pokeball" é fixo enquanto só existe um tipo de ball. Quando a Fase 5
-	-- trouxer great/super/ultra, isto vira o nome do tipo — e é por isso que a
-	-- frase já separa o recipiente do conteúdo em vez de dizer "You see
-	-- Charizard": a ball é o item, o Pokémon é o que está dentro.
-	local linhas = { "a pokeball. It contains " .. mon.species .. "." }
-
-	if mon.fainted then
-		linhas[#linhas + 1] = "It is fainted."
-	end
+	-- trouxer great/super/ultra, é aqui que entra o nome do tipo — e é por
+	-- isso que a frase nomeia o recipiente antes do conteúdo em vez de dizer
+	-- "You see Charizard": a ball é o item, o Pokémon é o que vai dentro.
+	local conteudo = mon.fainted and ("a fainted " .. mon.species) or mon.species
+	local frase = "a pokeball with " .. conteudo
 
 	if mon.holder then
 		-- Dono atual é simplesmente quem está com o item — no modelo de
 		-- item-guarda-tudo não existe coluna de dono para divergir disso.
-		linhas[#linhas + 1] = string.format("It belongs to %s.", mon.holder:getName())
+		frase = frase .. string.format(", belonging to %s.", mon.holder:getName())
 
-		-- Só vale a pena dizer o treinador original quando ele **não** é o
-		-- dono atual: aí a frase conta uma história (mudou de mão). Repetir o
-		-- mesmo nome duas vezes é ruído.
+		-- Só vale dizer o treinador original quando ele **não** é o dono
+		-- atual: aí a frase conta uma história (mudou de mão). Repetir o mesmo
+		-- nome duas vezes é ruído.
 		if mon.holder:getGuid() ~= mon.ot then
-			linhas[#linhas + 1] = string.format("Originally caught by %s.", trainerName(mon.ot))
+			frase = frase .. string.format(" Originally caught by %s.", trainerName(mon.ot))
 		end
 	else
 		-- Sem portador (chão, depot): não há dono a apontar, então o único
 		-- nome honesto é o do treinador original.
-		linhas[#linhas + 1] = string.format("Originally caught by %s.", trainerName(mon.ot))
+		frase = frase .. string.format(", originally caught by %s.", trainerName(mon.ot))
 	end
 
-	return table.concat(linhas, " ")
+	return frase
 end
 
 function Item.getDescription(self, distance)
