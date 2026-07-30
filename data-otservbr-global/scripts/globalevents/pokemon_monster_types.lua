@@ -15,6 +15,22 @@
 
 local PLACEHOLDER_LOOKTYPE = 226 -- azure frog; goes away when the art lands
 
+-- Walking speed, from the species' own `speed`.
+--
+-- It is a trait of the pokemon, not of its trainer: a Scyther is meant to
+-- outrun a Slowpoke, and a pokemon too slow to keep up is supposed to fall
+-- behind -- which is what `PokemonFollowTrainer` exists to catch.
+--
+-- The catalogue's speed runs 15 to 150 across our 154, median 68. Tibia's own
+-- monsters sit around 75 to 200, with familiars at 154, so a flat offset lands
+-- the whole roster inside that band while keeping the order intact: the
+-- slowest walks like a slow monster, the fastest like a quick one.
+--
+-- NOTE: **not** level-scaled, unlike `Pokemon.calcStats().speed`. That one is
+-- the battle stat and decides who strikes first; a trainer levelling up should
+-- not make their Slowpoke walk faster.
+local SPEED_FLOOR = 60
+
 local registrar = GlobalEvent("Pokemon MonsterTypes")
 
 function registrar.onStartup()
@@ -42,7 +58,7 @@ function registrar.onStartup()
 			m.maxHealth = base.hp
 			m.race = "blood"
 			m.corpse = 0
-			m.speed = 100
+			m.speed = SPEED_FLOOR + base.speed
 			m.manaCost = 0
 
 			m.changeTarget = { interval = 4000, chance = 0 }
