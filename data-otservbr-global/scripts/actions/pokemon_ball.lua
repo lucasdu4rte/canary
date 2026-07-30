@@ -14,7 +14,15 @@ function ball.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local entry = Pokemon.getActive(player)
 
 	-- Using the ball of the pokemon already in play means recall.
-	if entry and entry.item == item then
+	--
+	-- Compared by uid, not by `==`. Item equality in Canary is a pointer
+	-- comparison (`Item.__eq` -> `luaUserdataCompare`), and sending a pokemon
+	-- out now runs `transform` to swap the sprite, which on its destructive
+	-- path hands back a **different object** -- at which point the ball in the
+	-- player's hand would stop matching the one in the session and using it
+	-- would try to summon a second pokemon instead of recalling the first.
+	local active = entry and Pokemon.read(entry.item)
+	if active and active.uid == mon.uid then
 		Pokemon.recall(player)
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("%s comes back.", mon.species))
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)

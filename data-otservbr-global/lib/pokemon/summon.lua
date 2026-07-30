@@ -77,7 +77,10 @@ function Pokemon.summon(player, item)
 	local current = math.max(1, math.floor(maxHp * mon.hpRatio))
 	creature:addHealth(current - creature:getHealth())
 
-	active[player:getId()] = { creature = creature, item = item }
+	-- The ball is empty now, and it has to look empty. `syncVisual` can hand
+	-- back a different object, so the session keeps what it returns rather
+	-- than the reference we were passed.
+	active[player:getId()] = { creature = creature, item = Pokemon.syncVisual(item, true) }
 	return creature
 end
 
@@ -97,6 +100,8 @@ function Pokemon.recall(player)
 		local maxHp = creature:getMaxHealth()
 		local ratio = maxHp > 0 and (creature:getHealth() / maxHp) or 0
 		Pokemon.recordReturn(item, math.max(0.0, math.min(1.0, ratio)))
+		-- Occupied again, so the icon goes back to colour.
+		Pokemon.syncVisual(item, false)
 	end
 
 	creature:remove()

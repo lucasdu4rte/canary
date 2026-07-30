@@ -21,23 +21,34 @@ function Pokemon.visualId(species, state)
 	return state == "fainted" and entry.fainted or entry.alive
 end
 
---- The id this item *should* have, given what is inside it.
-function Pokemon.wantedVisual(mon)
-	return Pokemon.visualId(mon.species, mon.fainted and "fainted" or "alive")
+--- The id this item *should* have, given what is inside it and whether it is
+--- empty at the moment.
+--
+-- A pokemon that is out of its ball shows the same grey icon as a fainted one,
+-- and that is Roxy's own choice, not ours: the pack ships three states per
+-- species -- `Icone.`, `Icone using`, `Icone dead` -- and `using` and `dead`
+-- resolve to the **same sprite** in 151 of our 152 species (the one exception
+-- is Mewtwo, whose ids were found outside the run). So "out" needs no third id.
+--
+-- @param out true while the pokemon is standing on the map
+function Pokemon.wantedVisual(mon, out)
+	local empty = mon.fainted or out
+	return Pokemon.visualId(mon.species, empty and "fainted" or "alive")
 end
 
 --- Bring the item's id in line with its contents.
 --
+-- @param out true while the pokemon is out of the ball
 -- @return the item. **May be a different object** than the one passed in, so
 --         callers have to use the return value rather than the reference they
 --         already hold.
-function Pokemon.syncVisual(item)
+function Pokemon.syncVisual(item, out)
 	local mon = Pokemon.read(item)
 	if not mon then
 		return item
 	end
 
-	local wanted = Pokemon.wantedVisual(mon)
+	local wanted = Pokemon.wantedVisual(mon, out)
 	-- No art for this species yet: leave it on whatever it is rather than
 	-- transform it to nil and lose the pokemon.
 	if not wanted or item:getId() == wanted then
@@ -55,4 +66,45 @@ function Pokemon.syncVisual(item)
 	item:transform(wanted)
 	Pokemon.restore(item, saved)
 	return item
+end
+
+--- Put every ball this player carries back in step with the truth.
+--
+-- Exists because "out of the ball" is session state while the item id is
+-- persisted, and the two can disagree: kill the server with a pokemon out and
+-- the ball is saved wearing the empty sprite, while the session that knew why
+-- is gone. Nothing else would ever put it right -- the ball would sit grey
+-- until its owner happened to use it.
+--
+-- Login is the moment to fix that, and it is the same moment the session is
+-- cleared: if the session says nothing is out, then nothing should look out.
+-- The walk is a no-op for every ball already correct, so the cost is a read
+-- per carried pokemon, once.
+function Pokemon.normalizeVisuals(player)
+	local fixed = 0
+
+	local function walk(item, depth)
+		if item:getCustomAttribute("pokemon_species") ~= nil then
+			local was = item:getId()
+			if Pokemon.syncVisual(item, false):getId() ~= was then
+				fixed = fixed + 1
+			end
+			return
+		end
+		if depth > 4 or not item:isContainer() then
+			return
+		end
+		for _, inner in ipairs(item:getItems() or {}) do
+			walk(inner, depth + 1)
+		end
+	end
+
+	for slot = CONST_SLOT_FIRST, CONST_SLOT_LAST do
+		local item = player:getSlotItem(slot)
+		if item then
+			walk(item, 1)
+		end
+	end
+
+	return fixed
 end

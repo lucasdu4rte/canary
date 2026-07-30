@@ -59,6 +59,15 @@ function onLoginEvent.onLogin(player)
 	player:registerEvent("PokemonOnPlayerDeath")
 	-- Fresh session: nothing in play. A safety belt in case the id is reused.
 	Pokemon.clearSession(player)
+
+	-- And since nothing is in play, no ball should be wearing the empty
+	-- sprite. Only a crash with a pokemon out can leave one that way -- the
+	-- id is on disk, the session that explained it is not.
+	local fixed = Pokemon.normalizeVisuals(player)
+	if fixed > 0 then
+		logger.info(string.format("[pokemon] %s: %d ball(s) put back in colour after an unclean shutdown",
+			player:getName(), fixed))
+	end
 	return true
 end
 
