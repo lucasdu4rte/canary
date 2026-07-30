@@ -38,6 +38,20 @@ function Pokemon.summon(player, item)
 		return nil, "That is not a pokemon."
 	end
 
+	-- It has to be yours, and you have to be carrying it.
+	--
+	-- Without this a ball lying on the floor could be used where it lay --
+	-- including someone else's, dropped a moment ago. `read` resolves the
+	-- holder by walking the item up to whichever player is carrying it, so a
+	-- ball on the ground, in a depot or inside a container on the ground all
+	-- come back with no holder at all.
+	--
+	-- The check lives here rather than in the Action so that phase 5's capture,
+	-- and anything else that ever sends a pokemon out, inherits it.
+	if not mon.holder or mon.holder:getId() ~= player:getId() then
+		return nil, "You have to be carrying that pokemon to send it out."
+	end
+
 	if mon.fainted then
 		return nil, string.format("%s is fainted and cannot be sent out.", mon.species)
 	end
