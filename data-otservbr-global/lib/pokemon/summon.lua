@@ -180,6 +180,25 @@ function Pokemon.summon(player, item)
 	creature:setMaxHealth(maxHp)
 	creature:setHealth(math.max(1, math.floor(maxHp * mon.hpRatio)))
 
+	-- Walking speed is the trainer's, not the species'.
+	--
+	-- The MonsterType carries 100, which is ordinary for a monster and hopeless
+	-- for a companion: a level 500 knight outruns it in a couple of steps, and
+	-- what the player sees is a pokemon that falls off the screen and teleports
+	-- back over and over. Measured in game on 2026-07-30 -- it was following
+	-- the whole time, just losing ground every step.
+	--
+	-- This is **not** the `speed` stat from the catalogue. That one decides who
+	-- strikes first and belongs to phase 4; this one only decides whether the
+	-- thing can keep up while walking. Sharing a name is the whole reason to
+	-- say so here.
+	--
+	-- Read once, at the summon. A haste on the trainer afterwards will outpace
+	-- it again until the pokemon is recalled -- acceptable while nothing in the
+	-- game hastes anyone, and the place to fix it is a condition on the summon
+	-- rather than polling.
+	creature:setSpeed(player:getSpeed())
+
 	-- The ball is empty now, and it has to look empty. `syncVisual` can hand
 	-- back a different object, so the session keeps what it returns rather
 	-- than the reference we were passed.
