@@ -13,9 +13,9 @@
 -- and a broken one look the same, and 102 of the 360 moves deal no damage yet.
 
 -- One registration per slot: TalkAction matches the whole word, so there is no
--- prefix form. Bounded by the data rather than by a number typed here, so the
--- day a species gains a fifteenth move the command exists for it.
-for slot = 1, Pokemon.MAX_MOVE_SLOTS do
+-- prefix form. Bounded by KEYBOUND_SLOTS -- the moves get bound to F1..F12 and
+-- there is no F13, so a thirteenth command would be one nothing can press.
+for slot = 1, Pokemon.KEYBOUND_SLOTS do
 	local command = TalkAction("!m" .. slot)
 
 	function command.onSay(player, words, param)
@@ -70,7 +70,17 @@ function listMoves.onSay(player, words, param)
 				or string.format("pw %d, %s, reach %d, %s",
 					move.power, move.type, move.range, move.behavior)
 		end
-		player:sendTextMessage(MESSAGE_STATUS, string.format("  !m%d %s - %s", slot, item.name, state))
+		-- Past F12 there is no key to bind, so the slot gets no number. Saying so
+		-- is the point: a move listed as `!m13` that nothing can press would look
+		-- broken, and one hidden entirely would look like it does not exist.
+		local label = slot <= Pokemon.KEYBOUND_SLOTS and string.format("!m%d", slot) or "  --"
+		player:sendTextMessage(MESSAGE_STATUS, string.format("  %s %s - %s", label, item.name, state))
+	end
+
+	if #known > Pokemon.KEYBOUND_SLOTS then
+		player:sendTextMessage(MESSAGE_STATUS, string.format(
+			"The last %d have no key: only F1-F%d can be bound.",
+			#known - Pokemon.KEYBOUND_SLOTS, Pokemon.KEYBOUND_SLOTS))
 	end
 	return true
 end
@@ -87,7 +97,8 @@ local useByName = TalkAction("!move")
 function useByName.onSay(player, words, param)
 	local wanted = param:trim()
 	if wanted == "" then
-		player:sendCancelMessage("Usage: !move <name> -- debug. Players use !m1 .. !m" .. Pokemon.MAX_MOVE_SLOTS .. ".")
+		player:sendCancelMessage("Usage: !move <name> -- debug, and the only way to reach a slot past !m"
+			.. Pokemon.KEYBOUND_SLOTS .. ".")
 		return true
 	end
 

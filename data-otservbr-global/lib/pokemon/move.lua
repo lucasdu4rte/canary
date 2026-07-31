@@ -80,6 +80,20 @@ Pokemon.MAX_MOVE_SLOTS = (function()
 	return most
 end)()
 
+--- Slots a player can actually reach from the keyboard.
+--
+-- Twelve, because the moves get bound to F1..F12 and there is no F13. This is a
+-- limit of the input device, not of the data -- which is why it is a second
+-- constant rather than a smaller MAX_MOVE_SLOTS.
+--
+-- ⚠️ Three species carry more than this: Articuno, Zapdos and Moltres have 14,
+-- so their last two moves have no key. That is a real gap and it is left
+-- VISIBLE -- `!moves` marks them, and the god-only `!move <name>` still reaches
+-- them. Trimming the catalogue instead would mean choosing which two legendary
+-- moves to delete, which is a balance decision and not one to make silently in
+-- a UI constant.
+Pokemon.KEYBOUND_SLOTS = 12
+
 --- Name of the move in a slot, or nil when the slot is empty for this species.
 function Pokemon.moveInSlot(mon, slot)
 	local species = PokemonSpecies[Pokemon.effectiveSpecies(mon)]
