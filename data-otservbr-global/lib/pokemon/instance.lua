@@ -62,6 +62,13 @@ local FIELDS = {
 	{ key = "pokemon_ot",       kind = "number",  required = true, immutable = true },
 	{ key = "pokemon_uid",      kind = "number",  required = true, immutable = true },
 	{ key = "pokemon_fainted",  kind = "boolean", default = false },
+	-- Move cooldowns, all of them, in one serialised string -- see cooldown.lua
+	-- for the format. One key rather than one per move: a key per move would
+	-- make `read` walk up to 14 of them per call and, worse, would leave them
+	-- outside this schema, which is what `snapshot`/`restore` carries across a
+	-- sprite swap. Measured 2026-07-30: outside the schema they were wiped on
+	-- every single summon, since sending a pokemon out transforms the ball.
+	{ key = "pokemon_cds",      kind = "string",  default = "" },
 }
 
 -- 2^53: measured ceiling of a custom attribute.

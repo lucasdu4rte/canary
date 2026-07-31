@@ -155,7 +155,14 @@ local function combatFor(move, damage)
 	-- Fixed both ends: the roll already happened in Pokemon.damage, and letting
 	-- the engine roll again would stack two sources of variance -- one of them
 	-- invisible from the formula that is supposed to own it.
-	combat:setFormula(COMBAT_FORMULA_DAMAGE, 0, -damage, 0, -damage)
+	--
+	-- ⚠️ The signature is (type, mina, minb, maxa, maxb), and COMBAT_FORMULA_DAMAGE
+	-- reads **mina and maxa** -- `normal_random(mina, maxa)` in combat.cpp:80.
+	-- The b arguments are ignored for this formula type. Passing the damage as
+	-- b, which is the shape most datapack spells use, rolls normal_random(0, 0)
+	-- and every move lands for nothing: the effect plays, the message prints,
+	-- the cooldown starts, and the target does not lose a hitpoint.
+	combat:setFormula(COMBAT_FORMULA_DAMAGE, -damage, 0, -damage, 0)
 
 	-- Shape comes from the table, never from the move's name.
 	if move.behavior == "aoe" then
