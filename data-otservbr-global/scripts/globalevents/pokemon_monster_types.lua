@@ -108,7 +108,13 @@ function registrar.onStartup()
 			-- Declared on the type so every instance carries them, whatever
 			-- created the creature: death has to reach the ball, and a pokemon
 			-- must not wander off screen.
-			m.events = { "PokemonFaint", "PokemonFollowTrainer", "PokemonWildStats", "PokemonAutoAttack" }
+			m.events = {
+				"PokemonFaint",
+				"PokemonFollowTrainer",
+				"PokemonWildStats",
+				"PokemonAutoAttack",
+				"PokemonDamageRules",
+			}
 
 			m.voices = { interval = 5000, chance = 0 }
 			m.loot = {}
