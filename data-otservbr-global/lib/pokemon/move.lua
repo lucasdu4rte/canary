@@ -178,6 +178,24 @@ local function combatFor(move, damage)
 	return combat
 end
 
+--- Deliver a hit, and let the target hit back.
+--
+-- The one place damage reaches a creature, so it is the one place that knows a
+-- fight just started. A wild has `hostile = false` -- it does not pick a fight
+-- -- and nothing else ever hands it a target, so without this it stands there
+-- being hit and never swings: reported from play, and true of every wild.
+--
+-- Retaliation only. It takes the attacker as its target if it has none, which
+-- leaves a wild already fighting someone else alone, and never touches a
+-- summon, whose target belongs to its trainer.
+local function deliver(attacker, target, move, damage)
+	combatFor(move, damage):execute(attacker, Variant(target:getId()))
+
+	if not target:isRemoved() and not target:getMaster() and not target:getTarget() then
+		target:setTarget(attacker)
+	end
+end
+
 local EFFECTIVENESS_TEXT = {
 	["0"] = "It has no effect",
 	["0.25"] = "It is barely effective",
@@ -289,7 +307,7 @@ function Pokemon.useMove(player, moveName)
 	Pokemon.markMoveUsed(entry.item, known.name, known.cooldown)
 
 	local damage, effectiveness = Pokemon.damage(attacker, defender, move)
-	combatFor(move, damage):execute(entry.creature, Variant(target:getId()))
+	deliver(entry.creature, target, move, damage)
 
 	local note = EFFECTIVENESS_TEXT[tostring(effectiveness)]
 	player:sendTextMessage(MESSAGE_STATUS, string.format(
@@ -332,15 +350,19 @@ Pokemon.AUTO_ATTACK_POWER = 10
 --
 -- The consequence is canonical and accepted: a normal-typed pokemon's automatic
 -- attack does nothing to a ghost, and its ordered moves are what get it through.
-local function autoAttackMove(attacker)
-	return {
-		power = Pokemon.AUTO_ATTACK_POWER,
-		type = attacker.speciesData.types[1],
-		damageClass = "physical",
-		range = 1,
-		behavior = "target",
-	}
-end
+local AUTO_ATTACK_MOVE = {
+	power = Pokemon.AUTO_ATTACK_POWER,
+	-- No type, and that is the point: no STAB, no effectiveness, no immunity.
+	-- Element belongs to moves. Measured with the attacker's own first type
+	-- instead, 74 of the 154 species had a matchup where their melee did
+	-- nothing -- Snorlax against a ghost, Pikachu against a ground -- which is
+	-- half the roster losing one of its two clocks in silence. Roxy arrives at
+	-- the same place: their melee is physical and never consults a type.
+	type = nil,
+	damageClass = "physical",
+	range = 1,
+	behavior = "target",
+}
 
 --- Run one automatic attack if this creature has a target it can reach.
 -- @return true if it attacked
@@ -366,13 +388,13 @@ function Pokemon.autoAttack(creature)
 		return false
 	end
 
-	local move = autoAttackMove(attacker)
+	local move = AUTO_ATTACK_MOVE
 	if creature:getPosition():getDistance(target:getPosition()) > move.range then
 		return false
 	end
 
 	local damage = Pokemon.damage(attacker, defender, move)
-	combatFor(move, damage):execute(creature, Variant(target:getId()))
+	deliver(creature, target, move, damage)
 	return true
 end
 

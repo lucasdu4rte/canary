@@ -35,15 +35,32 @@ function Pokemon.damage(attacker, defender, move)
 	local level = attacker.effectiveLevel
 	local base = math.floor(math.floor(math.floor(2 * level / 5 + 2) * move.power * a / d) / 50) + 2
 
+	-- A move with no type is elemental in neither direction: no STAB, no
+	-- effectiveness, no immunity. The melee auto-attack is the only one, and it
+	-- is a property of the move rather than a name checked here -- nothing in
+	-- this file knows what a move is called.
+	--
+	-- 🔴 Why melee has no type. It carried the attacker's own first type at
+	-- first, for free STAB and no branch. Measured: 74 of the 154 species have a
+	-- first type that something is immune to -- Snorlax's melee did nothing to a
+	-- ghost, Pikachu's nothing to a ground, Machamp's nothing to a ghost. Half
+	-- the roster lost half its damage output in specific matchups, silently,
+	-- because the automatic attack is one of the two clocks a fight runs on.
+	--
+	-- Roxy reaches the same place from the other side: their melee is physical
+	-- and never consults a type at all. Element belongs to moves.
 	local stab = 1.0
-	for _, attackerType in ipairs(attacker.speciesData.types) do
-		if attackerType == move.type then
-			stab = 1.5
-			break
-		end
-	end
+	local effectiveness = 1.0
 
-	local effectiveness = Pokemon.multiplier(move.type, defender.speciesData.types)
+	if move.type then
+		for _, attackerType in ipairs(attacker.speciesData.types) do
+			if attackerType == move.type then
+				stab = 1.5
+				break
+			end
+		end
+		effectiveness = Pokemon.multiplier(move.type, defender.speciesData.types)
+	end
 
 	-- Ahead of the `max(1, ...)` below, and that order is the whole point.
 	-- After it, an immunity would deal 1, and "Normal hit the Gengar for 1" is
