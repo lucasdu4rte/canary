@@ -69,6 +69,11 @@ local FIELDS = {
 	-- sprite swap. Measured 2026-07-30: outside the schema they were wiped on
 	-- every single summon, since sending a pokemon out transforms the ball.
 	{ key = "pokemon_cds",      kind = "string",  default = "" },
+	-- Which empty ball caught this pokemon. Born without `required` and with a
+	-- declared default so the balls made by `/create-pokemon` before this field
+	-- existed still read back: a migration is only needed when a field is
+	-- mandatory, and none of these ever left a test machine.
+	{ key = "pokemon_ball",     kind = "number",  default = 0 },
 }
 
 -- 2^53: measured ceiling of a custom attribute.
@@ -166,6 +171,7 @@ function Pokemon.read(item)
 		ot = raw.pokemon_ot,
 		uid = raw.pokemon_uid,
 		fainted = raw.pokemon_fainted,
+		ball = raw.pokemon_ball,
 	}
 
 	-- Stats only exist relative to a trainer. With no holder -- on the ground,
@@ -183,11 +189,18 @@ function Pokemon.read(item)
 end
 
 --- Create a pokemon in the player's bag.
--- @param destination optional container. Without it the item goes to the
---        player's inventory. Phase 5 uses this to place straight into the
---        Capture Bag.
+-- @param opts optional table:
+--        overrideItemId -- force the item id, and therefore the SPRITE. Not the
+--                          ball that caught it: passing a pokeball here wipes
+--                          the species icon. Left nil by every normal caller.
+--        destination    -- container to put it in. Without it the item goes to
+--                          the player's inventory. Phase 5 passes the depot
+--                          chest when the trainer is already carrying six.
+--        ballItemId     -- the empty ball that caught it, recorded as an
+--                          attribute. Nothing to do with the sprite.
 -- @return the item, or nil plus a reason
-function Pokemon.create(player, speciesName, ballItemId, destination)
+function Pokemon.create(player, speciesName, opts)
+	opts = opts or {}
 	local species = PokemonSpecies[speciesName]
 	if not species then
 		return nil, "unknown species: " .. tostring(speciesName)
@@ -195,11 +208,11 @@ function Pokemon.create(player, speciesName, ballItemId, destination)
 
 	-- Born with the species' own sprite. The placeholder is the fallback for
 	-- the two species the artwork does not cover, not the normal case.
-	local id = ballItemId or Pokemon.visualId(speciesName, "alive") or Pokemon.PLACEHOLDER_BALL_ID
+	local id = opts.overrideItemId or Pokemon.visualId(speciesName, "alive") or Pokemon.PLACEHOLDER_BALL_ID
 
 	local item
-	if destination then
-		item = destination:addItem(id, 1)
+	if opts.destination then
+		item = opts.destination:addItem(id, 1)
 	else
 		-- canDropOnMap = false: with `true`, a full bag drops the ball on the
 		-- ground, and a ball on the ground is removed by the clean. Losing one
@@ -217,13 +230,14 @@ function Pokemon.create(player, speciesName, ballItemId, destination)
 	item:setCustomAttribute("pokemon_ot", player:getGuid())
 	item:setCustomAttribute("pokemon_uid", uid)
 	item:setCustomAttribute("pokemon_fainted", false)
+	item:setCustomAttribute("pokemon_ball", opts.ballItemId or 0)
 
 	-- The only audit trail this phase ships. Without it, "handle duplication
 	-- by hand" has nowhere to start: two instances of a species are
 	-- numerically identical.
 	logger.info(string.format(
-		"[pokemon] created uid=%.0f species=%s player=%s(%d)",
-		uid, speciesName, player:getName(), player:getGuid()))
+		"[pokemon] created uid=%.0f species=%s player=%s(%d) ball=%d",
+		uid, speciesName, player:getName(), player:getGuid(), opts.ballItemId or 0))
 
 	return item
 end
