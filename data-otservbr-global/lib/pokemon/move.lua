@@ -146,6 +146,12 @@ function Pokemon.combatantOf(creature)
 	}
 end
 
+--- Is this creature standing on a protection-zone tile?
+local function inProtectionZone(creature)
+	local tile = creature and creature:getTile()
+	return tile ~= nil and tile:hasFlag(TILESTATE_PROTECTIONZONE)
+end
+
 local function combatFor(move, damage)
 	local flavour = COMBAT_BY_TYPE[move.type] or FALLBACK_COMBAT
 
@@ -241,10 +247,37 @@ function Pokemon.useMove(player, moveName)
 		return false, "Pokemon moves only work on other pokemon."
 	end
 
+	-- No fighting in a protection zone, on either side.
+	--
+	-- The engine already half-enforces this -- a familiar cannot start
+	-- attacking while it stands in one -- but only half, and silently: the
+	-- order would be accepted, the cooldown consumed, and nothing would happen.
+	-- Checking both tiles also closes the other half, which the engine does not
+	-- cover: standing outside and hitting something that stepped into a temple.
+	if inProtectionZone(entry.creature) then
+		return false, string.format("%s cannot fight inside a protection zone.", mon.species)
+	end
+	if inProtectionZone(target) then
+		return false, string.format("%s is inside a protection zone.", target:getName())
+	end
+
+	-- Point the pokemon at what its trainer picked, BEFORE the range check.
+	--
+	-- Nothing in Canary does this: `Player::setAttackedCreature` moves the
+	-- player alone, and no summon path propagates a target. Ours are
+	-- `hostile = false` besides, so they never pick one up on their own --
+	-- measured, the summon sat at `target = nil` with a wild two squares away.
+	--
+	-- Ahead of the range check so the first press starts the approach rather
+	-- than being a wasted keystroke: 237 of the 323 moves the range table
+	-- covers reach one square, so refusing without engaging would mean the
+	-- normal case is press, nothing, walk yourself, press again.
+	entry.creature:setTarget(target)
+
 	local distance = entry.creature:getPosition():getDistance(target:getPosition())
 	if distance > move.range then
-		return false, string.format("%s only reaches %d square%s away.",
-			known.name, move.range, move.range == 1 and "" or "s")
+		return false, string.format("%s only reaches %d square%s away - %s is closing in.",
+			known.name, move.range, move.range == 1 and "" or "s", mon.species)
 	end
 
 	local left = Pokemon.moveCooldownLeft(entry.item, known.name)
@@ -262,6 +295,84 @@ function Pokemon.useMove(player, moveName)
 	player:sendTextMessage(MESSAGE_STATUS, string.format(
 		"%s used %s.%s", mon.species, known.name, note and (" " .. note .. "!") or ""))
 
+	return true
+end
+
+-- ─── the second clock ────────────────────────────────────────────────────────
+--
+-- Roxy runs two cadences and we only had one: an automatic attack every
+-- 2.6-5.6s from the MonsterType, and the trainer's ordered move every 20-40s.
+-- With only the ordered move, a fight is a handful of hits separated by half a
+-- minute of standing still -- which is also what made raising HP impossible,
+-- since every extra point of health became more waiting rather than more fight.
+--
+-- Ours is not a MonsterType attack but a synthetic move run through the same
+-- Pokemon.damage and the same combat delivery. That keeps one damage path
+-- instead of two, so effectiveness, STAB and the stat split apply here exactly
+-- as they do to an ordered move.
+
+--- Seconds between automatic attacks. Roxy's monsters sit at 2.6-5.6s.
+Pokemon.AUTO_ATTACK_INTERVAL = 3
+
+--- Power of the automatic attack.
+--
+-- Small on purpose: this is the filler between ordered moves, not a substitute
+-- for them. At 3s a piece, ten of these land inside one 30s cooldown, so a
+-- power of 10 against an ordered move of 60-110 keeps the ordered move worth
+-- roughly as much as the whole stretch of filler around it -- which is the
+-- balance the two clocks are supposed to strike.
+Pokemon.AUTO_ATTACK_POWER = 10
+
+--- The automatic attack, as a move.
+--
+-- Typed after the attacker's own first type rather than fixed to normal. It
+-- costs nothing, gives STAB for free, and avoids a special case in the damage
+-- path -- the alternative, a typeless attack, would be the one branch in this
+-- file that reads a move by something other than the table.
+--
+-- The consequence is canonical and accepted: a normal-typed pokemon's automatic
+-- attack does nothing to a ghost, and its ordered moves are what get it through.
+local function autoAttackMove(attacker)
+	return {
+		power = Pokemon.AUTO_ATTACK_POWER,
+		type = attacker.speciesData.types[1],
+		damageClass = "physical",
+		range = 1,
+		behavior = "target",
+	}
+end
+
+--- Run one automatic attack if this creature has a target it can reach.
+-- @return true if it attacked
+function Pokemon.autoAttack(creature)
+	if not creature or creature:isRemoved() then
+		return false
+	end
+
+	local target = creature:getTarget()
+	if not target or target:isRemoved() then
+		return false
+	end
+
+	-- Same protection-zone rule as an ordered move, and for the same reason:
+	-- a safe tile has to be safe from both directions.
+	if inProtectionZone(creature) or inProtectionZone(target) then
+		return false
+	end
+
+	local attacker = Pokemon.combatantOf(creature)
+	local defender = Pokemon.combatantOf(target)
+	if not attacker or not defender then
+		return false
+	end
+
+	local move = autoAttackMove(attacker)
+	if creature:getPosition():getDistance(target:getPosition()) > move.range then
+		return false
+	end
+
+	local damage = Pokemon.damage(attacker, defender, move)
+	combatFor(move, damage):execute(creature, Variant(target:getId()))
 	return true
 end
 
