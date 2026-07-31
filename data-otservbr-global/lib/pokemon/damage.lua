@@ -54,9 +54,18 @@ function Pokemon.damage(attacker, defender, move)
 
 	local roll = 0.85 + math.random() * 0.15
 
+	-- The other half of Pokemon.STAT_SCALE. Health carries the same factor, so
+	-- the two cancel and the number of hits a fight takes is exactly what it was
+	-- before the scale existed -- which is the point: the scale moves the digits
+	-- into the range the rest of the server plays at, and moves nothing else.
+	--
+	-- Applied here rather than to atk/spatk because those meet defence as A/D
+	-- inside the formula above, where a common factor cancels out.
+	local scaled = base * stab * effectiveness * roll * Pokemon.STAT_SCALE
+
 	-- Minimum of 1 so a weak move against high defence lands for something.
 	-- "Hit and did nothing" reads as a bug; immunity above is the only real 0.
-	return math.max(1, math.floor(base * stab * effectiveness * roll)), effectiveness
+	return math.max(1, math.floor(scaled)), effectiveness
 end
 
 --- Runs the formula `rounds` times on one pair and reports the spread.
