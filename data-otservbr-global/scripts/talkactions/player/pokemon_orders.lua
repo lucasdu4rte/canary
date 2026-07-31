@@ -68,11 +68,16 @@ for slot = 1, 4 do
 			-- The caveat rides along only when it applies: a pokemon that is free
 			-- to move re-faces its target the next time it acts, so the turn is a
 			-- single instant unless it is parked.
+			--
+			-- Phrased as the ORDER, not as a report: "Charizard, turn to the
+			-- north!" is the trainer speaking, which is what every other line in
+			-- this interface does -- "I choose you", "come back". A report would
+			-- be the odd one out.
 			local caveat = Pokemon.isStopped(entry.creature)
 				and ""
 				or " It will turn back when it acts - !pokestop holds it."
 			player:sendTextMessage(MESSAGE_STATUS, string.format(
-				"%s faces %s.%s", entry.creature:getName(), Pokemon.FACING_NAME[slot], caveat))
+				"%s, turn to the %s!%s", entry.creature:getName(), Pokemon.FACING_NAME[slot], caveat))
 			return true
 		end
 
