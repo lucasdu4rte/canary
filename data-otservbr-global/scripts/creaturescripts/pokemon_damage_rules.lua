@@ -35,3 +35,33 @@ function damageRules.onHealthChange(creature, attacker, primaryDamage, primaryTy
 end
 
 damageRules:register()
+
+-- The other direction: a pokemon does not hurt a trainer who has one in play.
+--
+-- Phase 3 already established the rule and put it on `onTargetCombat`, which
+-- gates target SELECTION. The phase 4 spec flagged the hole that leaves in
+-- advance, and this is the phase that opens it: area damage reaches a trainer
+-- standing in the blast without anyone ever having selected them as a target,
+-- so it never passes the phase 3 rule at all. 191 of the 360 moves are area
+-- moves, so this is the common case rather than a corner.
+--
+-- ⚠️ Scoped to damage from a POKEMON. Zeroing everything would make a trainer
+-- with a pokemon out invulnerable to Tibia content too, which is a far larger
+-- change than the rule this is completing.
+local trainerGuard = CreatureEvent("PokemonTrainerGuard")
+
+function trainerGuard.onHealthChange(creature, attacker, primaryDamage, primaryType, secondaryDamage, secondaryType, origin)
+	if primaryType == COMBAT_HEALING or not attacker then
+		return primaryDamage, primaryType, secondaryDamage, secondaryType
+	end
+
+	-- Only while a pokemon is out: with none in play the trainer is on their
+	-- own, which is the state phase 3 left deliberately unprotected.
+	if PokemonSpecies[attacker:getName()] and Pokemon.hasActive(creature) then
+		return 0, primaryType, 0, secondaryType
+	end
+
+	return primaryDamage, primaryType, secondaryDamage, secondaryType
+end
+
+trainerGuard:register()

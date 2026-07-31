@@ -90,7 +90,21 @@ function registrar.onStartup()
 				familiar = true,
 				summonable = false, -- only our own code sends these out
 				attackable = true,
-				hostile = false, -- does not attack players on its own
+
+				-- Whether a wild picks fights, straight from the catalogue: 29
+				-- of the 154 never do -- Caterpie, Chansey, Ditto, Mr. Mime,
+				-- Lapras. A map where everything attacks is a hostile map, and
+				-- the difference in feel is worth the one flag.
+				--
+				-- Retaliation is separate and applies to all of them: being hit
+				-- gives a wild its attacker as a target (see move.lua), so a
+				-- passive species still fights back once provoked. `hostile`
+				-- only decides who starts it.
+				--
+				-- The trainer stays out of it while a pokemon is in play --
+				-- that is phase 3's `onTargetCombat` rule, and it is why a
+				-- hostile wild reaches for the summon rather than its owner.
+				hostile = not species.passive,
 				convinceable = false,
 				pushable = false,
 				rewardBoss = false,

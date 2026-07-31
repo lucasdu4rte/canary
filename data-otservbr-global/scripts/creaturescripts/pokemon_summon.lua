@@ -105,6 +105,9 @@ local onLoginEvent = CreatureEvent("PokemonOnLogin")
 function onLoginEvent.onLogin(player)
 	player:registerEvent("PokemonOnLogout")
 	player:registerEvent("PokemonOnPlayerDeath")
+	-- Area damage never passes through target selection, so the phase 3
+	-- protection cannot see it. This is the damage-side half of the same rule.
+	player:registerEvent("PokemonTrainerGuard")
 	-- Fresh session: nothing in play. A safety belt in case the id is reused.
 	Pokemon.clearSession(player)
 
