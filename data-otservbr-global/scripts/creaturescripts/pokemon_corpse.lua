@@ -34,7 +34,12 @@ function corpseTag.onDeath(creature, corpse, killer, mostDamageKiller, unjustifi
 		return true
 	end
 
-	corpse:setCustomAttribute("pokemon_species", species)
+	-- Deliberately NOT `pokemon_species`: that key is what `Pokemon.read` uses
+	-- to decide an item is a pokemon, and a corpse carrying it reads as a
+	-- malformed ball -- past the first check, refused at the `required`
+	-- `pokemon_ot`, with a logger.error on the way out. Two different things
+	-- that both know a species, so two different keys.
+	corpse:setCustomAttribute("pokemon_corpse_species", species)
 	return true
 end
 
