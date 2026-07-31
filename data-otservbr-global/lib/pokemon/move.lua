@@ -136,7 +136,7 @@ function Pokemon.combatantOf(creature)
 	local master = creature:getMaster()
 	local level = (master and master:isPlayer())
 		and Pokemon.effectiveLevel(master:getLevel())
-		or Pokemon.wildLevel(creature:getPosition())
+		or Pokemon.wildLevel(creature:getName(), creature:getPosition())
 
 	return {
 		creature = creature,

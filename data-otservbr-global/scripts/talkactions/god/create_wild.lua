@@ -49,7 +49,7 @@ function createWild.onSay(player, words, param)
 
 	player:sendTextMessage(MESSAGE_ADMINISTRATOR, string.format(
 		"Wild %s at level %d - %d HP.",
-		key, Pokemon.wildLevel(position), monster:getMaxHealth()))
+		key, Pokemon.wildLevel(key, position), monster:getMaxHealth()))
 	monster:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	return true
 end

@@ -18,6 +18,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -78,6 +79,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -148,6 +150,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 95,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -222,6 +225,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -276,6 +280,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Ember",
@@ -336,6 +341,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 95,
     ["moves"] = {
       {
         ["name"] = "Ember",
@@ -410,6 +416,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -464,6 +471,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -523,6 +531,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 95,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -592,6 +601,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -626,6 +636,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "String Shot",
@@ -666,6 +677,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 40,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -731,6 +743,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -766,6 +779,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "String Shot",
@@ -806,6 +820,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 40,
     ["moves"] = {
       {
         ["name"] = "String Shot",
@@ -866,6 +881,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -906,6 +922,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -956,6 +973,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 85,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1020,6 +1038,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1059,6 +1078,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 127,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 35,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1109,6 +1129,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -1154,6 +1175,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -1213,6 +1235,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -1257,6 +1280,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -1316,6 +1340,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Charm",
@@ -1380,6 +1405,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 95,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -1439,6 +1465,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -1483,6 +1510,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 75,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -1542,6 +1570,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 235,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1586,6 +1615,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 40,
     ["moves"] = {
       {
         ["name"] = "Charm",
@@ -1641,6 +1671,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 75,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1700,6 +1731,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 235,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1744,6 +1776,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 40,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1804,6 +1837,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 75,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1868,6 +1902,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 150,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -1927,6 +1962,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 25,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 75,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -1986,6 +2022,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -2040,6 +2077,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 80,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -2105,6 +2143,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 170,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -2160,6 +2199,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 50,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 75,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -2220,6 +2260,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2265,6 +2306,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2320,6 +2362,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2370,6 +2413,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 40,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2430,6 +2474,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2500,6 +2545,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -2550,6 +2596,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2620,6 +2667,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2680,6 +2728,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2744,6 +2793,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -2788,6 +2838,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 50,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -2847,6 +2898,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Slash",
@@ -2891,6 +2943,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Slash",
@@ -2950,6 +3003,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 35,
     ["moves"] = {
       {
         ["name"] = "Water Gun",
@@ -2999,6 +3053,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 80,
     ["moves"] = {
       {
         ["name"] = "Fury Swipes",
@@ -3063,6 +3118,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -3107,6 +3163,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Low Kick",
@@ -3161,6 +3218,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 35,
     ["moves"] = {
       {
         ["name"] = "Roar",
@@ -3220,6 +3278,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Will-O-Wisp",
@@ -3289,6 +3348,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Double Slap",
@@ -3333,6 +3393,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 35,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -3393,6 +3454,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 80,
     ["moves"] = {
       {
         ["name"] = "Mud-Slap",
@@ -3462,6 +3524,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 200,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Recover",
@@ -3501,6 +3564,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 100,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Psybeam",
@@ -3570,6 +3634,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 50,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 100,
     ["moves"] = {
       {
         ["name"] = "Psybeam",
@@ -3634,6 +3699,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 180,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -3678,6 +3744,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -3732,6 +3799,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 80,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -3792,6 +3860,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Razor Leaf",
@@ -3832,6 +3901,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 35,
     ["moves"] = {
       {
         ["name"] = "Razor Leaf",
@@ -3897,6 +3967,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Razor Leaf",
@@ -3962,6 +4033,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -4012,6 +4084,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 85,
     ["moves"] = {
       {
         ["name"] = "Wrap",
@@ -4082,6 +4155,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -4122,6 +4196,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Rock Throw",
@@ -4177,6 +4252,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 150,
     ["moves"] = {
       {
         ["name"] = "Swagger",
@@ -4201,6 +4277,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -4245,6 +4322,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 80,
     ["moves"] = {
       {
         ["name"] = "Smart Strike",
@@ -4310,6 +4388,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Aqua Tail",
@@ -4360,6 +4439,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Aqua Tail",
@@ -4425,6 +4505,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -4470,6 +4551,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Iron Spiner",
@@ -4530,6 +4612,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -4590,6 +4673,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -4635,6 +4719,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -4704,6 +4789,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -4754,6 +4840,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 75,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -4823,6 +4910,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -4872,6 +4960,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -4936,6 +5025,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -4986,6 +5076,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 70,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -5046,6 +5137,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -5091,6 +5183,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -5151,6 +5244,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Creepy Lick",
@@ -5211,6 +5305,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 150,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -5270,6 +5365,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 35,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -5324,6 +5420,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 65,
     ["moves"] = {
       {
         ["name"] = "Psy Pulse",
@@ -5392,6 +5489,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 225,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5436,6 +5534,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 50,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5500,6 +5599,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Thunder Shock",
@@ -5544,6 +5644,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Charge",
@@ -5604,6 +5705,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 90,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Hypnosis",
@@ -5644,6 +5746,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Seed Bomb",
@@ -5708,6 +5811,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -5752,6 +5856,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 65,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5811,6 +5916,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 70,
     ["moves"] = {
       {
         ["name"] = "Triple Kick Lee",
@@ -5850,6 +5956,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 70,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -5904,6 +6011,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 65,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -5973,6 +6081,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 190,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6027,6 +6136,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Acid",
@@ -6092,6 +6202,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 120,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 40,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -6142,6 +6253,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 85,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -6201,6 +6313,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 30,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 70,
     ["moves"] = {
       {
         ["name"] = "Double Slap",
@@ -6265,6 +6378,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Seed Bomb",
@@ -6319,6 +6433,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -6383,6 +6498,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 225,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6427,6 +6543,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 75,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6486,6 +6603,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 225,
     ["minPlayerLevel"] = 10,
+    ["wildLevel"] = 10,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -6535,6 +6653,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 50,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -6594,6 +6713,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 225,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 15,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -6649,6 +6769,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 60,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 45,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -6714,6 +6835,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 80,
     ["moves"] = {
       {
         ["name"] = "Play Rough",
@@ -6774,6 +6896,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 150,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -6844,6 +6967,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 85,
     ["moves"] = {
       {
         ["name"] = "Lovely Kiss",
@@ -6918,6 +7042,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -6982,6 +7107,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -7041,6 +7167,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 55,
     ["moves"] = {
       {
         ["name"] = "Crunch",
@@ -7105,6 +7232,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 60,
+    ["wildLevel"] = 60,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -7169,6 +7297,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 255,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 5,
     ["moves"] = {
       {
         ["name"] = "Splash",
@@ -7194,6 +7323,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 300,
     ["moves"] = {
       {
         ["name"] = "Ice Fang",
@@ -7259,6 +7389,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 200,
     ["moves"] = {
       {
         ["name"] = "Body Slam",
@@ -7318,6 +7449,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 35,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 50,
     ["moves"] = {},
   },
   ["Eevee"] = {
@@ -7336,6 +7468,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -7385,6 +7518,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 65,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -7444,6 +7578,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 65,
     ["moves"] = {
       {
         ["name"] = "Charge",
@@ -7508,6 +7643,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 65,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -7567,6 +7703,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 40,
+    ["wildLevel"] = 250,
     ["moves"] = {
       {
         ["name"] = "Cyber Wave",
@@ -7632,6 +7769,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -7692,6 +7830,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 90,
     ["moves"] = {
       {
         ["name"] = "Rock Throw",
@@ -7752,6 +7891,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 20,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -7812,6 +7952,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 100,
     ["moves"] = {
       {
         ["name"] = "Ancient Absorb",
@@ -7872,6 +8013,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 110,
     ["moves"] = {
       {
         ["name"] = "Roar",
@@ -7941,6 +8083,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 25,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 100,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -8006,6 +8149,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 3,
     ["minPlayerLevel"] = 300,
+    ["wildLevel"] = 1000,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -8096,6 +8240,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 3,
     ["minPlayerLevel"] = 300,
+    ["wildLevel"] = 1000,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -8186,6 +8331,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 3,
     ["minPlayerLevel"] = 300,
+    ["wildLevel"] = 1000,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -8275,6 +8421,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 30,
+    ["wildLevel"] = 30,
     ["moves"] = {
       {
         ["name"] = "Aqua Tail",
@@ -8324,6 +8471,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 80,
+    ["wildLevel"] = 85,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -8389,6 +8537,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 100,
+    ["wildLevel"] = 110,
     ["moves"] = {
       {
         ["name"] = "Scale Shot",
@@ -8453,6 +8602,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 3,
     ["minPlayerLevel"] = 500,
+    ["wildLevel"] = 1000,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -8527,6 +8677,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 200,
+    ["wildLevel"] = 1000,
     ["moves"] = {
       {
         ["name"] = "Shadow Ball",
@@ -8606,6 +8757,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 1,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -8654,6 +8806,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 1,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -8697,6 +8850,7 @@ PokemonSpecies = {
     },
     ["captureRate"] = 45,
     ["minPlayerLevel"] = 1,
+    ["wildLevel"] = 1,
     ["moves"] = {
       {
         ["name"] = "Headbutt",

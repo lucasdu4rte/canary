@@ -1,26 +1,40 @@
 -- Wild pokemon: the level they fight at.
 --
--- A wild has no owner, so it inherits no level. Phase 7 gives the spawn areas
--- their own bands; until then one band covers the test area, which is what the
--- plan asks for at this stage.
+-- A wild has no owner, so it inherits no level and something has to say what it
+-- fights at. It is PER SPECIES, from the catalogue -- the same shape Roxy uses
+-- (`wildLvl` in their `pokes` table, so a wild Blastoise is the same anywhere on
+-- the map), and the alternative the spec registered against its own per-area
+-- choice.
 --
--- Roxy does this per SPECIES instead (`wildLvl` in their `pokes` table: a wild
--- Blastoise is level 95 anywhere on the map). Simpler, and it takes the job of
--- distributing difficulty away from phase 7 -- at the cost of never having the
--- same species be easy in one region and hard in another. Recorded because the
--- swap is cheap if per-area distribution turns out to be too much work.
+-- What it buys: the number lives with the rest of the catalogue, and phase 7
+-- does not have to distribute difficulty across the whole map before anything
+-- can be balanced. What it costs, and this is real: the same species can never
+-- be easy in one region and hard in another.
+--
+-- 🔴 It replaced a single constant of 50 for the entire roster, which is worth
+-- recording because of how badly that read. Against a level 500 trainer, a wild
+-- Chansey stood at level 50 with a defence of 10 while the attacker had 845 --
+-- an automatic attack of power 10 removed its whole health bar. Every damage
+-- number measured in that state was fiction, and the constant, not the formula,
+-- was what made it so.
 
 Pokemon = Pokemon or {}
 
--- Single band for the test area. Phase 7 replaces this with a lookup by
--- position; every caller already goes through the function below so that
--- change lands in one place.
-local DEFAULT_WILD_LEVEL = 50
-
---- Level a wild pokemon fights at, given where it stands.
--- @param position ignored for now -- see above
-function Pokemon.wildLevel(position)
-	return DEFAULT_WILD_LEVEL
+--- Level a wild pokemon of this species fights at.
+--
+-- Takes the position because phase 7 may want to shift a band by region, and
+-- every caller already routes through here so that change lands in one place.
+--
+-- @param position where it stands -- unused today
+function Pokemon.wildLevel(species, position)
+	local data = PokemonSpecies[species]
+	if not data then
+		return 1
+	end
+	-- minPlayerLevel is the fallback the builder already applies for the three
+	-- baby forms Roxy has no entry for; repeated here so a catalogue written by
+	-- something else cannot produce a level of nil.
+	return data.wildLevel or data.minPlayerLevel or 1
 end
 
 --- Give a masterless pokemon the health its level implies.
@@ -53,7 +67,8 @@ function Pokemon.applyWildStats(creature)
 		return false
 	end
 
-	local wanted = Pokemon.calcStats(species, Pokemon.wildLevel(creature:getPosition())).hp
+	local level = Pokemon.wildLevel(creature:getName(), creature:getPosition())
+	local wanted = Pokemon.calcStats(species, level).hp
 	local current = creature:getMaxHealth()
 	if current == wanted then
 		return false
