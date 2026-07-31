@@ -11,8 +11,16 @@
 
 Pokemon = Pokemon or {}
 
--- Bump when the attribute layout changes; `read` migrates on the way in.
--- Without it there is no repair: the old data is spread across players'
+-- Bump when a change is NOT backward-readable by both old and new code: a
+-- field renamed, removed, given a new meaning, or made `required`. An
+-- additive field with a declared default and no `required` -- like
+-- `pokemon_ball` below -- is readable either way and does not need one:
+-- `read` already fills it in from the default on an item that predates it.
+-- Bumping such a field anyway would be actively harmful here, since
+-- `pokemon_v`'s own default IS `SCHEMA_VERSION` (see FIELDS) -- a bump would
+-- silently relabel every old item as current instead of separating the
+-- populations. When a bump IS needed, there is no repair beyond `read`
+-- migrating on the way in: the old data is spread across players'
 -- inventories and there is no database to run a migration against.
 Pokemon.SCHEMA_VERSION = 1
 
@@ -200,7 +208,27 @@ end
 --                          attribute. Nothing to do with the sprite.
 -- @return the item, or nil plus a reason
 function Pokemon.create(player, speciesName, opts)
+	-- A stale-style call like `Pokemon.create(player, species, nil, container)`
+	-- would otherwise pass silently: `opts` is nil, becomes `{}` below, and
+	-- Lua just discards the fourth positional argument -- the pokemon lands
+	-- in the main inventory instead of the intended destination, with nothing
+	-- to say so. No caller does this today; this closes the trap before
+	-- phase 5's depot-chest case opens it.
+	assert(opts == nil or type(opts) == "table",
+		"Pokemon.create: opts must be a table -- the old positional " ..
+		"(player, speciesName, ballItemId, destination) is gone; use " ..
+		"opts.ballItemId / opts.destination / opts.overrideItemId")
 	opts = opts or {}
+
+	-- `setCustomAttribute` silently writes nothing for anything but a
+	-- number/string/boolean (item_functions.cpp:619-636), and the log line's
+	-- `%d` further down would then throw on a bad `ballItemId` -- AFTER the
+	-- item already exists in the bag with every other attribute set. Checking
+	-- here, before the item is created, is what keeps a bad caller from
+	-- leaving a half-written pokemon behind instead of just failing empty-handed.
+	assert(opts.ballItemId == nil or type(opts.ballItemId) == "number",
+		"Pokemon.create: opts.ballItemId must be a number, got " .. type(opts.ballItemId))
+
 	local species = PokemonSpecies[speciesName]
 	if not species then
 		return nil, "unknown species: " .. tostring(speciesName)
