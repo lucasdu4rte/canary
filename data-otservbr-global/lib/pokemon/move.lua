@@ -588,6 +588,139 @@ function Pokemon.autoAttack(creature)
 	return true
 end
 
+-- ─── the wild's own moves ────────────────────────────────────────────────────
+--
+-- 🔴 A wild had ONE clock. `Pokemon.useMove` is the trainer's interface and
+-- nothing else ever reached the move table, so every wild on the map -- whatever
+-- species, whatever movepool -- could only ever headbutt. Reported from play,
+-- and it is half the fight missing: a Dragonite and a Caterpie fought
+-- identically apart from their stats.
+--
+-- Same executor as an ordered move, deliberately. `Pokemon.damage` and
+-- `Pokemon.deliver` do not care who asked, so effectiveness, STAB, the stat
+-- split, the shapes and the projectiles all arrive here for free. A second
+-- implementation is how the two sides drift apart.
+
+--- Seconds a wild waits between one move and the next.
+--
+-- Measured against what the interface allows a player: 9 moves at a median
+-- cooldown of 25s means a trainer pressing everything the moment it lights up
+-- gets a move out roughly every 3 seconds. 12 makes the wild four times
+-- steadier than a player at full tilt -- present in every exchange, never the
+-- one setting the pace. The per-move cooldowns still apply underneath.
+Pokemon.WILD_MOVE_INTERVAL = 12
+
+-- Cooldowns for creatures that have no ball to keep them in.
+--
+-- A trainer's cooldowns live in the item, because they have to survive a recall
+-- -- that is the exploit the ball-storage design exists to close. A wild has no
+-- item and no reason to outlive the fight, so memory is the honest place.
+--
+-- ⚠️ Keyed by creature id, which outlives the creature. Worst case a fresh wild
+-- inherits a dead one's timers and waits, which is why it is only ever a delay
+-- and never a free hit. `Pokemon.forgetWild` clears it when the creature goes.
+local wildReadyAt = {}
+local wildNextMove = {}
+
+--- Drop a departed wild's timers.
+function Pokemon.forgetWild(id)
+	wildReadyAt[id] = nil
+	wildNextMove[id] = nil
+end
+
+--- Let a wild throw one of its own moves, if it has one ready and in reach.
+-- @return true plus the move's name if it fired
+function Pokemon.wildMove(creature)
+	if not creature or creature:isRemoved() then
+		return false
+	end
+
+	-- Only the ownerless. A summon's moves belong to its trainer's keyboard, and
+	-- a pokemon that cast on its own would be taking the fight out of their hands.
+	if creature:getMaster() then
+		return false
+	end
+	if Pokemon.isDummy(creature) then
+		return false
+	end
+
+	local target = creature:getTarget()
+	if not target or target:isRemoved() then
+		return false
+	end
+
+	-- Same protection-zone rule as everything else: a safe tile is safe from
+	-- both directions.
+	if inProtectionZone(creature) or inProtectionZone(target) then
+		return false
+	end
+
+	local attacker = Pokemon.combatantOf(creature)
+	local defender = Pokemon.combatantOf(target)
+	if not attacker or not defender then
+		return false
+	end
+
+	local id, now = creature:getId(), os.time()
+	if (wildNextMove[id] or 0) > now then
+		return false
+	end
+
+	local ready = wildReadyAt[id]
+	if not ready then
+		ready = {}
+		wildReadyAt[id] = ready
+	end
+
+	local distance = creature:getPosition():getDistance(target:getPosition())
+
+	-- Everything it could throw this instant. Built fresh each time because
+	-- reach depends on where the target is standing right now.
+	local options = {}
+	for _, entry in ipairs(attacker.speciesData.moves or {}) do
+		local move = PokemonMoves[entry.name]
+		-- `power > 0` skips the 102 moves that have no damage yet. They would
+		-- refuse with a message a wild has nobody to send, so a wild picking one
+		-- would read as a turn where it simply did nothing.
+		if move and move.power > 0 and (ready[entry.name] or 0) <= now then
+			local reach = move.behavior ~= "target"
+				and math.max(move.range, Pokemon.AREA_RADIUS)
+				or move.range
+			if distance <= reach then
+				options[#options + 1] = entry
+			end
+		end
+	end
+	if #options == 0 then
+		return false
+	end
+
+	-- Uniform among what is ready, rather than best-first. A wild that always
+	-- opened with its heaviest move would be a script to memorise; this way the
+	-- same species fights differently twice.
+	local pick = options[math.random(#options)]
+	local move = PokemonMoves[pick.name]
+
+	ready[pick.name] = now + (pick.cooldown or 20)
+	wildNextMove[id] = now + Pokemon.WILD_MOVE_INTERVAL
+
+	local damage, effectiveness = Pokemon.damage(attacker, defender, move)
+	Pokemon.deliver(creature, target, move, damage)
+
+	-- Tell the trainer on the other side. Without this a wild's move is
+	-- indistinguishable from its melee except by the number, and the whole point
+	-- of giving wilds a movepool is that you can see what you are fighting.
+	local watcher = target:getMaster()
+	if watcher and watcher:isPlayer() then
+		local note = EFFECTIVENESS_TEXT[tostring(effectiveness)]
+		watcher:sendTextMessage(MESSAGE_STATUS, string.format(
+			"Wild %s used %s.%s", creature:getName(), pick.name,
+			note and (" " .. note .. "!") or ""))
+	end
+
+	return true, pick.name
+end
+
 --- Order a move by its slot -- the way a trainer actually gives it.
 --
 -- Separate entry point rather than a second argument to `useMove` so the empty

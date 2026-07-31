@@ -150,6 +150,7 @@ function registrar.onStartup()
 				"PokemonFollowTrainer",
 				"PokemonWildStats",
 				"PokemonAutoAttack",
+				"PokemonWildMoves",
 				"PokemonDamageRules",
 			}
 
