@@ -41,7 +41,18 @@ end
 function corpseTag.onDeath(creature, corpse, killer, mostDamageKiller, unjustified, mostDamageUnjustified)
 	-- No corpse when the body is not created -- a summon recalled to its ball
 	-- at zero, for one. Nothing to label.
-	if not corpse then
+	--
+	-- NOT `if not corpse`: `Lua::pushThing` (`lua_functions_loader.cpp:190-202`)
+	-- pushes a 4-field TABLE for a null Thing, not nil, so `not corpse` is
+	-- always false and execution would fall through into
+	-- `corpse:setCustomAttribute(...)` -- a method call on a plain table,
+	-- "attempt to call a nil value". And this is not a rare path: it is the
+	-- common one. `Creature::dropCorpse` (`creature.cpp:733-742`) calls this
+	-- event with a null corpse whenever `!lootDrop && getMonster() &&
+	-- getMaster()` -- every summoned pokemon, because `setMaster` with
+	-- `reloadCreature` sets `setDropLoot(false)`. So a trainer's pokemon
+	-- fainting -- which never drops loot -- hit this every single time.
+	if type(corpse) ~= "userdata" then
 		return true
 	end
 
