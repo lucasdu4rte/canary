@@ -59,6 +59,37 @@ function Pokemon.effectiveSpecies(mon)
 	return mon.species
 end
 
+--- Highest slot any species fills, so callers can size a UI or a command set.
+--
+-- Computed rather than written down: the roster tops out at 14 today and the
+-- number is a property of the data, not a decision. A hardcoded ceiling would
+-- silently swallow the fifteenth move the day one appears.
+--
+-- It agrees with the source: the PxG wiki labels the rows M1..M14, and those
+-- labels follow row order inside the PvE table. That is what makes position the
+-- slot -- the labels confirm the order rather than define it, which matters
+-- because a few are mistyped (Butterfree's third row is labelled M1).
+Pokemon.MAX_MOVE_SLOTS = (function()
+	local most = 0
+	for _, species in pairs(PokemonSpecies) do
+		local count = #(species.moves or {})
+		if count > most then
+			most = count
+		end
+	end
+	return most
+end)()
+
+--- Name of the move in a slot, or nil when the slot is empty for this species.
+function Pokemon.moveInSlot(mon, slot)
+	local species = PokemonSpecies[Pokemon.effectiveSpecies(mon)]
+	if not species then
+		return nil
+	end
+	local entry = (species.moves or {})[slot]
+	return entry and entry.name or nil
+end
+
 --- The catalogue entry for a move this pokemon knows, or nil.
 -- Carries the per-species cooldown, which is why it is not read from PokemonMoves.
 function Pokemon.knownMove(mon, moveName)
@@ -211,4 +242,28 @@ function Pokemon.useMove(player, moveName)
 		"%s used %s.%s", mon.species, known.name, note and (" " .. note .. "!") or ""))
 
 	return true
+end
+
+--- Order a move by its slot -- the way a trainer actually gives it.
+--
+-- Separate entry point rather than a second argument to `useMove` so the empty
+-- slot gets its own message. "Charizard does not know slot 9" would be nonsense,
+-- and "does not know nil" is how a UI bug reaches the player as gibberish.
+function Pokemon.useMoveSlot(player, slot)
+	local entry = Pokemon.getActive(player)
+	if not entry then
+		return false, "You have no pokemon at your side."
+	end
+
+	local mon = Pokemon.read(entry.item)
+	if not mon then
+		return false, "That pokemon cannot be read."
+	end
+
+	local moveName = Pokemon.moveInSlot(mon, slot)
+	if not moveName then
+		return false, string.format("%s has no move %d.", mon.species, slot)
+	end
+
+	return Pokemon.useMove(player, moveName)
 end

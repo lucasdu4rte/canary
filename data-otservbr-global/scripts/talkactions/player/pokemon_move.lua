@@ -1,59 +1,38 @@
--- !move <name> and !moves
+-- !m1 .. !mN, !moves, and !move <name>
 --
 -- The order channel for phase 4. Phase 6 replaces it with a client UI; the
 -- executor it calls does not change, because the rules live in the server and
 -- this only carries the intent.
 --
+-- Slots, not names, because that is how the source game plays and because it is
+-- what a fight can actually keep up with: `!m3` is one keystroke under pressure,
+-- `!move Hydro Pump` is not. The numbering is the position in the species' move
+-- list, which is also what the PxG wiki labels M1..M14.
+--
 -- Every refusal comes back as a message. Silence is what makes a working move
 -- and a broken one look the same, and 102 of the 360 moves deal no damage yet.
 
-local useMove = TalkAction("!move")
+-- One registration per slot: TalkAction matches the whole word, so there is no
+-- prefix form. Bounded by the data rather than by a number typed here, so the
+-- day a species gains a fifteenth move the command exists for it.
+for slot = 1, Pokemon.MAX_MOVE_SLOTS do
+	local command = TalkAction("!m" .. slot)
 
-function useMove.onSay(player, words, param)
-	local wanted = param:trim()
-	if wanted == "" then
-		player:sendCancelMessage("Usage: !move <name> -- see !moves for the list.")
-		return true
-	end
-
-	-- Resolved case-insensitively against what this pokemon knows. Typing
-	-- "Hydro Pump" with exact capitals is not a skill worth testing.
-	local entry = Pokemon.getActive(player)
-	if not entry then
-		player:sendCancelMessage("You have no pokemon at your side.")
-		return true
-	end
-
-	local mon = Pokemon.read(entry.item)
-	local species = mon and PokemonSpecies[Pokemon.effectiveSpecies(mon)]
-	if not species then
-		player:sendCancelMessage("That pokemon cannot be read.")
-		return true
-	end
-
-	local resolved = nil
-	local lowered = wanted:lower()
-	for _, known in ipairs(species.moves or {}) do
-		if known.name:lower() == lowered then
-			resolved = known.name
-			break
+	function command.onSay(player, words, param)
+		local ok, reason = Pokemon.useMoveSlot(player, slot)
+		if not ok then
+			player:sendCancelMessage(reason)
 		end
+		return true
 	end
 
-	local ok, reason = Pokemon.useMove(player, resolved or wanted)
-	if not ok then
-		player:sendCancelMessage(reason)
-	end
-	return true
+	command:separator(" ")
+	command:groupType("normal")
+	command:register()
 end
 
-useMove:separator(" ")
-useMove:groupType("normal")
-useMove:register()
-
--- Listing what a pokemon knows, with cooldowns, is the difference between
--- trying moves at random and playing. It also surfaces the two refusals a
--- player would otherwise only meet by hitting them.
+-- Listing what a pokemon knows is the difference between trying slots at random
+-- and playing. It leads with the slot number, since that is what gets typed.
 local listMoves = TalkAction("!moves")
 
 function listMoves.onSay(player, words, param)
@@ -77,7 +56,7 @@ function listMoves.onSay(player, words, param)
 	end
 
 	player:sendTextMessage(MESSAGE_STATUS, string.format("%s knows:", mon.species))
-	for _, item in ipairs(known) do
+	for slot, item in ipairs(known) do
 		local move = PokemonMoves[item.name]
 		local state
 		if not move then
@@ -91,7 +70,7 @@ function listMoves.onSay(player, words, param)
 				or string.format("pw %d, %s, reach %d, %s",
 					move.power, move.type, move.range, move.behavior)
 		end
-		player:sendTextMessage(MESSAGE_STATUS, string.format("  %s - %s", item.name, state))
+		player:sendTextMessage(MESSAGE_STATUS, string.format("  !m%d %s - %s", slot, item.name, state))
 	end
 	return true
 end
@@ -99,3 +78,50 @@ end
 listMoves:separator(" ")
 listMoves:groupType("normal")
 listMoves:register()
+
+-- Debug only, and god-only on purpose: naming a move directly skips the slot,
+-- which is the whole interface a player has. Handy for reproducing one specific
+-- move without hunting for a species that carries it in a given position.
+local useByName = TalkAction("!move")
+
+function useByName.onSay(player, words, param)
+	local wanted = param:trim()
+	if wanted == "" then
+		player:sendCancelMessage("Usage: !move <name> -- debug. Players use !m1 .. !m" .. Pokemon.MAX_MOVE_SLOTS .. ".")
+		return true
+	end
+
+	local entry = Pokemon.getActive(player)
+	if not entry then
+		player:sendCancelMessage("You have no pokemon at your side.")
+		return true
+	end
+
+	local mon = Pokemon.read(entry.item)
+	local species = mon and PokemonSpecies[Pokemon.effectiveSpecies(mon)]
+	if not species then
+		player:sendCancelMessage("That pokemon cannot be read.")
+		return true
+	end
+
+	-- Resolved case-insensitively against what this pokemon knows. Typing
+	-- "Hydro Pump" with exact capitals is not a skill worth testing.
+	local resolved = nil
+	local lowered = wanted:lower()
+	for _, item in ipairs(species.moves or {}) do
+		if item.name:lower() == lowered then
+			resolved = item.name
+			break
+		end
+	end
+
+	local ok, reason = Pokemon.useMove(player, resolved or wanted)
+	if not ok then
+		player:sendCancelMessage(reason)
+	end
+	return true
+end
+
+useByName:separator(" ")
+useByName:groupType("god")
+useByName:register()
