@@ -57,14 +57,22 @@ for slot = 1, 4 do
 
 			Pokemon.face(entry.creature, slot)
 
-			-- Said, not messaged, and only while parked. A pokemon with a target
-			-- re-faces it the next time it acts, so the turn is a single instant
-			-- -- announcing it as though it stuck would be the command lying
-			-- about what it did.
-			if not Pokemon.isStopped(entry.creature) then
-				player:sendTextMessage(MESSAGE_STATUS, string.format(
-					"Facing %s - use !pokestop to make it hold.", Pokemon.FACING_NAME[slot]))
-			end
+			-- 🔴 Always confirms, and the first version did not: it stayed silent
+			-- when the pokemon was parked, on the reasoning that the turn had
+			-- stuck and needed no explanation. That is backwards. The placeholder
+			-- outfit makes facing nearly unreadable on screen, so silence left
+			-- the ONE case that works looking identical to a command that did
+			-- nothing -- and telling those two apart is the whole discipline of
+			-- this phase.
+			--
+			-- The caveat rides along only when it applies: a pokemon that is free
+			-- to move re-faces its target the next time it acts, so the turn is a
+			-- single instant unless it is parked.
+			local caveat = Pokemon.isStopped(entry.creature)
+				and ""
+				or " It will turn back when it acts - !pokestop holds it."
+			player:sendTextMessage(MESSAGE_STATUS, string.format(
+				"%s faces %s.%s", entry.creature:getName(), Pokemon.FACING_NAME[slot], caveat))
 			return true
 		end
 
