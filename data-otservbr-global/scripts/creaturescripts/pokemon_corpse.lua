@@ -1,4 +1,4 @@
--- The corpse remembers which pokemon it was.
+-- The corpse remembers which pokemon it was, and who earned it.
 --
 -- Phase 5 throws a ball at a corpse, and a corpse in Tibia is an item that does
 -- not know what killed to make it. Its own plan names the two ways out -- one
@@ -16,6 +16,27 @@
 -- have made that event's name a lie.
 
 local corpseTag = CreatureEvent("PokemonCorpse")
+
+--- The PLAYER a kill belongs to, or nil when it belongs to nobody.
+--
+-- Same derivation the engine uses in `Monster::getCorpse`
+-- (`src/creatures/monsters/monster.cpp:3304-3317`): the creature itself when it
+-- is a player, otherwise its MASTER when that master is a player -- a summoned
+-- pokemon's kill belongs to its trainer. Anything else (a monster killing a
+-- monster, a field) owns nothing.
+local function owningPlayer(creature)
+	if not creature then
+		return nil
+	end
+	if creature:isPlayer() then
+		return creature
+	end
+	local master = creature:getMaster()
+	if master and master:isPlayer() then
+		return master
+	end
+	return nil
+end
 
 function corpseTag.onDeath(creature, corpse, killer, mostDamageKiller, unjustified, mostDamageUnjustified)
 	-- No corpse when the body is not created -- a summon recalled to its ball
@@ -40,6 +61,32 @@ function corpseTag.onDeath(creature, corpse, killer, mostDamageKiller, unjustifi
 	-- `pokemon_ot`, with a logger.error on the way out. Two different things
 	-- that both know a species, so two different keys.
 	corpse:setCustomAttribute("pokemon_corpse_species", species)
+
+	-- And WHO earned it -- our own copy, because the engine's does not last.
+	--
+	-- `Monster::getCorpse` (`monster.cpp:3304-3317`) writes `CORPSEOWNER` with
+	-- the most-damage killer's runtime id, or its master's. Then
+	-- `Creature::dropCorpse` (`creature.cpp:786-788`) starts the corpse decaying;
+	-- item 6079 carries `duration="10" decayTo="5934"` (`data/items/items.xml`);
+	-- the transform takes the in-place path through `Tile::updateThing` into
+	-- `Item::setID`; and `Item::setID` (`src/items/item.cpp:822-824`) does
+	-- `removeAttribute(CORPSEOWNER)`. Ten seconds after the kill the engine's
+	-- owner reads 0, and `throw_ball.lua` treats an ownerless corpse as fair game
+	-- -- so a stranger who simply waits walks through the guard.
+	--
+	-- Custom attributes are NOT touched by `setID`, which is precisely why the
+	-- species above survives the whole corpse chain. This one rides along with
+	-- it. It is NOT redundant with the engine's field: by the time capture reads
+	-- it, the engine's field is gone.
+	--
+	-- `mostDamageKiller` first, `killer` (the last hit) only as fallback, so the
+	-- value matches what the engine would have written and what `mayTake`
+	-- compares against: a player's runtime `getId()`, not the guid.
+	local earner = owningPlayer(mostDamageKiller) or owningPlayer(killer)
+	if earner then
+		corpse:setCustomAttribute("pokemon_corpse_owner", earner:getId())
+	end
+
 	return true
 end
 

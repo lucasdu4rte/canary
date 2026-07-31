@@ -60,8 +60,8 @@ function Pokemon.syncVisual(item, out)
 	-- (measured, appendix B) -- every id minted here carries market category 9
 	-- precisely so the first case holds, but rewriting anyway makes this
 	-- correct even if someone later changes a category without reading the
-	-- warning. It costs six attribute writes on a transition that happens
-	-- twice in a pokemon's life.
+	-- warning. It costs one attribute write per field in `FIELDS` -- eight today
+	-- -- on a transition that happens twice in a pokemon's life.
 	local saved = Pokemon.snapshot(item)
 	item:transform(wanted)
 	Pokemon.restore(item, saved)

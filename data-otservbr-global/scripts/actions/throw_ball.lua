@@ -45,8 +45,11 @@ local throwBall = Action()
 local mayTake, succeed
 
 function throwBall.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local ball = Pokemon.BALLS[item:getId()]
-	if not ball then
+	-- Only the emptiness of this lookup is used -- the multiplier behind it is
+	-- read later and by id, inside `Pokemon.catchChance`. `false` rather than
+	-- `true` so an id registered here but missing from the table falls through
+	-- to the engine's default use handling instead of silently doing nothing.
+	if not Pokemon.BALLS[item:getId()] then
 		return false
 	end
 
@@ -70,9 +73,23 @@ function throwBall.onUse(player, item, fromPosition, target, toPosition, isHotke
 
 	-- 3. Owner, or someone in their party. Without this, camping other
 	-- people's corpses is free and the whole fight becomes work someone else
-	-- harvests. An ownerless corpse (the attribute is dropped when the item
-	-- decays a stage) is fair game rather than an error.
-	local owner = target:getAttribute("corpseowner")
+	-- harvests.
+	--
+	-- OUR attribute first. The engine's `corpseowner` is dropped by
+	-- `Item::setID` (`src/items/item.cpp:822-824`) on the corpse's first decay
+	-- stage, ten seconds after the kill, so reading only that one meant a
+	-- stranger who waited was let straight through. `pokemon_corpse.lua` writes
+	-- `pokemon_corpse_owner` at death with the same value the engine would have
+	-- written, and custom attributes survive the transform.
+	--
+	-- The engine's field stays as FALLBACK: a corpse that was already on the
+	-- ground when this change landed carries only that one, and so would any
+	-- corpse made by a path `pokemon_corpse.lua` never saw. Absent on BOTH is
+	-- still fair game rather than a refusal -- a wild pokemon killed by another
+	-- monster is owned by nobody, and reading that as "no" would make it
+	-- uncatchable for everyone forever.
+	local owner = target:getCustomAttribute("pokemon_corpse_owner")
+		or target:getAttribute("corpseowner")
 	if owner and owner ~= 0 and not mayTake(player, owner) then
 		player:sendCancelMessage("You did not defeat this pokemon.")
 		return true
@@ -105,9 +122,10 @@ end
 
 --- The thrower is the corpse owner, or in their party.
 --
--- `corpseowner` holds the runtime creature id (`monster.cpp:3309`), so this
--- compares against `getId()`. Comparing against `getGuid()` looks right and
--- refuses everyone.
+-- The owner is a runtime creature id -- that is what the engine stores in
+-- `corpseowner` (`monster.cpp:3309`) and what `pokemon_corpse.lua` copies into
+-- `pokemon_corpse_owner` -- so this compares against `getId()`. Comparing
+-- against `getGuid()` looks right and refuses everyone.
 function mayTake(player, ownerId)
 	if player:getId() == ownerId then
 		return true
@@ -128,14 +146,6 @@ function mayTake(player, ownerId)
 	return leader ~= nil and leader:getId() == ownerId
 end
 
---- Catch: make the instance, place it, say what it cost.
---
--- The capture NORMALISES the specimen, and that is a design decision rather
--- than an omission: nothing about the wild pokemon it came from -- its region,
--- its wild level, the HP it had -- enters the item. It is born standard, with
--- stats deriving from species plus the owner's level like every other. Carry
--- any of it across and the game grows region arbitrage: players farming the
--- hard zone for a "better" specimen of the same species.
 --- The player's depot chest, or nil when the town cannot be resolved.
 --
 -- `getTown()` is the one statement on this path that can strand the whole
@@ -164,6 +174,14 @@ local function stranded(player, species, ballItemId, reason)
 	player:sendCancelMessage("You caught it, but there was nowhere to put it. Contact a gamemaster.")
 end
 
+--- Catch: make the instance, place it, say what it cost.
+--
+-- The capture NORMALISES the specimen, and that is a design decision rather
+-- than an omission: nothing about the wild pokemon it came from -- its region,
+-- its wild level, the HP it had -- enters the item. It is born standard, with
+-- stats deriving from species plus the owner's level like every other. Carry
+-- any of it across and the game grows region arbitrage: players farming the
+-- hard zone for a "better" specimen of the same species.
 function succeed(player, species, ballItemId, position)
 	-- Counted BEFORE creating, so the seventh is the one that diverts.
 	local carried = #Pokemon.carriedBalls(player)
