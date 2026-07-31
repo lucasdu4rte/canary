@@ -152,6 +152,7 @@ function registrar.onStartup()
 				"PokemonAutoAttack",
 				"PokemonWildMoves",
 				"PokemonDamageRules",
+				"PokemonCorpse",
 			}
 
 			m.voices = { interval = 5000, chance = 0 }
