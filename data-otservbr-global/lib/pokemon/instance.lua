@@ -278,3 +278,51 @@ function Pokemon.revive(item)
 	item:setCustomAttribute("pokemon_hp_ratio", 1.0)
 	return Pokemon.syncVisual(item)
 end
+
+-- Backpacks nest, and a trainer who keeps balls in a pouch inside their bag is
+-- not doing anything strange. Bounded so a pathological container tree cannot
+-- turn one command into a long walk.
+local MAX_CONTAINER_DEPTH = 4
+
+local function descend(container, out, depth)
+	if not container or depth > MAX_CONTAINER_DEPTH then
+		return
+	end
+	-- 0-based: `Container:getItem` goes through getItemByIndex.
+	for i = 0, container:getSize() - 1 do
+		local item = container:getItem(i)
+		if item then
+			if Pokemon.read(item) then
+				out[#out + 1] = item
+			elseif item:isContainer() then
+				descend(item, out, depth + 1)
+			end
+		end
+	end
+end
+
+--- Every pokemon ball the player is carrying, equipped or bagged.
+--
+-- ⚠️ Returns a LIST, gathered before anything touches it, and that is the whole
+-- reason it is not a callback that visits items as it finds them. `revive` and
+-- `recordFaint` go through `syncVisual`, which calls `transform` -- and
+-- transform's destructive path hands back a **different object**, so mutating
+-- during the walk would be reshaping the containers being walked. Gather first,
+-- act second.
+--
+-- `Pokemon.read` returns nil for anything that is not a ball, which is what
+-- makes this safe to run over a whole inventory.
+function Pokemon.carriedBalls(player)
+	local out = {}
+	for slot = CONST_SLOT_FIRST, CONST_SLOT_LAST do
+		local item = player:getSlotItem(slot)
+		if item then
+			if Pokemon.read(item) then
+				out[#out + 1] = item
+			elseif item:isContainer() then
+				descend(item, out, 1)
+			end
+		end
+	end
+	return out
+end

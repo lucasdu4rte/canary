@@ -10,81 +10,42 @@
 -- ownership, faint, level gate, one at a time -- applies here without being
 -- restated. The only thing this file knows how to do is find a ball.
 
--- Backpacks nest, and a player who keeps balls in a pouch inside their bag is
--- not doing anything strange. Bounded so a pathological container tree cannot
--- turn one command into a long walk.
-local MAX_DEPTH = 4
-
---- Walk a container, and its containers, handing every item to `visit`.
--- @return the first truthy thing `visit` returns
-local function walk(container, visit, depth)
-	if not container or depth > MAX_DEPTH then
-		return nil
-	end
-	-- 0-based: `Container:getItem` goes through getItemByIndex.
-	for i = 0, container:getSize() - 1 do
-		local item = container:getItem(i)
-		if item then
-			local hit = visit(item)
-			if hit then
-				return hit
-			end
-			if item:isContainer() then
-				local nested = walk(item, visit, depth + 1)
-				if nested then
-					return nested
-				end
-			end
-		end
-	end
-	return nil
-end
-
---- Every equipped slot, plus everything inside anything in them.
-local function search(player, visit)
-	for slot = CONST_SLOT_FIRST, CONST_SLOT_LAST do
-		local item = player:getSlotItem(slot)
-		if item then
-			local hit = visit(item)
-			if hit then
-				return hit
-			end
-			if item:isContainer() then
-				local nested = walk(item, visit, 1)
-				if nested then
-					return nested
-				end
-			end
-		end
-	end
-	return nil
-end
-
 --- The ball holding this species, or nil.
+--
+-- ⚠️ A healthy one wins over a fainted one, and that is not a nicety. Carrying
+-- two of a species is normal, and the first match wins otherwise -- so a trainer
+-- with a fainted Charizard in the top slot and a fit one below would be told
+-- "Charizard is unable to battle" while holding a Charizard that is perfectly
+-- able. The refusal would be true about the ball and a lie about the bag.
+--
+-- Still returns the fainted one when it is the only one, because "unable to
+-- battle" is the right answer then, and better than "you are not carrying a
+-- Charizard" when you plainly are.
 local function findBall(player, wanted)
 	local lowered = wanted:lower()
-	return search(player, function(item)
+	local fallback = nil
+	for _, item in ipairs(Pokemon.carriedBalls(player)) do
 		local mon = Pokemon.read(item)
-		-- `read` returns nil for anything that is not a pokemon ball, which is
-		-- what makes this safe to run over a whole inventory.
 		if mon and mon.species:lower() == lowered then
-			return item
+			if not mon.fainted then
+				return item
+			end
+			fallback = fallback or item
 		end
-		return nil
-	end)
+	end
+	return fallback
 end
 
 --- What the player is actually carrying, for when the name does not match.
 local function carried(player)
 	local names, seen = {}, {}
-	search(player, function(item)
+	for _, item in ipairs(Pokemon.carriedBalls(player)) do
 		local mon = Pokemon.read(item)
 		if mon and not seen[mon.species] then
 			seen[mon.species] = true
 			names[#names + 1] = mon.species .. (mon.fainted and " (fainted)" or "")
 		end
-		return nil -- never stop early: this is a census, not a lookup
-	end)
+	end
 	return names
 end
 
