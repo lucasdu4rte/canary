@@ -10158,7 +10158,7 @@ PokemonMoves = {
     ["type"] = "grass",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Sleep Powder"] = {
     ["power"] = 0,
@@ -10214,7 +10214,7 @@ PokemonMoves = {
     ["type"] = "fire",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Fire Ball"] = {
     ["power"] = 65,
@@ -10235,7 +10235,7 @@ PokemonMoves = {
     ["type"] = "fire",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Rage"] = {
     ["power"] = 20,
@@ -10270,14 +10270,14 @@ PokemonMoves = {
     ["type"] = "flying",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Wing Attack"] = {
     ["power"] = 60,
     ["type"] = "flying",
     ["damageClass"] = "physical",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Magma Storm"] = {
     ["power"] = 100,
@@ -10319,7 +10319,7 @@ PokemonMoves = {
     ["type"] = "water",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Water Ball"] = {
     ["power"] = 65,
@@ -10368,7 +10368,7 @@ PokemonMoves = {
     ["type"] = "water",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Withdraw"] = {
     ["power"] = 0,
@@ -10410,7 +10410,7 @@ PokemonMoves = {
     ["type"] = "bug",
     ["damageClass"] = "special",
     ["range"] = 10,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Confusion"] = {
     ["power"] = 50,
@@ -10424,7 +10424,7 @@ PokemonMoves = {
     ["type"] = "psychic",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Air Cutter"] = {
     ["power"] = 60,
@@ -10466,7 +10466,7 @@ PokemonMoves = {
     ["type"] = "bug",
     ["damageClass"] = "physical",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Pin Missile"] = {
     ["power"] = 25,
@@ -10732,7 +10732,7 @@ PokemonMoves = {
     ["type"] = "electric",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Mud Shot"] = {
     ["power"] = 55,
@@ -11068,7 +11068,7 @@ PokemonMoves = {
     ["type"] = "bug",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Quiver Dance"] = {
     ["power"] = 0,
@@ -11271,21 +11271,21 @@ PokemonMoves = {
     ["type"] = "ice",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Brick Break"] = {
     ["power"] = 75,
     ["type"] = "fighting",
     ["damageClass"] = "physical",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Dynamic Punch"] = {
     ["power"] = 100,
     ["type"] = "fighting",
     ["damageClass"] = "physical",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Liquidation"] = {
     ["power"] = 85,
@@ -11663,7 +11663,7 @@ PokemonMoves = {
     ["type"] = "ice",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Brine"] = {
     ["power"] = 65,
@@ -11873,7 +11873,7 @@ PokemonMoves = {
     ["type"] = "normal",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Swords Dance"] = {
     ["power"] = 0,
@@ -11901,7 +11901,7 @@ PokemonMoves = {
     ["type"] = "electric",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Egg Bomb"] = {
     ["power"] = 100,
@@ -11929,7 +11929,7 @@ PokemonMoves = {
     ["type"] = "psychic",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Wood Hammer"] = {
     ["power"] = 120,
@@ -11992,7 +11992,7 @@ PokemonMoves = {
     ["type"] = "fighting",
     ["damageClass"] = "physical",
     ["range"] = 4,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Ultimate Champion"] = {
     ["power"] = 0,
@@ -12160,7 +12160,7 @@ PokemonMoves = {
     ["type"] = "dragon",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Soak"] = {
     ["power"] = 0,
@@ -12447,7 +12447,7 @@ PokemonMoves = {
     ["type"] = "electric",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Cyber World"] = {
     ["power"] = 95,
@@ -12475,7 +12475,7 @@ PokemonMoves = {
     ["type"] = "rock",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Rock Wrecker"] = {
     ["power"] = 150,
@@ -12552,7 +12552,7 @@ PokemonMoves = {
     ["type"] = "fire",
     ["damageClass"] = "special",
     ["range"] = 1,
-    ["behavior"] = "aoe",
+    ["behavior"] = "beam",
   },
   ["Hell Fire"] = {
     ["power"] = 95,

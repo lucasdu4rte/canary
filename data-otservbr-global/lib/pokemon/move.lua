@@ -12,7 +12,7 @@
 
 Pokemon = Pokemon or {}
 
--- Pokemon type -> Tibia combat type and hit effect.
+-- Pokemon type -> Tibia combat type, hit effect and projectile.
 --
 -- Cosmetic only. The generated MonsterTypes carry `elements = {}`,
 -- `immunities = {}` and zero armor/defense/mitigation, so the engine applies no
@@ -21,28 +21,35 @@ Pokemon = Pokemon or {}
 --
 -- Eighteen types map onto the eight damage types Tibia has, so the collisions
 -- are unavoidable and only affect the colour of the splash.
+--
+-- 🔴 Per TYPE and not per move, deliberately. Roxy has one per move, but only
+-- for 71 of 335, and their ids point at their own client's custom sprites --
+-- carrying those over would put an arbitrary picture on four moves in five. The
+-- spec settles it: while the art is placeholder the effects are vanilla Tibia.
+-- When real art arrives this becomes a column in the move table, and the shape
+-- of this file does not change.
 local COMBAT_BY_TYPE = {
-	normal = { COMBAT_PHYSICALDAMAGE, CONST_ME_HITAREA },
-	fighting = { COMBAT_PHYSICALDAMAGE, CONST_ME_BLACKSMOKE },
-	flying = { COMBAT_PHYSICALDAMAGE, CONST_ME_STONES },
-	poison = { COMBAT_EARTHDAMAGE, CONST_ME_POISONAREA },
-	ground = { COMBAT_EARTHDAMAGE, CONST_ME_CARNIPHILA },
-	rock = { COMBAT_PHYSICALDAMAGE, CONST_ME_STONES },
-	bug = { COMBAT_EARTHDAMAGE, CONST_ME_GREEN_RINGS },
-	ghost = { COMBAT_DEATHDAMAGE, CONST_ME_MORTAREA },
-	steel = { COMBAT_PHYSICALDAMAGE, CONST_ME_BLOCKHIT },
-	fire = { COMBAT_FIREDAMAGE, CONST_ME_FIREAREA },
-	water = { COMBAT_ICEDAMAGE, CONST_ME_WATERSPLASH },
-	grass = { COMBAT_EARTHDAMAGE, CONST_ME_PLANTATTACK },
-	electric = { COMBAT_ENERGYDAMAGE, CONST_ME_ENERGYAREA },
-	psychic = { COMBAT_ENERGYDAMAGE, CONST_ME_MAGIC_RED },
-	ice = { COMBAT_ICEDAMAGE, CONST_ME_ICEATTACK },
-	dragon = { COMBAT_ENERGYDAMAGE, CONST_ME_DRAGONHEAD },
-	dark = { COMBAT_DEATHDAMAGE, CONST_ME_MORTAREA },
-	fairy = { COMBAT_HOLYDAMAGE, CONST_ME_HOLYDAMAGE },
+	normal = { COMBAT_PHYSICALDAMAGE, CONST_ME_HITAREA, CONST_ANI_LARGEROCK },
+	fighting = { COMBAT_PHYSICALDAMAGE, CONST_ME_BLACKSMOKE, CONST_ANI_WHIRLWINDCLUB },
+	flying = { COMBAT_PHYSICALDAMAGE, CONST_ME_STONES, CONST_ANI_ETHEREALSPEAR },
+	poison = { COMBAT_EARTHDAMAGE, CONST_ME_POISONAREA, CONST_ANI_POISONARROW },
+	ground = { COMBAT_EARTHDAMAGE, CONST_ME_CARNIPHILA, CONST_ANI_EARTH },
+	rock = { COMBAT_PHYSICALDAMAGE, CONST_ME_STONES, CONST_ANI_LARGEROCK },
+	bug = { COMBAT_EARTHDAMAGE, CONST_ME_GREEN_RINGS, CONST_ANI_ENVENOMEDARROW },
+	ghost = { COMBAT_DEATHDAMAGE, CONST_ME_MORTAREA, CONST_ANI_SUDDENDEATH },
+	steel = { COMBAT_PHYSICALDAMAGE, CONST_ME_BLOCKHIT, CONST_ANI_SPEAR },
+	fire = { COMBAT_FIREDAMAGE, CONST_ME_FIREAREA, CONST_ANI_FIRE },
+	water = { COMBAT_ICEDAMAGE, CONST_ME_WATERSPLASH, CONST_ANI_ICE },
+	grass = { COMBAT_EARTHDAMAGE, CONST_ME_PLANTATTACK, CONST_ANI_LEAFSTAR },
+	electric = { COMBAT_ENERGYDAMAGE, CONST_ME_ENERGYAREA, CONST_ANI_ENERGYBALL },
+	psychic = { COMBAT_ENERGYDAMAGE, CONST_ME_MAGIC_RED, CONST_ANI_ENERGY },
+	ice = { COMBAT_ICEDAMAGE, CONST_ME_ICEATTACK, CONST_ANI_ICE },
+	dragon = { COMBAT_ENERGYDAMAGE, CONST_ME_DRAGONHEAD, CONST_ANI_ENERGYBALL },
+	dark = { COMBAT_DEATHDAMAGE, CONST_ME_MORTAREA, CONST_ANI_SUDDENDEATH },
+	fairy = { COMBAT_HOLYDAMAGE, CONST_ME_HOLYDAMAGE, CONST_ANI_HOLY },
 }
 
-local FALLBACK_COMBAT = { COMBAT_PHYSICALDAMAGE, CONST_ME_HITAREA }
+local FALLBACK_COMBAT = { COMBAT_PHYSICALDAMAGE, CONST_ME_HITAREA, CONST_ANI_LARGEROCK }
 
 --- The species whose move list applies to this pokemon.
 --
@@ -146,6 +153,66 @@ function Pokemon.combatantOf(creature)
 	}
 end
 
+-- One Combat per shape, BUILT AT LOAD TIME.
+--
+-- 🔴 `createCombatArea` and `Combat:setArea` refuse to run outside script
+-- loading -- `env->getScriptId() != EVENT_ID_LOADING` in global_functions.cpp:272
+-- and combat_functions.cpp:91. They do not raise: they log a line and return
+-- nil, so a `pcall` around them reports success.
+--
+-- Building a fresh Combat per move use therefore produced an object with no
+-- area at all, and **every one of the 191 area moves was delivered as single
+-- target** from the day they were written. Nothing in play distinguished the
+-- two: the move fired, the damage landed on the target, the message printed.
+--
+-- So the areas are made once, here, and the four objects are reused. Everything
+-- that varies per use -- damage type, effect, projectile, the damage itself --
+-- goes through setParameter and setFormula, neither of which is restricted.
+-- Mutating a shared object is safe because a move is set up and executed inside
+-- one call, with no yield in between.
+local COMBAT_BY_BEHAVIOR = {
+	target = Combat(),
+	aoe = Combat(),
+	beam = Combat(),
+	self = Combat(),
+}
+
+-- The three shapes the plan asked to start from -- single target, a burst
+-- centred on the target, a beam in a direction -- plus `self`, which the wiki
+-- marks and 5 damaging moves carry. `target` gets no area: it lands on one
+-- creature and the engine needs no geometry for that.
+--
+-- ⚠️ The matrices are written out here rather than taken from the core's
+-- AREA_CIRCLE3X3 and AREA_BEAM5, because those live in
+-- `data/scripts/lib/register_spells.lua`, which the engine loads AFTER `lib.lua`
+-- -- so referencing them from here passes nil and the only sign is a logged
+-- "Invalid area table" while the move quietly keeps working as single target.
+--
+-- `3` marks the origin; the engine rotates the whole matrix by the direction
+-- from the caster to the point of impact, which is what makes one beam serve
+-- all four ways.
+local BURST = {
+	{ 0, 0, 1, 1, 1, 0, 0 },
+	{ 0, 1, 1, 1, 1, 1, 0 },
+	{ 1, 1, 1, 1, 1, 1, 1 },
+	{ 1, 1, 1, 3, 1, 1, 1 },
+	{ 1, 1, 1, 1, 1, 1, 1 },
+	{ 0, 1, 1, 1, 1, 1, 0 },
+	{ 0, 0, 1, 1, 1, 0, 0 },
+}
+
+local BEAM = {
+	{ 1 },
+	{ 1 },
+	{ 1 },
+	{ 1 },
+	{ 3 },
+}
+
+COMBAT_BY_BEHAVIOR.aoe:setArea(createCombatArea(BURST))
+COMBAT_BY_BEHAVIOR.beam:setArea(createCombatArea(BEAM))
+COMBAT_BY_BEHAVIOR.self:setArea(createCombatArea(BURST))
+
 --- Is this creature standing on a protection-zone tile?
 local function inProtectionZone(creature)
 	local tile = creature and creature:getTile()
@@ -155,7 +222,7 @@ end
 local function combatFor(move, damage)
 	local flavour = COMBAT_BY_TYPE[move.type] or FALLBACK_COMBAT
 
-	local combat = Combat()
+	local combat = COMBAT_BY_BEHAVIOR[move.behavior] or COMBAT_BY_BEHAVIOR.target
 	combat:setParameter(COMBAT_PARAM_TYPE, flavour[1])
 	combat:setParameter(COMBAT_PARAM_EFFECT, flavour[2])
 	-- Fixed both ends: the roll already happened in Pokemon.damage, and letting
@@ -170,15 +237,30 @@ local function combatFor(move, damage)
 	-- the cooldown starts, and the target does not lose a hitpoint.
 	combat:setFormula(COMBAT_FORMULA_DAMAGE, -damage, 0, -damage, 0)
 
-	-- Shape comes from the table, never from the move's name.
-	if move.behavior == "aoe" then
-		combat:setArea(createCombatArea(AREA_CIRCLE3X3))
-	end
+	-- A projectile only when there is a distance for it to cross. 59 of the 360
+	-- moves reach past the next square, and without this the hit simply appeared
+	-- on a target ten squares away with nothing having travelled there.
+	--
+	-- Always set, never left alone: the objects are shared, so a contact move
+	-- following a ranged one would inherit its projectile and throw a spear at
+	-- something it is standing next to.
+	combat:setParameter(
+		COMBAT_PARAM_DISTANCEEFFECT,
+		(move.range and move.range > 1) and flavour[3] or CONST_ANI_NONE
+	)
 
+	-- The area is already on the object -- see COMBAT_BY_BEHAVIOR. The engine
+	-- rotates the matrix by the direction from the caster to the point of
+	-- impact, so a beam laid out pointing "up" comes out pointing at whatever
+	-- was targeted, which is what makes one matrix serve all four directions.
 	return combat
 end
 
 --- Deliver a hit, and let the target hit back.
+--
+-- Public because it is the one place a move's damage reaches a creature: the
+-- shape, the projectile and the retaliation all live here, so anything that
+-- wants to land a move goes through it rather than building its own combat.
 --
 -- The one place damage reaches a creature, so it is the one place that knows a
 -- fight just started. A wild has `hostile = false` -- it does not pick a fight
@@ -188,8 +270,16 @@ end
 -- Retaliation only. It takes the attacker as its target if it has none, which
 -- leaves a wild already fighting someone else alone, and never touches a
 -- summon, whose target belongs to its trainer.
-local function deliver(attacker, target, move, damage)
-	combatFor(move, damage):execute(attacker, Variant(target:getId()))
+function Pokemon.deliver(attacker, target, move, damage)
+	-- A `self` move is centred on whoever used it, so it is aimed at the
+	-- caster's own tile rather than at the target. 5 moves carry it with damage
+	-- -- Rage, Shadow Claw, Furious Legs, Clear Smog, Vital Spirit -- and before
+	-- this they were delivered at the target like any single-target move, which
+	-- is the table declaring one thing and the executor doing another.
+	local aim = move.behavior == "self"
+		and Variant(attacker:getPosition())
+		or Variant(target:getId())
+	combatFor(move, damage):execute(attacker, aim)
 
 	if not target:isRemoved() and not target:getMaster() and not target:getTarget() then
 		target:setTarget(attacker)
@@ -307,7 +397,7 @@ function Pokemon.useMove(player, moveName)
 	Pokemon.markMoveUsed(entry.item, known.name, known.cooldown)
 
 	local damage, effectiveness = Pokemon.damage(attacker, defender, move)
-	deliver(entry.creature, target, move, damage)
+	Pokemon.deliver(entry.creature, target, move, damage)
 
 	local note = EFFECTIVENESS_TEXT[tostring(effectiveness)]
 	player:sendTextMessage(MESSAGE_STATUS, string.format(
@@ -394,7 +484,7 @@ function Pokemon.autoAttack(creature)
 	end
 
 	local damage = Pokemon.damage(attacker, defender, move)
-	deliver(creature, target, move, damage)
+	Pokemon.deliver(creature, target, move, damage)
 	return true
 end
 
