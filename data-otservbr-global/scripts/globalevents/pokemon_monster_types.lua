@@ -48,7 +48,21 @@ function registrar.onStartup()
 		else
 			local m = {}
 			m.description = "a " .. name:lower()
-			m.experience = 0
+
+			-- Experience, canonical: `base_experience * level / 7`.
+			--
+			-- 🔴 Was a flat 0, so killing a wild gave nothing at all -- reported
+			-- from play, and it made every other reward in the phase untestable
+			-- because there was nothing to compare against.
+			--
+			-- Both halves matter. `baseExperience` is the species weight from
+			-- PokeAPI (Caterpie 39, Dragonite 300); the level is the one it
+			-- actually fights at, so a Dragonite met at 120 is not worth what one
+			-- met at 5 would be. Dropping the level would make the whole roster
+			-- pay by species alone, which is exactly the flatness `wildLevel`
+			-- exists to remove.
+			m.experience = math.floor(species.baseExperience * Pokemon.wildLevel(name) / 7)
+
 			m.outfit = { lookType = PLACEHOLDER_LOOKTYPE, lookAddons = 0, lookMount = 0 }
 
 			-- HP here is only the design ceiling; the real per-owner value
@@ -57,7 +71,16 @@ function registrar.onStartup()
 			m.health = base.hp
 			m.maxHealth = base.hp
 			m.race = "blood"
-			m.corpse = 0
+
+			-- 🔴 Was 0, which means "leaves nothing behind", and a wild vanished
+			-- on death. Reported from play, and it falsifies what the phase 4
+			-- closure claimed it was handing to phase 5: capture consumes the
+			-- corpse, and there was no corpse.
+			--
+			-- 6079 is the azure frog's, matching PLACEHOLDER_LOOKTYPE above --
+			-- the placeholder body gets the placeholder body's remains. It moves
+			-- with the art, not separately.
+			m.corpse = 6079
 			m.speed = SPEED_FLOOR + base.speed
 			m.manaCost = 0
 

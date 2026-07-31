@@ -31,9 +31,27 @@ for slot = 1, Pokemon.KEYBOUND_SLOTS do
 	command:register()
 end
 
--- Listing what a pokemon knows is the difference between trying slots at random
--- and playing. It leads with the slot number, since that is what gets typed.
-local listMoves = TalkAction("!moves")
+-- `!cd`, in the source game's own layout and under the source game's own name.
+--
+-- Was `!moves`, and the rename is the point rather than a detail: the list is
+-- read mid-fight to find out what is off cooldown, not to browse a movepool, and
+-- the name should say which question it answers.
+--
+-- The shape is PxG's, given verbatim by the player who plays it:
+--
+--     Pokemon: Dodrio.
+--     Sand Attack - m1 10/10 seconds; ready.
+--     Aerial Ace - m7: wait 35/40 seconds.
+--
+-- Move name first because that is what the eye scans for; the slot second
+-- because it is what the hand types. `left/total` on both branches so the wait
+-- is legible against the whole cooldown instead of as a bare number.
+--
+-- ⚠️ "Pokemon", not "Pokémon". The client does not decode UTF-8 in these
+-- messages -- the accent arrives on screen as mojibake -- so player-facing text
+-- is ASCII throughout. This is the one place the difference is visible against
+-- the format as it was written down.
+local listMoves = TalkAction("!cd")
 
 function listMoves.onSay(player, words, param)
 	local entry = Pokemon.getActive(player)
@@ -55,26 +73,32 @@ function listMoves.onSay(player, words, param)
 		return true
 	end
 
-	player:sendTextMessage(MESSAGE_STATUS, string.format("%s knows:", mon.species))
+	player:sendTextMessage(MESSAGE_STATUS, string.format("Pokemon: %s.", mon.species))
 	for slot, item in ipairs(known) do
 		local move = PokemonMoves[item.name]
-		local state
+		-- Past F12 there is no key to bind, so the slot gets no number. Saying so
+		-- is the point: a move listed as `m13` that nothing can press would look
+		-- broken, and one hidden entirely would look like it does not exist.
+		local label = slot <= Pokemon.KEYBOUND_SLOTS and string.format("m%d", slot) or "--"
+		local line
 		if not move then
-			state = "unavailable"
-		elseif move.power <= 0 then
-			state = "no effect yet"
+			line = string.format("%s - %s; unavailable.", item.name, label)
 		else
 			local left = Pokemon.moveCooldownLeft(entry.item, item.name)
-			state = left > 0
-				and string.format("%ds left", left)
-				or string.format("pw %d, %s, reach %d, %s",
-					move.power, move.type, move.range, move.behavior)
+			if left > 0 then
+				line = string.format("%s - %s: wait %d/%d seconds.", item.name, label, left, item.cooldown)
+			elseif move.power <= 0 then
+				-- Ready, and still does nothing. Both halves are true and the
+				-- player needs both: it is not on cooldown, and pressing it will
+				-- refuse. Hiding either one turns a known gap into a mystery.
+				line = string.format("%s - %s %d/%d seconds; no effect yet.",
+					item.name, label, item.cooldown, item.cooldown)
+			else
+				line = string.format("%s - %s %d/%d seconds; ready.",
+					item.name, label, item.cooldown, item.cooldown)
+			end
 		end
-		-- Past F12 there is no key to bind, so the slot gets no number. Saying so
-		-- is the point: a move listed as `!m13` that nothing can press would look
-		-- broken, and one hidden entirely would look like it does not exist.
-		local label = slot <= Pokemon.KEYBOUND_SLOTS and string.format("!m%d", slot) or "  --"
-		player:sendTextMessage(MESSAGE_STATUS, string.format("  %s %s - %s", label, item.name, state))
+		player:sendTextMessage(MESSAGE_STATUS, line)
 	end
 
 	if #known > Pokemon.KEYBOUND_SLOTS then

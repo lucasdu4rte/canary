@@ -13,7 +13,13 @@
 -- confused for one another.
 
 local VALID_CLASSES = { physical = true, special = true, status = true }
-local VALID_BEHAVIORS = { target = true, aoe = true, self = true }
+
+-- ⚠️ Keep in step with `Behavior` in tools/pxg.ts and with COMBAT_BY_BEHAVIOR in
+-- lib/pokemon/move.lua. `beam` was added to both of those and not to here, and
+-- the result was this command reporting 24 perfectly good moves as MALFORMED --
+-- a validator that cries wolf is worse than no validator, because the next real
+-- gap gets read as more of the same noise.
+local VALID_BEHAVIORS = { target = true, aoe = true, beam = true, self = true }
 
 local checkMoves = TalkAction("/check-moves")
 

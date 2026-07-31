@@ -213,6 +213,50 @@ COMBAT_BY_BEHAVIOR.aoe:setArea(createCombatArea(BURST))
 COMBAT_BY_BEHAVIOR.beam:setArea(createCombatArea(BEAM))
 COMBAT_BY_BEHAVIOR.self:setArea(createCombatArea(BURST))
 
+--- How far a shaped move reaches, in tiles from its centre.
+--
+-- The burst matrix is 7x7 and the beam runs 4, so 3 is what the shape actually
+-- covers. It is what an area move reaches, INSTEAD of `move.range` -- 191 of the
+-- 360 moves carry range 1 from Roxy while exploding across half a screen, and
+-- reading the range there would refuse a move that visibly works.
+Pokemon.AREA_RADIUS = 3
+
+--- The nearest pokemon this one could fight, within `radius` tiles.
+--
+-- Exists so an area move does not demand that a trainer click something first.
+-- Reported from play: `!m3` on Charizard answered "Choose a target first", and
+-- for a move that detonates around the pokemon that is a question with no
+-- meaning -- the blast does not care which creature was picked.
+--
+-- A defender is still needed, because the damage formula takes one: `Combat`
+-- applies a single number to everything it touches, so something has to say
+-- whose defence and whose types that number was computed against.
+--
+-- ⚠️ Consequence, recorded rather than hidden: the collateral in a blast takes
+-- the damage computed for the PRIMARY defender, effectiveness included. A
+-- Flamethrower aimed at a grass pokemon standing beside a water one hits both
+-- for the super-effective number. Fixing it properly means damage per victim,
+-- which `Combat` cannot express with one formula -- it belongs with the phase
+-- that gives moves their own targeting, not here.
+local function nearestOpponent(creature, radius)
+	local from = creature:getPosition()
+	local best, bestDistance = nil, math.huge
+	for _, other in ipairs(Game.getSpectators(from, false, false, radius, radius, radius, radius)) do
+		-- `getMaster()` filters out every summon at once -- ours and anyone
+		-- else's -- so a trainer standing next to a friend never has their
+		-- pokemon pick the friend's pokemon as the thing to explode on.
+		if other:isMonster() and other:getId() ~= creature:getId()
+			and not other:getMaster()
+			and PokemonSpecies[other:getName()] then
+			local distance = from:getDistance(other:getPosition())
+			if distance < bestDistance then
+				best, bestDistance = other, distance
+			end
+		end
+	end
+	return best
+end
+
 --- Is this creature standing on a protection-zone tile?
 local function inProtectionZone(creature)
 	local tile = creature and creature:getTile()
@@ -348,8 +392,27 @@ function Pokemon.useMove(player, moveName)
 		return false, "That pokemon cannot fight."
 	end
 
+	-- What the move actually reaches. A shaped move covers the shape, not the
+	-- one-tile `range` the table carries for it.
+	local shaped = move.behavior ~= "target"
+	local reach = shaped and math.max(move.range, Pokemon.AREA_RADIUS) or move.range
+
 	local target = player:getTarget()
-	if not target or target:isRemoved() then
+	if target and target:isRemoved() then
+		target = nil
+	end
+
+	-- A shaped move picks its own reference if the trainer picked none. A single
+	-- target move does not: "attack that one" is the order itself, and guessing
+	-- which one would be the command deciding the fight.
+	if not target and shaped then
+		target = nearestOpponent(entry.creature, reach)
+		if not target then
+			return false, string.format("%s has nothing in reach.", known.name)
+		end
+	end
+
+	if not target then
 		return false, "Choose a target first."
 	end
 
@@ -386,9 +449,9 @@ function Pokemon.useMove(player, moveName)
 	entry.creature:setTarget(target)
 
 	local distance = entry.creature:getPosition():getDistance(target:getPosition())
-	if distance > move.range then
+	if distance > reach then
 		return false, string.format("%s only reaches %d square%s away - %s is closing in.",
-			known.name, move.range, move.range == 1 and "" or "s", mon.species)
+			known.name, reach, reach == 1 and "" or "s", mon.species)
 	end
 
 	local left = Pokemon.moveCooldownLeft(entry.item, known.name)
@@ -427,22 +490,38 @@ Pokemon.AUTO_ATTACK_INTERVAL = 3
 
 --- Power of the automatic attack.
 --
--- Small on purpose: this is the filler between ordered moves, not a substitute
--- for them. At 3s a piece, ten of these land inside one 30s cooldown, so a
--- power of 10 against an ordered move of 60-110 keeps the ordered move worth
--- roughly as much as the whole stretch of filler around it -- which is the
--- balance the two clocks are supposed to strike.
-Pokemon.AUTO_ATTACK_POWER = 10
+-- Filler between ordered moves, not a substitute for them: at 3s a piece, ten of
+-- these land inside one 30s cooldown.
+--
+-- 🔴 Was 10, and 10 was measured on one pair rather than on the roster. Swept
+-- across all 23,562 matchups at matched levels, power 10 carried **41% of the
+-- target's health per 30s** at the median -- against roughly 23% for an ordered
+-- move, so the filler was doing about two thirds of all damage in a game whose
+-- whole point is the moves. Power 5 puts the median at 24% and the melee at 20%
+-- of total output, which is the share it should have.
+Pokemon.AUTO_ATTACK_POWER = 5
+
+--- Ceiling on one automatic attack, as a fraction of the defender's health.
+--
+-- The median was never the real complaint; the tail was. Reported from play as
+-- "80k in a melee", and measured, the spread runs to **299% of the target's
+-- health per 30s** -- an automatic attack that ends a fight on its own. It comes
+-- from the physical/special split: Chansey has 5 base defence against 105 base
+-- special defence, so a physical melee against it is amplified some twentyfold
+-- and no amount of tuning `power` reaches that without flattening everything.
+--
+-- 4% is chosen to cut the tail and leave the body alone: it binds in 17% of
+-- matchups, holds the worst case to 40% of health per 30s, and moves the median
+-- not at all. A clamp that bit the median would turn the melee into a flat
+-- fraction of health and delete the stat interaction it exists to express.
+--
+-- ⚠️ Measured against `defender.stats.hp` -- the health the FORMULA gives that
+-- species at that level -- and not against `getMaxHealth()`. A training dummy
+-- carries an absurd maximum on purpose, and reading the creature would quietly
+-- lift the ceiling off exactly where the number is being watched.
+Pokemon.AUTO_ATTACK_MAX_SHARE = 0.04
 
 --- The automatic attack, as a move.
---
--- Typed after the attacker's own first type rather than fixed to normal. It
--- costs nothing, gives STAB for free, and avoids a special case in the damage
--- path -- the alternative, a typeless attack, would be the one branch in this
--- file that reads a move by something other than the table.
---
--- The consequence is canonical and accepted: a normal-typed pokemon's automatic
--- attack does nothing to a ghost, and its ordered moves are what get it through.
 local AUTO_ATTACK_MOVE = {
 	power = Pokemon.AUTO_ATTACK_POWER,
 	-- No type, and that is the point: no STAB, no effectiveness, no immunity.
@@ -496,6 +575,15 @@ function Pokemon.autoAttack(creature)
 	end
 
 	local damage = Pokemon.damage(attacker, defender, move)
+
+	-- Clamped after the formula rather than inside it, so the cap applies to this
+	-- attack alone. An ordered move that lands for half a health bar is a move
+	-- doing its job; the same number ten times a cycle is not.
+	local ceiling = math.floor(defender.stats.hp * Pokemon.AUTO_ATTACK_MAX_SHARE)
+	if ceiling > 0 and damage > ceiling then
+		damage = ceiling
+	end
+
 	Pokemon.deliver(creature, target, move, damage)
 	return true
 end

@@ -20,6 +20,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 64,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -82,6 +83,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 50,
     ["passive"] = false,
+    ["baseExperience"] = 142,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -154,6 +156,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 95,
     ["passive"] = false,
+    ["baseExperience"] = 236,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -230,6 +233,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 62,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -286,6 +290,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 50,
     ["passive"] = false,
+    ["baseExperience"] = 142,
     ["moves"] = {
       {
         ["name"] = "Ember",
@@ -348,6 +353,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 95,
     ["passive"] = false,
+    ["baseExperience"] = 240,
     ["moves"] = {
       {
         ["name"] = "Ember",
@@ -424,6 +430,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 63,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -480,6 +487,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 50,
     ["passive"] = false,
+    ["baseExperience"] = 142,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -541,6 +549,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 95,
     ["passive"] = false,
+    ["baseExperience"] = 239,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -612,6 +621,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = true,
+    ["baseExperience"] = 39,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -648,6 +658,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = true,
+    ["baseExperience"] = 72,
     ["moves"] = {
       {
         ["name"] = "String Shot",
@@ -690,6 +701,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 40,
     ["passive"] = true,
+    ["baseExperience"] = 178,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -757,6 +769,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = false,
+    ["baseExperience"] = 39,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -794,6 +807,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 72,
     ["moves"] = {
       {
         ["name"] = "String Shot",
@@ -836,6 +850,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 40,
     ["passive"] = false,
+    ["baseExperience"] = 178,
     ["moves"] = {
       {
         ["name"] = "String Shot",
@@ -898,6 +913,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = true,
+    ["baseExperience"] = 50,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -940,6 +956,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 122,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -992,6 +1009,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 85,
     ["passive"] = false,
+    ["baseExperience"] = 216,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1058,6 +1076,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = false,
+    ["baseExperience"] = 51,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1099,6 +1118,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 35,
     ["passive"] = false,
+    ["baseExperience"] = 145,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1151,6 +1171,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 52,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -1198,6 +1219,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 155,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -1259,6 +1281,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 58,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -1305,6 +1328,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 157,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -1366,6 +1390,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 50,
     ["passive"] = false,
+    ["baseExperience"] = 112,
     ["moves"] = {
       {
         ["name"] = "Charm",
@@ -1432,6 +1457,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 95,
     ["passive"] = false,
+    ["baseExperience"] = 218,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -1493,6 +1519,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 60,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -1539,6 +1566,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 75,
     ["passive"] = false,
+    ["baseExperience"] = 158,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -1600,6 +1628,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 55,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1646,6 +1675,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 40,
     ["passive"] = false,
+    ["baseExperience"] = 128,
     ["moves"] = {
       {
         ["name"] = "Charm",
@@ -1703,6 +1733,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 75,
     ["passive"] = false,
+    ["baseExperience"] = 227,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1764,6 +1795,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 55,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1810,6 +1842,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 40,
     ["passive"] = false,
+    ["baseExperience"] = 128,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1872,6 +1905,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 75,
     ["passive"] = false,
+    ["baseExperience"] = 227,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -1938,6 +1972,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 50,
     ["passive"] = true,
+    ["baseExperience"] = 113,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -1999,6 +2034,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 75,
     ["passive"] = false,
+    ["baseExperience"] = 217,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -2060,6 +2096,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 60,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -2116,6 +2153,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 80,
     ["passive"] = false,
+    ["baseExperience"] = 177,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -2183,6 +2221,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 50,
     ["passive"] = true,
+    ["baseExperience"] = 95,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -2240,6 +2279,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 75,
     ["passive"] = false,
+    ["baseExperience"] = 196,
     ["moves"] = {
       {
         ["name"] = "Dazzling Gleam",
@@ -2302,6 +2342,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 49,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2349,6 +2390,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 159,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2406,6 +2448,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = true,
+    ["baseExperience"] = 64,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2458,6 +2501,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 40,
     ["passive"] = true,
+    ["baseExperience"] = 138,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2520,6 +2564,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 221,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2592,6 +2637,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = true,
+    ["baseExperience"] = 57,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -2644,6 +2690,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 142,
     ["moves"] = {
       {
         ["name"] = "Absorb",
@@ -2716,6 +2763,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 61,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2778,6 +2826,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 158,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -2844,6 +2893,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 53,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -2890,6 +2940,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 149,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -2951,6 +3002,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 58,
     ["moves"] = {
       {
         ["name"] = "Slash",
@@ -2997,6 +3049,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 154,
     ["moves"] = {
       {
         ["name"] = "Slash",
@@ -3058,6 +3111,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 35,
     ["passive"] = true,
+    ["baseExperience"] = 64,
     ["moves"] = {
       {
         ["name"] = "Water Gun",
@@ -3109,6 +3163,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 80,
     ["passive"] = false,
+    ["baseExperience"] = 175,
     ["moves"] = {
       {
         ["name"] = "Fury Swipes",
@@ -3175,6 +3230,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 61,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -3221,6 +3277,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 159,
     ["moves"] = {
       {
         ["name"] = "Low Kick",
@@ -3277,6 +3334,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 35,
     ["passive"] = false,
+    ["baseExperience"] = 70,
     ["moves"] = {
       {
         ["name"] = "Roar",
@@ -3338,6 +3396,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 194,
     ["moves"] = {
       {
         ["name"] = "Will-O-Wisp",
@@ -3409,6 +3468,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = false,
+    ["baseExperience"] = 60,
     ["moves"] = {
       {
         ["name"] = "Double Slap",
@@ -3455,6 +3515,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 35,
     ["passive"] = false,
+    ["baseExperience"] = 135,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -3517,6 +3578,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 80,
     ["passive"] = false,
+    ["baseExperience"] = 230,
     ["moves"] = {
       {
         ["name"] = "Mud-Slap",
@@ -3588,6 +3650,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 62,
     ["moves"] = {
       {
         ["name"] = "Recover",
@@ -3629,6 +3692,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 55,
     ["passive"] = false,
+    ["baseExperience"] = 140,
     ["moves"] = {
       {
         ["name"] = "Psybeam",
@@ -3700,6 +3764,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 100,
     ["passive"] = false,
+    ["baseExperience"] = 225,
     ["moves"] = {
       {
         ["name"] = "Psybeam",
@@ -3766,6 +3831,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 61,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -3812,6 +3878,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 55,
     ["passive"] = false,
+    ["baseExperience"] = 142,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -3868,6 +3935,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 80,
     ["passive"] = false,
+    ["baseExperience"] = 227,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -3930,6 +3998,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = true,
+    ["baseExperience"] = 60,
     ["moves"] = {
       {
         ["name"] = "Razor Leaf",
@@ -3972,6 +4041,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 35,
     ["passive"] = true,
+    ["baseExperience"] = 137,
     ["moves"] = {
       {
         ["name"] = "Razor Leaf",
@@ -4039,6 +4109,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 60,
     ["passive"] = false,
+    ["baseExperience"] = 221,
     ["moves"] = {
       {
         ["name"] = "Razor Leaf",
@@ -4106,6 +4177,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 67,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -4158,6 +4230,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 85,
     ["passive"] = false,
+    ["baseExperience"] = 180,
     ["moves"] = {
       {
         ["name"] = "Wrap",
@@ -4230,6 +4303,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 60,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -4272,6 +4346,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 50,
     ["passive"] = false,
+    ["baseExperience"] = 137,
     ["moves"] = {
       {
         ["name"] = "Rock Throw",
@@ -4329,6 +4404,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 150,
     ["passive"] = false,
+    ["baseExperience"] = 223,
     ["moves"] = {
       {
         ["name"] = "Swagger",
@@ -4355,6 +4431,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 82,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -4401,6 +4478,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 80,
     ["passive"] = false,
+    ["baseExperience"] = 175,
     ["moves"] = {
       {
         ["name"] = "Smart Strike",
@@ -4468,6 +4546,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = true,
+    ["baseExperience"] = 63,
     ["moves"] = {
       {
         ["name"] = "Aqua Tail",
@@ -4520,6 +4599,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 55,
     ["passive"] = true,
+    ["baseExperience"] = 172,
     ["moves"] = {
       {
         ["name"] = "Aqua Tail",
@@ -4587,6 +4667,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 65,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -4634,6 +4715,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 163,
     ["moves"] = {
       {
         ["name"] = "Iron Spiner",
@@ -4696,6 +4778,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 50,
     ["passive"] = true,
+    ["baseExperience"] = 132,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -4758,6 +4841,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = true,
+    ["baseExperience"] = 62,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -4805,6 +4889,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 55,
     ["passive"] = true,
+    ["baseExperience"] = 165,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -4876,6 +4961,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = true,
+    ["baseExperience"] = 65,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -4928,6 +5014,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 75,
     ["passive"] = false,
+    ["baseExperience"] = 166,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -4999,6 +5086,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 65,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5050,6 +5138,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 175,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5116,6 +5205,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = true,
+    ["baseExperience"] = 61,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -5168,6 +5258,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 70,
     ["passive"] = false,
+    ["baseExperience"] = 184,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -5230,6 +5321,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 62,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -5277,6 +5369,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 55,
     ["passive"] = false,
+    ["baseExperience"] = 142,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -5339,6 +5432,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 225,
     ["moves"] = {
       {
         ["name"] = "Creepy Lick",
@@ -5401,6 +5495,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 150,
     ["passive"] = false,
+    ["baseExperience"] = 77,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -5462,6 +5557,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 35,
     ["passive"] = false,
+    ["baseExperience"] = 66,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -5518,6 +5614,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 65,
     ["passive"] = false,
+    ["baseExperience"] = 169,
     ["moves"] = {
       {
         ["name"] = "Psy Pulse",
@@ -5588,6 +5685,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 65,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5634,6 +5732,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 50,
     ["passive"] = false,
+    ["baseExperience"] = 166,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -5700,6 +5799,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 66,
     ["moves"] = {
       {
         ["name"] = "Thunder Shock",
@@ -5746,6 +5846,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 172,
     ["moves"] = {
       {
         ["name"] = "Charge",
@@ -5808,6 +5909,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 65,
     ["moves"] = {
       {
         ["name"] = "Hypnosis",
@@ -5850,6 +5952,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 186,
     ["moves"] = {
       {
         ["name"] = "Seed Bomb",
@@ -5916,6 +6019,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 64,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
@@ -5962,6 +6066,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 65,
     ["passive"] = false,
+    ["baseExperience"] = 149,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6023,6 +6128,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 70,
     ["passive"] = false,
+    ["baseExperience"] = 159,
     ["moves"] = {
       {
         ["name"] = "Triple Kick Lee",
@@ -6064,6 +6170,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 70,
     ["passive"] = false,
+    ["baseExperience"] = 159,
     ["moves"] = {
       {
         ["name"] = "Triple Punch",
@@ -6120,6 +6227,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 65,
     ["passive"] = false,
+    ["baseExperience"] = 77,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -6191,6 +6299,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 68,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6247,6 +6356,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 172,
     ["moves"] = {
       {
         ["name"] = "Acid",
@@ -6314,6 +6424,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 40,
     ["passive"] = false,
+    ["baseExperience"] = 69,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -6366,6 +6477,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 85,
     ["passive"] = false,
+    ["baseExperience"] = 170,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -6427,6 +6539,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 70,
     ["passive"] = true,
+    ["baseExperience"] = 395,
     ["moves"] = {
       {
         ["name"] = "Double Slap",
@@ -6493,6 +6606,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 60,
     ["passive"] = true,
+    ["baseExperience"] = 87,
     ["moves"] = {
       {
         ["name"] = "Seed Bomb",
@@ -6549,6 +6663,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 90,
     ["passive"] = true,
+    ["baseExperience"] = 172,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -6615,6 +6730,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 59,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6661,6 +6777,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 55,
     ["passive"] = false,
+    ["baseExperience"] = 154,
     ["moves"] = {
       {
         ["name"] = "Mud Shot",
@@ -6722,6 +6839,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 10,
     ["wildLevel"] = 10,
     ["passive"] = false,
+    ["baseExperience"] = 64,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -6773,6 +6891,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 50,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 158,
     ["moves"] = {
       {
         ["name"] = "Supersonic",
@@ -6834,6 +6953,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 15,
     ["passive"] = false,
+    ["baseExperience"] = 68,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -6891,6 +7011,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 45,
     ["passive"] = false,
+    ["baseExperience"] = 182,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -6958,6 +7079,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 55,
     ["passive"] = true,
+    ["baseExperience"] = 161,
     ["moves"] = {
       {
         ["name"] = "Play Rough",
@@ -7020,6 +7142,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 150,
     ["passive"] = false,
+    ["baseExperience"] = 100,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -7092,6 +7215,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 85,
     ["passive"] = false,
+    ["baseExperience"] = 159,
     ["moves"] = {
       {
         ["name"] = "Lovely Kiss",
@@ -7168,6 +7292,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 172,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -7234,6 +7359,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 173,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -7295,6 +7421,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 55,
     ["passive"] = false,
+    ["baseExperience"] = 175,
     ["moves"] = {
       {
         ["name"] = "Crunch",
@@ -7361,6 +7488,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 60,
     ["wildLevel"] = 60,
     ["passive"] = true,
+    ["baseExperience"] = 172,
     ["moves"] = {
       {
         ["name"] = "Horn Attack",
@@ -7427,6 +7555,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 5,
     ["passive"] = false,
+    ["baseExperience"] = 40,
     ["moves"] = {
       {
         ["name"] = "Splash",
@@ -7454,6 +7583,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 300,
     ["passive"] = false,
+    ["baseExperience"] = 189,
     ["moves"] = {
       {
         ["name"] = "Ice Fang",
@@ -7521,6 +7651,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 200,
     ["passive"] = true,
+    ["baseExperience"] = 187,
     ["moves"] = {
       {
         ["name"] = "Body Slam",
@@ -7582,6 +7713,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 50,
     ["passive"] = true,
+    ["baseExperience"] = 101,
     ["moves"] = {},
   },
   ["Eevee"] = {
@@ -7602,6 +7734,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = true,
+    ["baseExperience"] = 65,
     ["moves"] = {
       {
         ["name"] = "Sand Attack",
@@ -7653,6 +7786,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 65,
     ["passive"] = false,
+    ["baseExperience"] = 184,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -7714,6 +7848,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 65,
     ["passive"] = false,
+    ["baseExperience"] = 184,
     ["moves"] = {
       {
         ["name"] = "Charge",
@@ -7780,6 +7915,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 65,
     ["passive"] = false,
+    ["baseExperience"] = 184,
     ["moves"] = {
       {
         ["name"] = "Quick Attack",
@@ -7841,6 +7977,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 40,
     ["wildLevel"] = 250,
     ["passive"] = true,
+    ["baseExperience"] = 79,
     ["moves"] = {
       {
         ["name"] = "Cyber Wave",
@@ -7908,6 +8045,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = true,
+    ["baseExperience"] = 71,
     ["moves"] = {
       {
         ["name"] = "Bite",
@@ -7970,6 +8108,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 90,
     ["passive"] = false,
+    ["baseExperience"] = 173,
     ["moves"] = {
       {
         ["name"] = "Rock Throw",
@@ -8032,6 +8171,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 20,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 71,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -8094,6 +8234,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 100,
     ["passive"] = false,
+    ["baseExperience"] = 173,
     ["moves"] = {
       {
         ["name"] = "Ancient Absorb",
@@ -8156,6 +8297,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 110,
     ["passive"] = false,
+    ["baseExperience"] = 180,
     ["moves"] = {
       {
         ["name"] = "Roar",
@@ -8227,6 +8369,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 100,
     ["passive"] = false,
+    ["baseExperience"] = 189,
     ["moves"] = {
       {
         ["name"] = "Lick",
@@ -8294,6 +8437,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 300,
     ["wildLevel"] = 1000,
     ["passive"] = false,
+    ["baseExperience"] = 261,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -8386,6 +8530,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 300,
     ["wildLevel"] = 1000,
     ["passive"] = false,
+    ["baseExperience"] = 261,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -8478,6 +8623,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 300,
     ["wildLevel"] = 1000,
     ["passive"] = false,
+    ["baseExperience"] = 261,
     ["moves"] = {
       {
         ["name"] = "Peck",
@@ -8569,6 +8715,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 30,
     ["wildLevel"] = 30,
     ["passive"] = false,
+    ["baseExperience"] = 60,
     ["moves"] = {
       {
         ["name"] = "Aqua Tail",
@@ -8620,6 +8767,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 80,
     ["wildLevel"] = 85,
     ["passive"] = false,
+    ["baseExperience"] = 147,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -8687,6 +8835,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 100,
     ["wildLevel"] = 110,
     ["passive"] = false,
+    ["baseExperience"] = 270,
     ["moves"] = {
       {
         ["name"] = "Scale Shot",
@@ -8753,6 +8902,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 500,
     ["wildLevel"] = 1000,
     ["passive"] = false,
+    ["baseExperience"] = 306,
     ["moves"] = {
       {
         ["name"] = "Swift",
@@ -8829,6 +8979,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 200,
     ["wildLevel"] = 1000,
     ["passive"] = false,
+    ["baseExperience"] = 270,
     ["moves"] = {
       {
         ["name"] = "Shadow Ball",
@@ -8910,6 +9061,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 1,
     ["passive"] = false,
+    ["baseExperience"] = 64,
     ["moves"] = {
       {
         ["name"] = "Tackle",
@@ -8960,6 +9112,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 1,
     ["passive"] = false,
+    ["baseExperience"] = 62,
     ["moves"] = {
       {
         ["name"] = "Scratch",
@@ -9005,6 +9158,7 @@ PokemonSpecies = {
     ["minPlayerLevel"] = 1,
     ["wildLevel"] = 1,
     ["passive"] = false,
+    ["baseExperience"] = 63,
     ["moves"] = {
       {
         ["name"] = "Headbutt",
