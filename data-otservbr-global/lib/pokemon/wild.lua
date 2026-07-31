@@ -62,6 +62,13 @@ function Pokemon.applyWildStats(creature)
 		return false -- a summon; summon.lua owns its stats
 	end
 
+	-- A dummy owns its own health, and this runs from onThink: without the
+	-- guard, the correction below would undo `Pokemon.makeDummy` a second after
+	-- it took, and the dummy would die like anything else.
+	if Pokemon.isDummy(creature) then
+		return false
+	end
+
 	local species = PokemonSpecies[creature:getName()]
 	if not species then
 		return false

@@ -281,7 +281,10 @@ function Pokemon.deliver(attacker, target, move, damage)
 		or Variant(target:getId())
 	combatFor(move, damage):execute(attacker, aim)
 
-	if not target:isRemoved() and not target:getMaster() and not target:getTarget() then
+	-- A dummy is the exception, and the only one: giving it a target is what
+	-- would make it chase, and a target that chases is not a measurement.
+	if not target:isRemoved() and not target:getMaster() and not target:getTarget()
+		and not Pokemon.isDummy(target) then
 		target:setTarget(attacker)
 	end
 end
@@ -458,6 +461,15 @@ local AUTO_ATTACK_MOVE = {
 -- @return true if it attacked
 function Pokemon.autoAttack(creature)
 	if not creature or creature:isRemoved() then
+		return false
+	end
+
+	-- A dummy never swings, whatever species it wears. Retaliation is already
+	-- suppressed for it, but a hostile species picks its own target through
+	-- `searchTarget` and would melee anything that walked up -- so /dummy
+	-- Charizard would behave differently from /dummy Chansey, which defeats
+	-- choosing the species freely.
+	if Pokemon.isDummy(creature) then
 		return false
 	end
 
