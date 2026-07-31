@@ -45,13 +45,24 @@ Pokemon.DUMMY_HEALTH = 1000000000
 -- `CONDITION_ROOTED` is also the mechanism rather than a flag sitting next to
 -- it: `Game::internalMoveCreature` refuses outright for a rooted creature
 -- (game.cpp:1950), and every step a monster takes -- follow, random, walk-back
--- -- passes through there (creature.cpp:243). Nothing else in the datapack
--- roots anything, so the reading is unambiguous.
+-- -- passes through there (creature.cpp:243).
+--
+-- 🔴 **The rooting must sit at subId 0, and the ownership is what tells a dummy
+-- from a parked pokemon.** `!pokestop` roots too, so the obvious move was to
+-- separate them by subId -- and that quietly breaks both. Every engine check
+-- reads `hasCondition(CONDITION_ROOTED)` with the DEFAULT subId (game.cpp:1950,
+-- creature.cpp:503), so a rooting under any other subId is a decoration: it
+-- stops nothing. Measured in play -- a parked Charizard walked off after its
+-- trainer, and the dummies would have gone back to wandering with it.
+--
+-- So both root at 0, and they are told apart by what they are: a dummy is
+-- ownerless by construction (it is a wild that `/dummy` marked) and a parked
+-- pokemon is always a summon. Nothing else in the datapack roots anything.
 function Pokemon.isDummy(creature)
 	if not creature or creature:isRemoved() then
 		return false
 	end
-	return creature:hasCondition(CONDITION_ROOTED)
+	return creature:hasCondition(CONDITION_ROOTED) and not creature:getMaster()
 end
 
 --- Turn a pokemon into a dummy, in place.
@@ -71,6 +82,8 @@ function Pokemon.makeDummy(creature)
 		return false
 	end
 
+	-- Default subId, and it has to be: see `Pokemon.isDummy` above for what
+	-- happens to a rooting the engine cannot see.
 	local rooted = Condition(CONDITION_ROOTED)
 	rooted:setTicks(-1)
 	creature:addCondition(rooted)

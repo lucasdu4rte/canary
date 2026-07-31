@@ -58,6 +58,14 @@ function onThinkEvent.onThink(creature, interval)
 		return true
 	end
 
+	-- ⚠️ `!pokestop` is deliberately NOT checked here. Parking stops a pokemon
+	-- WALKING, not following: the teleport below still fires and it still keeps
+	-- up with its trainer across the map. That is the source game's rule and it
+	-- is the kinder one -- a parked pokemon left behind would otherwise be lost
+	-- until the two minutes ran out.
+	--
+	-- It works out because the two use different doors: rooting is enforced in
+	-- `internalMoveCreature`, and `teleportTo` does not go through it.
 	local here, there = creature:getPosition(), master:getPosition()
 	if here.z == there.z
 		and math.abs(here.x - there.x) < VIEW_X
