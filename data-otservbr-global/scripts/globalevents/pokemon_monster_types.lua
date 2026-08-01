@@ -70,7 +70,22 @@ function registrar.onStartup()
 			local base = species.baseStats
 			m.health = base.hp
 			m.maxHealth = base.hp
-			m.race = "blood"
+			-- No blood. Pokemon do not bleed, and the red splashes under a
+			-- fainted one read as gore in a game about collecting animals.
+			--
+			-- `race` is what draws them, and it is read in EXACTLY two places in
+			-- the whole engine -- the death splash (`creature.cpp:746`) and the
+			-- damage splash (`game.cpp:8062`). Both are a switch whose `default`
+			-- branch creates nothing, and `energy` falls to that default. So this
+			-- costs a word and removes every splash, with no other behaviour
+			-- attached: nothing else in Canary asks a creature its race.
+			--
+			-- `"none"` would say it better and does NOT work: the enum has
+			-- `RACE_NONE` but the Lua setter (`monster_type_functions.cpp:1414`)
+			-- has no branch for that string, warns "Unknown race type", and leaves
+			-- the field at its `RACE_BLOOD` default -- the exact opposite of what
+			-- was asked for, announced only in a boot-log warning.
+			m.race = "energy"
 
 			-- 🔴 Was 0, which means "leaves nothing behind", and a wild vanished
 			-- on death. Reported from play, and it falsifies what the phase 4
