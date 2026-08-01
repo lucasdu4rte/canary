@@ -81,7 +81,12 @@ function test.onSay(player, words, param)
 	end
 
 	local ballItemId = PokemonBallItems[ballName]
-	local ballItem = player:getItemById(ballItemId, false)
+	-- deepSearch = true, and it is not optional: the second argument of
+	-- `getItemById` is `deepSearch` (`player_functions.cpp`), and with `false` the
+	-- search never enters a container. Balls live in the backpack, so a shallow
+	-- search finds nothing and reports "you have no poke ball" to a player holding
+	-- twenty of them.
+	local ballItem = player:getItemById(ballItemId, true)
 	if not ballItem then
 		player:sendCancelMessage(string.format(
 			"You have no %s. Get some with /i %d, 10", ballName:lower(), ballItemId))
