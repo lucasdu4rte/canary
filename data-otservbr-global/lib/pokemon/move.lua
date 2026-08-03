@@ -51,6 +51,17 @@ local COMBAT_BY_TYPE = {
 
 local FALLBACK_COMBAT = { COMBAT_PHYSICALDAMAGE, CONST_ME_HITAREA, CONST_ANI_LARGEROCK }
 
+-- "draw nothing", written as the number it is.
+--
+-- ⚠️ `CONST_ME_NONE` exists in C++ (utils_definitions.hpp:59, first in the enum,
+-- so 0) but is NOT registered in Lua -- lua_enums.cpp:429 registers its
+-- projectile counterpart CONST_ANI_NONE and not this one. Spelling the name here
+-- would pass **nil**, and `Lua::getNumber` turns nil into 0, which happens to be
+-- the right value: correct behaviour, no error, and nothing anywhere to say the
+-- constant was never real. Exactly the shape of the silent nil that cost this
+-- file 191 area moves once already.
+local NO_EFFECT = 0
+
 --- The species whose move list applies to this pokemon.
 --
 -- Today it is simply its own species, and the indirection still earns its keep:
@@ -153,44 +164,52 @@ function Pokemon.combatantOf(creature)
 	}
 end
 
--- One Combat per shape, BUILT AT LOAD TIME.
+-- One Combat, BUILT AT LOAD TIME, and it carries no area at all.
 --
--- 🔴 `createCombatArea` and `Combat:setArea` refuse to run outside script
+-- 🔴 There used to be four -- one per behaviour -- with `createCombatArea` on
+-- three of them, and the engine delivered a whole blast as ONE number. That is
+-- what made an area move need a defender before it could fire: `Combat` applies
+-- a single value to everything it touches, so the executor had to nominate
+-- somebody for the formula, and with nobody in reach it refused outright --
+-- "Fire Blast has nothing in reach", for a move that detonates around the
+-- pokemon and does not care who was picked.
+--
+-- The shape is walked here now and each victim is hit on its own, so the formula
+-- runs once per victim against that victim's defence and its own type chart.
+-- Two things fall out of that: a move no longer needs anybody to be there, and
+-- the collateral stops inheriting the primary target's effectiveness -- a
+-- Flamethrower aimed at a grass pokemon beside a water one used to hit BOTH for
+-- the super-effective number.
+--
+-- Roxy reaches the same place from the other side: `doMoveInArea2` walks the
+-- area's tiles and calls the damage per creature it finds, and the tiles with
+-- nobody standing on them still get the effect.
+--
+-- ⚠️ `createCombatArea` and `Combat:setArea` still refuse to run outside script
 -- loading -- `env->getScriptId() != EVENT_ID_LOADING` in global_functions.cpp:272
--- and combat_functions.cpp:91. They do not raise: they log a line and return
--- nil, so a `pcall` around them reports success.
+-- and combat_functions.cpp:91 -- and still fail by logging a line and returning
+-- nil rather than raising, which is how 191 area moves once spent weeks being
+-- delivered as single target with nothing in play to show it. Nothing below
+-- calls either of them any more, so that trap is closed rather than avoided.
 --
--- Building a fresh Combat per move use therefore produced an object with no
--- area at all, and **every one of the 191 area moves was delivered as single
--- target** from the day they were written. Nothing in play distinguished the
--- two: the move fired, the damage landed on the target, the message printed.
---
--- So the areas are made once, here, and the four objects are reused. Everything
--- that varies per use -- damage type, effect, projectile, the damage itself --
--- goes through setParameter and setFormula, neither of which is restricted.
--- Mutating a shared object is safe because a move is set up and executed inside
--- one call, with no yield in between.
-local COMBAT_BY_BEHAVIOR = {
-	target = Combat(),
-	aoe = Combat(),
-	beam = Combat(),
-	self = Combat(),
-}
+-- Mutating the one shared object is safe for the same reason it always was: a
+-- hit is set up and executed inside one call with no yield in between. The area
+-- loop does that once per victim, in sequence.
+local HIT = Combat()
 
 -- The three shapes the plan asked to start from -- single target, a burst
 -- centred on the target, a beam in a direction -- plus `self`, which the wiki
--- marks and 5 damaging moves carry. `target` gets no area: it lands on one
--- creature and the engine needs no geometry for that.
+-- marks and 5 damaging moves carry. `target` gets no shape: it lands on one
+-- creature and there is no geometry to walk for that.
 --
 -- ⚠️ The matrices are written out here rather than taken from the core's
 -- AREA_CIRCLE3X3 and AREA_BEAM5, because those live in
 -- `data/scripts/lib/register_spells.lua`, which the engine loads AFTER `lib.lua`
--- -- so referencing them from here passes nil and the only sign is a logged
--- "Invalid area table" while the move quietly keeps working as single target.
+-- -- so referencing them from here passes nil, and a nil shape now means a move
+-- that covers nothing instead of one that quietly falls back to single target.
 --
--- `3` marks the origin; the engine rotates the whole matrix by the direction
--- from the caster to the point of impact, which is what makes one beam serve
--- all four ways.
+-- `3` marks the origin, and the matrices are written pointing NORTH; `rotated`
+-- below turns them, which is what makes one beam serve all four ways.
 local BURST = {
 	{ 0, 0, 1, 1, 1, 0, 0 },
 	{ 0, 1, 1, 1, 1, 1, 0 },
@@ -209,53 +228,128 @@ local BEAM = {
 	{ 3 },
 }
 
-COMBAT_BY_BEHAVIOR.aoe:setArea(createCombatArea(BURST))
-COMBAT_BY_BEHAVIOR.beam:setArea(createCombatArea(BEAM))
-COMBAT_BY_BEHAVIOR.self:setArea(createCombatArea(BURST))
+--- Offsets a matrix covers, relative to its origin cell.
+--
+-- The same reading the engine does: `3` marks the origin, anything non-zero is
+-- covered, and the cell at (row y, column x) lands at (x - originX, y - originY)
+-- from the point of impact -- `AreaCombat::getList`, combat.cpp:1393.
+--
+-- Derived from the matrix rather than written out a second time, because the
+-- effect the player sees and the set of creatures that get hit both come from
+-- this list. Two lists would be two chances to disagree, and a blast that draws
+-- one shape while damaging another is invisible until somebody counts.
+local function offsetsOf(matrix)
+	local originX, originY
+	for y, row in ipairs(matrix) do
+		for x, cell in ipairs(row) do
+			if cell == 3 then
+				originX, originY = x, y
+			end
+		end
+	end
+
+	local offsets = {}
+	for y, row in ipairs(matrix) do
+		for x, cell in ipairs(row) do
+			if cell ~= 0 then
+				offsets[#offsets + 1] = { x - originX, y - originY }
+			end
+		end
+	end
+	return offsets
+end
+
+-- ⚠️ Keep the keys in step with `Behavior` in tools/pxg.ts and with
+-- VALID_BEHAVIORS in scripts/talkactions/god/check_moves.lua. A behaviour
+-- missing from here is a move that covers no tiles at all.
+local SHAPE = {
+	aoe = offsetsOf(BURST),
+	beam = offsetsOf(BEAM),
+	self = offsetsOf(BURST),
+}
+
+--- Zero, and not the other zero.
+--
+-- 🔴 The engine runs LuaJIT (vcpkg.json, cmake/modules/BaseConfig.cmake:46), so
+-- every number is a double and `-0` is a value in its own right: negating a zero
+-- offset produces negative zero. It compares equal to 0 and adds like 0, so the
+-- tiles come out right -- but it PRINTS as "-0", and anything that keys an
+-- offset by its text sees "-0:0" and "0:0" as two different tiles.
+--
+-- Measured rather than guessed: /check-area reported the burst asymmetric in
+-- three directions out of four with the shape perfectly correct, because three
+-- of the four rotations negate. A validator that cries wolf is worse than none,
+-- so the zero is normalised here, once, where the negation happens.
+local function zeroed(n)
+	return n == 0 and 0 or n
+end
+
+--- Turn a north-facing offset to point `direction`.
+local function rotated(offset, direction)
+	local dx, dy = offset[1], offset[2]
+	if direction == DIRECTION_EAST then
+		return zeroed(-dy), zeroed(dx)
+	elseif direction == DIRECTION_SOUTH then
+		return zeroed(-dx), zeroed(-dy)
+	elseif direction == DIRECTION_WEST then
+		return zeroed(dy), zeroed(-dx)
+	end
+	return zeroed(dx), zeroed(dy)
+end
+
+--- The footprint of a shape, as {dx, dy} offsets from where it lands.
+--
+-- Public so the geometry can be checked without a fight: /check-area counts it
+-- and walks it in all four directions. Everything that draws or damages a blast
+-- goes through here, so a footprint that reads right there is the one that
+-- fires -- which is the property the old engine-side area could not be asked
+-- about at all, and why it went 191 moves wrong in silence.
+--
+-- @return a list of {dx, dy}, empty for a behaviour with no shape
+function Pokemon.shapeOffsets(behavior, direction)
+	local offsets = SHAPE[behavior]
+	if not offsets then
+		return {}
+	end
+
+	local turned = {}
+	for i, offset in ipairs(offsets) do
+		local dx, dy = rotated(offset, direction)
+		turned[i] = { dx, dy }
+	end
+	return turned
+end
+
+--- Which way a blast points, by the engine's own rule.
+--
+-- Copied from `AreaCombat::getArea` (combat.cpp:1424) rather than approximated,
+-- so a beam comes out where it used to: x decides first, and only a dead heat on
+-- x lets y speak. A blast centred on the caster itself is dx = dy = 0 and falls
+-- through to SOUTH there -- which is exactly why a move with no target reads the
+-- pokemon's own facing instead of calling this.
+local function directionOfBlast(from, centre)
+	local dx, dy = centre.x - from.x, centre.y - from.y
+	if dx < 0 then
+		return DIRECTION_WEST
+	elseif dx > 0 then
+		return DIRECTION_EAST
+	elseif dy < 0 then
+		return DIRECTION_NORTH
+	end
+	return DIRECTION_SOUTH
+end
 
 --- How far a shaped move reaches, in tiles from its centre.
 --
 -- The burst matrix is 7x7 and the beam runs 4, so 3 is what the shape actually
 -- covers. It is what an area move reaches, INSTEAD of `move.range` -- 191 of the
 -- 360 moves carry range 1 from Roxy while exploding across half a screen, and
--- reading the range there would refuse a move that visibly works.
+-- reading the range there would understate them by half a screen.
+--
+-- Nothing refuses a trainer's shaped move over this any more. What it still
+-- decides is WHERE: a target further than this leaves the blast centred on the
+-- pokemon, and a wild only considers the moves whose reach covers the distance.
 Pokemon.AREA_RADIUS = 3
-
---- The nearest pokemon this one could fight, within `radius` tiles.
---
--- Exists so an area move does not demand that a trainer click something first.
--- Reported from play: `!m3` on Charizard answered "Choose a target first", and
--- for a move that detonates around the pokemon that is a question with no
--- meaning -- the blast does not care which creature was picked.
---
--- A defender is still needed, because the damage formula takes one: `Combat`
--- applies a single number to everything it touches, so something has to say
--- whose defence and whose types that number was computed against.
---
--- ⚠️ Consequence, recorded rather than hidden: the collateral in a blast takes
--- the damage computed for the PRIMARY defender, effectiveness included. A
--- Flamethrower aimed at a grass pokemon standing beside a water one hits both
--- for the super-effective number. Fixing it properly means damage per victim,
--- which `Combat` cannot express with one formula -- it belongs with the phase
--- that gives moves their own targeting, not here.
-local function nearestOpponent(creature, radius)
-	local from = creature:getPosition()
-	local best, bestDistance = nil, math.huge
-	for _, other in ipairs(Game.getSpectators(from, false, false, radius, radius, radius, radius)) do
-		-- `getMaster()` filters out every summon at once -- ours and anyone
-		-- else's -- so a trainer standing next to a friend never has their
-		-- pokemon pick the friend's pokemon as the thing to explode on.
-		if other:isMonster() and other:getId() ~= creature:getId()
-			and not other:getMaster()
-			and PokemonSpecies[other:getName()] then
-			local distance = from:getDistance(other:getPosition())
-			if distance < bestDistance then
-				best, bestDistance = other, distance
-			end
-		end
-	end
-	return best
-end
 
 --- Is this creature standing on a protection-zone tile?
 local function inProtectionZone(creature)
@@ -263,12 +357,17 @@ local function inProtectionZone(creature)
 	return tile ~= nil and tile:hasFlag(TILESTATE_PROTECTIONZONE)
 end
 
-local function combatFor(move, damage)
+-- @param quiet  a hit inside a blast that has already drawn itself
+local function combatFor(move, damage, quiet)
 	local flavour = COMBAT_BY_TYPE[move.type] or FALLBACK_COMBAT
 
-	local combat = COMBAT_BY_BEHAVIOR[move.behavior] or COMBAT_BY_BEHAVIOR.target
-	combat:setParameter(COMBAT_PARAM_TYPE, flavour[1])
-	combat:setParameter(COMBAT_PARAM_EFFECT, flavour[2])
+	HIT:setParameter(COMBAT_PARAM_TYPE, flavour[1])
+
+	-- `quiet` exists because the blast draws every tile it covers, occupied or
+	-- not. Letting each victim's hit draw again would make the crowded part of
+	-- an area flash twice and the empty part once, which reads as two attacks.
+	HIT:setParameter(COMBAT_PARAM_EFFECT, quiet and NO_EFFECT or flavour[2])
+
 	-- Fixed both ends: the roll already happened in Pokemon.damage, and letting
 	-- the engine roll again would stack two sources of variance -- one of them
 	-- invisible from the formula that is supposed to own it.
@@ -279,32 +378,29 @@ local function combatFor(move, damage)
 	-- b, which is the shape most datapack spells use, rolls normal_random(0, 0)
 	-- and every move lands for nothing: the effect plays, the message prints,
 	-- the cooldown starts, and the target does not lose a hitpoint.
-	combat:setFormula(COMBAT_FORMULA_DAMAGE, -damage, 0, -damage, 0)
+	HIT:setFormula(COMBAT_FORMULA_DAMAGE, -damage, 0, -damage, 0)
 
 	-- A projectile only when there is a distance for it to cross. 59 of the 360
 	-- moves reach past the next square, and without this the hit simply appeared
 	-- on a target ten squares away with nothing having travelled there.
 	--
-	-- Always set, never left alone: the objects are shared, so a contact move
+	-- Always set, never left alone: the object is shared, so a contact move
 	-- following a ranged one would inherit its projectile and throw a spear at
-	-- something it is standing next to.
-	combat:setParameter(
+	-- something it is standing next to. A blast fires one projectile at the
+	-- place it lands, so the per-victim hits inside it carry none.
+	HIT:setParameter(
 		COMBAT_PARAM_DISTANCEEFFECT,
-		(move.range and move.range > 1) and flavour[3] or CONST_ANI_NONE
+		(not quiet and move.range and move.range > 1) and flavour[3] or CONST_ANI_NONE
 	)
 
-	-- The area is already on the object -- see COMBAT_BY_BEHAVIOR. The engine
-	-- rotates the matrix by the direction from the caster to the point of
-	-- impact, so a beam laid out pointing "up" comes out pointing at whatever
-	-- was targeted, which is what makes one matrix serve all four directions.
-	return combat
+	return HIT
 end
 
 --- Deliver a hit, and let the target hit back.
 --
 -- Public because it is the one place a move's damage reaches a creature: the
--- shape, the projectile and the retaliation all live here, so anything that
--- wants to land a move goes through it rather than building its own combat.
+-- projectile and the retaliation both live here, so anything that wants to land
+-- a move goes through it rather than building its own combat.
 --
 -- The one place damage reaches a creature, so it is the one place that knows a
 -- fight just started. A wild has `hostile = false` -- it does not pick a fight
@@ -314,16 +410,15 @@ end
 -- Retaliation only. It takes the attacker as its target if it has none, which
 -- leaves a wild already fighting someone else alone, and never touches a
 -- summon, whose target belongs to its trainer.
-function Pokemon.deliver(attacker, target, move, damage)
-	-- A `self` move is centred on whoever used it, so it is aimed at the
-	-- caster's own tile rather than at the target. 5 moves carry it with damage
-	-- -- Rage, Shadow Claw, Furious Legs, Clear Smog, Vital Spirit -- and before
-	-- this they were delivered at the target like any single-target move, which
-	-- is the table declaring one thing and the executor doing another.
-	local aim = move.behavior == "self"
-		and Variant(attacker:getPosition())
-		or Variant(target:getId())
-	combatFor(move, damage):execute(attacker, aim)
+--
+-- ⚠️ The engine still owns whether the hit is ALLOWED. `Combat::doCombatHealth`
+-- gates a single target on `canDoCombat` (combat.cpp:1520), and the trainer
+-- guard rides `onHealthChange` in creaturescripts/pokemon_damage_rules.lua
+-- rather than target selection. Both hold for every victim the area loop below
+-- proposes, which is why walking a shape in Lua does not hand a pokemon a way
+-- past protection zones, PvP rules or its own trainer.
+function Pokemon.deliver(attacker, target, move, damage, quiet)
+	combatFor(move, damage, quiet):execute(attacker, Variant(target:getId()))
 
 	-- A dummy is the exception, and the only one: giving it a target is what
 	-- would make it chase, and a target that chases is not a measurement.
@@ -331,6 +426,91 @@ function Pokemon.deliver(attacker, target, move, damage)
 		and not Pokemon.isDummy(target) then
 		target:setTarget(attacker)
 	end
+end
+
+--- The tiles a shaped move covers, given where it lands and which way it points.
+local function coveredBy(behavior, from, centre, direction)
+	local covered = {}
+	for _, offset in ipairs(Pokemon.shapeOffsets(behavior, direction)) do
+		local pos = Position(centre.x + offset[1], centre.y + offset[2], centre.z)
+		local tile = pos:getTile()
+
+		-- The same two rules the engine applies while building an area
+		-- (`AreaCombat::getList`, combat.cpp:1400-1410): a floor change is not
+		-- part of the blast, and neither is anything the caster cannot see.
+		-- Without the second one a burst reaches straight through a wall.
+		if tile and not tile:hasFlag(TILESTATE_FLOORCHANGE) and from:isSightClear(pos, true) then
+			covered[#covered + 1] = pos
+		end
+	end
+	return covered
+end
+
+--- Every pokemon standing on the covered tiles, the caster excluded.
+--
+-- Only pokemon, because a pokemon move works on pokemon -- the same rule the
+-- single-target path states as "Pokemon moves only work on other pokemon", and
+-- it is what keeps a blast from mowing down the Tibia content standing nearby.
+-- Players fail the test for free: no player is a catalogue species.
+--
+-- Summons are NOT filtered out, unlike the target-picking this replaces. That
+-- one excluded them so a trainer standing beside a friend never had their
+-- pokemon choose the friend's as the thing to explode on -- a rule about
+-- CHOOSING. Being inside a blast is not a choice, and whether a summon may be
+-- hurt is the engine's call, made per victim in Pokemon.deliver.
+local function victimsUnder(attacker, covered)
+	local victims = {}
+	for _, pos in ipairs(covered) do
+		local tile = pos:getTile()
+		for _, creature in ipairs(tile and tile:getCreatures() or {}) do
+			if creature:getId() ~= attacker:getId() and PokemonSpecies[creature:getName()] then
+				victims[#victims + 1] = creature
+			end
+		end
+	end
+	return victims
+end
+
+--- Fire a shaped move: draw it, then hit each pokemon under it on its own terms.
+--
+-- Nobody has to be standing there. That is the whole point of the shape living
+-- in Lua: the tiles are drawn from the matrix, the formula runs per victim, and
+-- a blast with an empty area is simply a blast that hit nothing -- it still
+-- fires, still draws and still goes on cooldown.
+--
+-- @param attacker  a combatant, from Pokemon.combatantOf
+-- @param primary   the creature the trainer picked, when there was one
+-- @return how many were hit, and the effectiveness against `primary` if it was
+--         among them
+function Pokemon.deliverArea(attacker, move, centre, direction, primary)
+	local from = attacker.creature:getPosition()
+	local flavour = COMBAT_BY_TYPE[move.type] or FALLBACK_COMBAT
+	local covered = coveredBy(move.behavior, from, centre, direction)
+
+	-- One projectile, to where the blast lands. Per victim it would read as
+	-- several attacks rather than one, and a blast centred on the pokemon has
+	-- nothing to cross at all.
+	if move.range and move.range > 1 and from:getDistance(centre) > 0 then
+		from:sendDistanceEffect(centre, flavour[3])
+	end
+
+	for _, pos in ipairs(covered) do
+		pos:sendMagicEffect(flavour[2])
+	end
+
+	local hits, primaryEffectiveness = 0, nil
+	for _, victim in ipairs(victimsUnder(attacker.creature, covered)) do
+		local defender = Pokemon.combatantOf(victim)
+		if defender then
+			local damage, effectiveness = Pokemon.damage(attacker, defender, move)
+			Pokemon.deliver(attacker.creature, victim, move, damage, true)
+			hits = hits + 1
+			if primary and victim:getId() == primary:getId() then
+				primaryEffectiveness = effectiveness
+			end
+		end
+	end
+	return hits, primaryEffectiveness
 end
 
 local EFFECTIVENESS_TEXT = {
@@ -347,7 +527,7 @@ local EFFECTIVENESS_TEXT = {
 --   move unknown to species   -> a trainer error
 --   move missing from table   -> a DATA error, logged loud, never silent
 --   power == 0                -> refused with a message, cooldown NOT consumed
---   out of range              -> refused, with the reach in the message
+--   caster in a protection zone -> refused, whatever the shape
 --   on cooldown               -> refused, with the time left
 --   then and only then        -> consume the cooldown and deal the damage
 --
@@ -355,6 +535,15 @@ local EFFECTIVENESS_TEXT = {
 -- one button in four does nothing at all and is indistinguishable from a broken
 -- move. There is no accuracy roll in this phase, so every use that gets past
 -- these checks lands -- which is what makes consuming the cooldown here fair.
+--
+-- 🔴 A SHAPED move is not on that list past the cooldown, and that is the point.
+-- It used to be refused for having no target, for a target that was not a
+-- pokemon, for a target inside a temple and for a target out of range -- four
+-- ways to be told no about a move that detonates around the pokemon and does not
+-- consult the target for anything but where to centre. Reported from play as
+-- "Fire Blast has nothing in reach" with the trainer standing in the open. All
+-- four are now the same thing: the blast centres on the pokemon instead, and
+-- fires. What the target still decides is WHERE, never WHETHER.
 --
 -- @return true, or false plus a message for the player
 function Pokemon.useMove(player, moveName)
@@ -392,6 +581,22 @@ function Pokemon.useMove(player, moveName)
 		return false, "That pokemon cannot fight."
 	end
 
+	-- No fighting in a protection zone. Checked on the CASTER only, and for
+	-- every shape.
+	--
+	-- The engine already half-enforces it -- a familiar cannot start attacking
+	-- while it stands in one -- but only half, and silently: the order would be
+	-- accepted, the cooldown consumed, and nothing would happen.
+	--
+	-- The other half, hitting something that stepped into a temple, used to be a
+	-- refusal here too. It still holds, but the engine is what holds it now:
+	-- `canDoCombat` runs per victim inside Pokemon.deliver, so a blast covering
+	-- a temple tile leaves whoever stands on it alone without the whole move
+	-- having to be called off for their sake.
+	if inProtectionZone(entry.creature) then
+		return false, string.format("%s cannot fight inside a protection zone.", mon.species)
+	end
+
 	-- What the move actually reaches. A shaped move covers the shape, not the
 	-- one-tile `range` the table carries for it.
 	local shaped = move.behavior ~= "target"
@@ -402,40 +607,10 @@ function Pokemon.useMove(player, moveName)
 		target = nil
 	end
 
-	-- A shaped move picks its own reference if the trainer picked none. A single
-	-- target move does not: "attack that one" is the order itself, and guessing
-	-- which one would be the command deciding the fight.
-	if not target and shaped then
-		target = nearestOpponent(entry.creature, reach)
-		if not target then
-			return false, string.format("%s has nothing in reach.", known.name)
-		end
-	end
+	local from = entry.creature:getPosition()
+	local defender, centre, direction, primary
 
-	if not target then
-		return false, "Choose a target first."
-	end
-
-	local defender = Pokemon.combatantOf(target)
-	if not defender then
-		return false, "Pokemon moves only work on other pokemon."
-	end
-
-	-- No fighting in a protection zone, on either side.
-	--
-	-- The engine already half-enforces this -- a familiar cannot start
-	-- attacking while it stands in one -- but only half, and silently: the
-	-- order would be accepted, the cooldown consumed, and nothing would happen.
-	-- Checking both tiles also closes the other half, which the engine does not
-	-- cover: standing outside and hitting something that stepped into a temple.
-	if inProtectionZone(entry.creature) then
-		return false, string.format("%s cannot fight inside a protection zone.", mon.species)
-	end
-	if inProtectionZone(target) then
-		return false, string.format("%s is inside a protection zone.", target:getName())
-	end
-
-	-- Point the pokemon at what its trainer picked, BEFORE the range check.
+	-- Point the pokemon at what its trainer picked, BEFORE anything can refuse.
 	--
 	-- Nothing in Canary does this: `Player::setAttackedCreature` moves the
 	-- player alone, and no summon path propagates a target. Ours are
@@ -446,12 +621,48 @@ function Pokemon.useMove(player, moveName)
 	-- than being a wasted keystroke: 237 of the 323 moves the range table
 	-- covers reach one square, so refusing without engaging would mean the
 	-- normal case is press, nothing, walk yourself, press again.
-	entry.creature:setTarget(target)
+	if target then
+		entry.creature:setTarget(target)
+	end
 
-	local distance = entry.creature:getPosition():getDistance(target:getPosition())
-	if distance > reach then
-		return false, string.format("%s only reaches %d square%s away - %s is closing in.",
-			known.name, reach, reach == 1 and "" or "s", mon.species)
+	if shaped then
+		-- Centred on the pokemon, pointing wherever it faces, unless the trainer
+		-- picked something a blast can usefully land on. Every condition below
+		-- that fails is a REASON TO RECENTRE, never a reason to refuse.
+		centre, direction = from, entry.creature:getDirection()
+
+		-- `self` is centred on the caster by definition -- Rage, Shadow Claw,
+		-- Furious Legs, Clear Smog and Vital Spirit -- so it never reads the
+		-- target at all.
+		if target and move.behavior ~= "self"
+			and Pokemon.combatantOf(target)
+			and not inProtectionZone(target)
+			and from:getDistance(target:getPosition()) <= reach then
+			centre = target:getPosition()
+			direction = directionOfBlast(from, centre)
+			primary = target
+		end
+	else
+		-- A single target move still asks for one: "attack that one" is the
+		-- order itself, and guessing which would be the command deciding the
+		-- fight.
+		if not target then
+			return false, "Choose a target first."
+		end
+
+		defender = Pokemon.combatantOf(target)
+		if not defender then
+			return false, "Pokemon moves only work on other pokemon."
+		end
+
+		if inProtectionZone(target) then
+			return false, string.format("%s is inside a protection zone.", target:getName())
+		end
+
+		if from:getDistance(target:getPosition()) > reach then
+			return false, string.format("%s only reaches %d square%s away - %s is closing in.",
+				known.name, reach, reach == 1 and "" or "s", mon.species)
+		end
 	end
 
 	local left = Pokemon.moveCooldownLeft(entry.item, known.name)
@@ -462,10 +673,20 @@ function Pokemon.useMove(player, moveName)
 
 	Pokemon.markMoveUsed(entry.item, known.name, known.cooldown)
 
-	local damage, effectiveness = Pokemon.damage(attacker, defender, move)
-	Pokemon.deliver(entry.creature, target, move, damage)
+	local effectiveness
+	if shaped then
+		_, effectiveness = Pokemon.deliverArea(attacker, move, centre, direction, primary)
+	else
+		local damage
+		damage, effectiveness = Pokemon.damage(attacker, defender, move)
+		Pokemon.deliver(entry.creature, target, move, damage)
+	end
 
-	local note = EFFECTIVENESS_TEXT[tostring(effectiveness)]
+	-- Only when there is somebody the note is ABOUT. A blast that hit nothing,
+	-- or one centred on the pokemon with no target picked, has no effectiveness
+	-- to report, and inventing "It is super effective!" over an empty field
+	-- would be the message lying about a fight that did not happen.
+	local note = effectiveness and EFFECTIVENESS_TEXT[tostring(effectiveness)]
 	player:sendTextMessage(MESSAGE_STATUS, string.format(
 		"%s used %s.%s", mon.species, known.name, note and (" " .. note .. "!") or ""))
 
@@ -704,15 +925,30 @@ function Pokemon.wildMove(creature)
 	ready[pick.name] = now + (pick.cooldown or 20)
 	wildNextMove[id] = now + Pokemon.WILD_MOVE_INTERVAL
 
-	local damage, effectiveness = Pokemon.damage(attacker, defender, move)
-	Pokemon.deliver(creature, target, move, damage)
+	-- Same two paths a trainer's order takes, and for the same reason: a second
+	-- implementation is how the two sides drift apart. A wild always has a
+	-- target to centre on -- it is how it got here -- so the no-target case
+	-- never arises, but the shape and the per-victim damage do.
+	local effectiveness
+	if move.behavior ~= "target" then
+		local from = creature:getPosition()
+		local centre = move.behavior == "self" and from or target:getPosition()
+		_, effectiveness = Pokemon.deliverArea(
+			attacker, move, centre,
+			move.behavior == "self" and creature:getDirection() or directionOfBlast(from, centre),
+			target)
+	else
+		local damage
+		damage, effectiveness = Pokemon.damage(attacker, defender, move)
+		Pokemon.deliver(creature, target, move, damage)
+	end
 
 	-- Tell the trainer on the other side. Without this a wild's move is
 	-- indistinguishable from its melee except by the number, and the whole point
 	-- of giving wilds a movepool is that you can see what you are fighting.
 	local watcher = target:getMaster()
 	if watcher and watcher:isPlayer() then
-		local note = EFFECTIVENESS_TEXT[tostring(effectiveness)]
+		local note = effectiveness and EFFECTIVENESS_TEXT[tostring(effectiveness)]
 		watcher:sendTextMessage(MESSAGE_STATUS, string.format(
 			"Wild %s used %s.%s", creature:getName(), pick.name,
 			note and (" " .. note .. "!") or ""))

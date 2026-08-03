@@ -14,7 +14,7 @@
 
 local VALID_CLASSES = { physical = true, special = true, status = true }
 
--- ⚠️ Keep in step with `Behavior` in tools/pxg.ts and with COMBAT_BY_BEHAVIOR in
+-- ⚠️ Keep in step with `Behavior` in tools/pxg.ts and with SHAPE in
 -- lib/pokemon/move.lua. `beam` was added to both of those and not to here, and
 -- the result was this command reporting 24 perfectly good moves as MALFORMED --
 -- a validator that cries wolf is worse than no validator, because the next real
