@@ -52,6 +52,15 @@ Pokemon.PLACEHOLDER_BALL_ID = 23488
 -- Namespace for the MonsterTypes. Canary registers them as "<variant>|<name>"
 -- while keeping the display name clean, which avoids colliding with a Tibia
 -- monster of the same name without handling species case by case.
+--
+-- 🔴 This string is a CONTRACT with the map generator, and the other side of it
+-- cannot see this file. `tools/build-spawns.ts` writes `pokemon|<Species>` into
+-- all 82,986 spawn entries of `world/otservbr-monster.xml`, and
+-- `SpawnMonster::addMonster` resolves each one as `variant + name` while the
+-- map loads. Change the value here and every one of them fails with
+-- "Can not find pokemon|X" -- the server still boots, the world is just empty,
+-- and nothing on the TypeScript side notices. `tools/build-spawns.test.ts`
+-- reads this very line and fails when the two stop matching.
 Pokemon.MONSTER_VARIANT = "pokemon"
 
 --- MonsterType key for a species.
